@@ -1,5 +1,8 @@
-Are, Ryan, Maddie -- Team ARM / RAM Team
-Simulate a traffic intersection
+Authors: Are, Ryan, Maddie
+
+Project Goal: Simulate a traffic intersection
+
+Notes:
 four lanes of traffic total, Eastbound, Westbound, Northbound and Southbound
 Traffic lights that control the intersection, which are synchronized
 Have cars, SUVs and trucks, which will change the decision parameters for
@@ -23,3 +26,8 @@ Can start with cars originally going straight with lights, and then add turns in
 later.
 
 Might need to make a GUI or can do that for extra credit
+
+
+mt19937 Mersenne Twister Pseudo-Random Number Generator
+
+
