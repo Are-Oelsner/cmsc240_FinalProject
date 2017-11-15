@@ -33,3 +33,51 @@ mt19937 Mersenne Twister Pseudo-Random Number Generator
 
 TODO::
 Early class design due next monday
+
+////////////////////////////////////////////////////////////////////////////////
+Classes:
+Vehicle
+    Car
+    SUV
+    Truck
+
+Intersection
+Lane
+Section
+TrafficLight
+
+Random
+
+Clock
+
+////////////////////////////////////////////////////////////////////////////////
+Ownership:
+
+main
+  vehicles
+    ->Lane
+      ->secions
+  Intersection
+    Lane
+      Section
+      TrafficLight
+  Random
+  Clock
+
+
+////////////////////////////////////////////////////////////////////////////////
+Classes:
+Vehicle
+    Car
+    SUV
+    Truck
+
+Intersection
+Lane
+Section
+TrafficLight
+
+Random
+
+Clock
+
