@@ -31,3 +31,5 @@ Might need to make a GUI or can do that for extra credit
 mt19937 Mersenne Twister Pseudo-Random Number Generator
 
 
+TODO::
+Early class design due next monday

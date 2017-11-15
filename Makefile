@@ -1,8 +1,8 @@
 default:
-	g++ MyRand.cpp
+	g++ RandomTester.cpp
 
 o:
-	vim -p MyRand.cpp
+	vim -p Random.h Vehicle.h
 
 clean:
 	rm a.out
