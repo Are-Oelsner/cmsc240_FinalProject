@@ -68,6 +68,9 @@ main
 ////////////////////////////////////////////////////////////////////////////////
 Classes:
 Vehicle
+  //Private Variables
+  int size //number of sections
+
     Car
     SUV
     Truck
@@ -75,6 +78,8 @@ Vehicle
 Intersection
 Lane
 Section
+  Points to neighbor sections
+  traffic flow
 TrafficLight
 
 Random
