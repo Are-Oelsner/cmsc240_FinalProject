@@ -43,11 +43,10 @@ Vehicle
 
 Intersection
 Lane
-Section
+Section 
 TrafficLight
 
 Random
-
 Clock
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +55,7 @@ Ownership:
 main
   vehicles
     ->Lane
-      ->secions
+      ->sections
   Intersection
     Lane
       Section
