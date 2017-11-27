@@ -4,9 +4,10 @@
 #include <vector>
 
 #include "Vehicle"
+#include "Section"
 
-public class Lane {
-  protected:
+class Lane {
+  private:
     ///Private Variables
     // Vector of Sections
     vector<Section> sections;
