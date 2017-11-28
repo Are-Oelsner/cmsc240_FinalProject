@@ -10,6 +10,7 @@ protected:
 	int greenTime;
 	int yellowTime;
 	int redTime;
+	Color currentColor;
 
 
 
@@ -18,10 +19,11 @@ public:
 	int getGreenTime();
 	int getYellowTime();
 	int getRedTime();
-	void setGreenTime();
-	void setRedTime();
-	void setYellowTime();
-	
+	void setGreenTime(int time);
+	void setRedTime(int time);
+	void setYellowTime(int time);
+	Color getColor();
+	int timeRemaining(Color color, int timeElapsed);
 
 
 
