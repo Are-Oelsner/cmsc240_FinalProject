@@ -25,6 +25,8 @@ class Section {
     Section();
     //Constructor
     Section(bool n, bool e, bool s, bool w);
+    Section(Section up, Section right, Section down, Section left);
+    Section(Section up, Section right, Section down, Section left, bool n, bool e, bool s, bool w);
     
     //Destructor
     ~Section();
@@ -47,19 +49,20 @@ class Section {
 
     ///Setters
     //Set Flow
-    inline setNorth(bool n) {north = n;}
-    inline setEast(bool e) {east = e;}
-    inline setSouth(bool s) {south = s;}
-    inline setWest(bool w) {west = w;}
+    void setFlow(bool n, int i);
+  //inline void setNorth(bool n) {north = n;}
+  //inline void setEast(bool e) {east = e;}
+  //inline void setSouth(bool s) {south = s;}
+  //inline void setWest(bool w) {west = w;}
 
     //Neighbors 
-    inline setUp(Section* s) {up = s;}
-    inline setRight(Section* s) {right = s;}
-    inline setDown(Section* s) {down = s;}
-    inline setLeft(Section* s) {left = s;}
+    void setNeighbor(Section* s, int i);
+  //inline void setRight(Section* s) {right = s;}
+  //inline void setDown(Section* s) {down = s;}
+  //inline void setLeft(Section* s) {left = s;}
 
     //Occupied
-    inline setOccupied(bool o) {occupied = o;}
+    inline void setOccupied(bool o) {occupied = o;}
 
 }
 
