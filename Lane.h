@@ -10,22 +10,24 @@ class Lane {
   private:
     ///Private Variables
     // Vector of Sections
-    vector<Section> sections;
+    vector<Section*> sections;
+    int direction; //1 north, 2 east, 3 south, 4 west
 
   public:
     ///Constructors
     // Default Constructor
     Lane();
     // Constructor
-    Lane(int numSections);
+    Lane(int length, Section* intSec1, Section* intSec2, int direction);
 
     // Destructor
     ~Lane();
 
     ///Functions
     // Changes occupied status
-    Section getSection
-    void allotSections(Vehicle vehicle);
+    Section* getSection(int i);
+    inline int getDirection() {return direction;}
+    void allotSections(Vehicle vehicle);//Do we need this?
 
 };
 

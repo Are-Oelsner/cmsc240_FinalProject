@@ -1,59 +1,35 @@
-#ifndef __SECTION_H__
-#define __SECTION_H__
+#ifndef __INTERSECTION_H__
+#define __INTERSECTION_H__
 
-class Section {
+#include "Lane.h"
+#include "Section.h"
+
+class Intersection {
+
   protected:
     ///Private Variables
-    // Section status
-    bool occupied;
-    bool isIntersection;
+    // Lanes
+    Lane north;
+    Lane east;
+    Lane south;
+    Lane west;
 
-    // Section flow
-    bool up;
-    bool right;
-    bool down;
-    bool left;
-
-    // Neighbor Sections
-    Section upSection;
-    Section rightSection;
-    Section downSection;
-    Section leftSection;
-
+    // Intersection
+    Section NW;
+    Section NE;
+    Section SE;
+    Section SW;
 
   public:
     ///Constructors
     // Default Constructor
-    Section();
+    Intersection();
+
+    // Constructor
+    Intersection(int length);
 
     // Destructor
-    ~Section();
-
-    ///Functions
-    // Changes occupied status
-    void toggleOccupied();
-    // get occupied status
-    bool getOccupied() {return occupied;}
-    // get isIntersections status
-    bool getIsIntersection() {return isIntersection;}
-
-    // get up
-    inline bool up() {return up;}
-    // get right
-    inline bool right() {return right;}
-    // get down
-    inline bool down() {return down;}
-    // get left
-    inline bool left() {return left;}
-
-    // get upSection
-    Section getUp();
-    // get rightSection
-    Section getRight();
-    // get downSection
-    Section getDown();
-    // get leftSection
-    Section getLeft();
+    ~Intersection();
 };
 
 #endif
