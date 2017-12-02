@@ -1,7 +1,7 @@
 #ifndef __SECTION_H__
 #define __SECTION_H__
 
-public class Section {
+class Section {
   protected:
     ///Private Variables
     // Section status
