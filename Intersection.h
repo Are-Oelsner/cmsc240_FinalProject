@@ -4,7 +4,8 @@
 #include "Lane.h"
 #include "Section.h"
 
-public class Intersection {
+class Intersection {
+
   protected:
     ///Private Variables
     // Lanes
