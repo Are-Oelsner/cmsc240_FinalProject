@@ -1,6 +1,6 @@
 #ifndef __parser_h__
 #define __parser_h__
-
+#include <string>
 
 using namespace std;
 

@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
+#include <cctype>
 
 void parser::parseConfigFile(string file)
 {
