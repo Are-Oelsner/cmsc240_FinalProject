@@ -14,7 +14,6 @@
     }
 
     Vehicle::decidePath(double probRight, double probLeft) {
-
     	path = 's';
     }
 
@@ -35,6 +34,7 @@
 
     	// Get the current state of the traffic light in the Vehicles's lane
     	string light = currLane.getTrafficLight();
+    	nearIntersection = frontSection.getNextSection().getNearIntersection();
 
     	/* If there is a Vehicle directly in front of it or the Vehicle is near 
     	*  the intersection and the light is not green, then the Vehicle cannot
@@ -49,9 +49,21 @@
 
     Vehicle::move() {
 
-    	string direction = "";
-    	bool canTurnRight = frontSection.hasRightSection();
-    	bool canTurnLeft = frontSection.hasLeftSection();
+    	char direction = 's';
+
+    	bool frontCanTurnRight = frontSection.hasRightSection();
+    	bool frontCanTurnLeft = frontSection.hasLeftSection();
+    	bool backCanTurnRight = backSection.hasRightSection();
+    	bool backCanTurnLeft = backSection.hasLeftSection();
+
+    	// Check if any section of the vehicle is in the intersection
+		for(int i = 0; i < sections.length; i++) {
+			if(section.getInIntersection()){
+				inIntersection = true;
+				break;
+			}
+		}
+
     	// If the Vehicle is attempting to move while in the intersection, check
     	// if it should turn or continue straight
     	if(inIntersection) {
@@ -60,26 +72,51 @@
     		if(path == 'l' && canTurnLeft || path == 'r' && canTurnRight) {
     			direction = path;
     		}
-    		else {
-    			direction = 's';
-    		}
     	}
 
-    	if(canMove(direction)) {
-    		// Set the new front section of this vehicle one section forward
-    		frontSection = frontSection.getNextSection();
 
-    		// If the vehicle has entered the intersection
-    		if(frontSection.getInIntersection()) {
-    			inIntersection = true;
+    	else if(canMove(direction)) {
+    		// HANDLE FRONT SECTION
+    		// Set the front section of this vehicle one section forward
+    		if(frontSection.getNearEdge()) {
+    			// If the front and back sections are the same, move the vehicle
+    			// out of view
+    			if(backSection.getNearEdge()) {
+    				backSection.setOccupied(false);
+    				// Vehicle is out of view - delete it's front and back sections
+    				delete frontSection;
+    				delete backSection;
+    			}
+    			// Move one section of the vehicle out of view 
+    			else if {
+    				frontSection = frontSection.getPrevSection();
+    			}
+			}
+    		else if(path == 's') {
+    			frontSection = frontSection.getNextSection();
     		}
-    		else {
-    			inIntersection = false;
+    		else if (path == 'l' && frontCanTurnLeft) {
+    			frontSection = frontSection.getLeftSection();
+    		}
+    		else if (path == 'r' && frontCanTurnRight) {
+    			frontSection = frontSection.getRightSection();
     		}
     		// Set new front section to be occupied
     		frontSection.setOccupied(true);
+
+    		// HANDLE BACK SECTION
     		// Set original back section to be unoccupied
     		backSection.setOccupied(false);
-    		backSection = backSection.getNextSection();
+    		// Set the back section of this vehicle one section forward
+    		if(path == 's') {
+    			backSection = backSection.getNextSection();
+    		}
+    		else if (path == 'l' && backCanTurnLeft) {
+    			backSection = backSection.getLeftSection();
+    		}
+    		else if (path == 'r' && backCanTurnRight) {
+    			backSection = backSection.getRightSection();
+    		}
+
     	}
     }
