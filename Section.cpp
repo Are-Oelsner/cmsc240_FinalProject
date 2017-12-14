@@ -30,5 +30,3 @@
 	void setNeighbor(Section* _section, int _i){
 
 	}
-
-

@@ -17,13 +17,17 @@ class Intersection {
     //**************************************************************************
     //* Private Variables
 
-    // Lanes
+  	//*******
+    //* Lanes
+    
     Lane north;	//* TODO
     Lane east;	//* TODO
     Lane south;	//* TODO
     Lane west;	//* TODO
 
-    // Intersection
+	//**************
+    //* Intersection
+
     Section NW;	//* TODO
     Section NE;	//* TODO
     Section SE;	//* TODO

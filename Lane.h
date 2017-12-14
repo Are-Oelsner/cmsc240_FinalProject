@@ -13,27 +13,49 @@
 //******************************************************************************
 //* TODO
 class Lane {
+
   private:
-    ///Private Variables
-    // Vector of Sections
-    vector<Section*> sections;
-    int direction; //1 north, 2 east, 3 south, 4 west
+
+    //**************************************************************************
+    //* Private Variables
+
+    vector<Section*> sections;  //* Vector of Sections in the lane
+
+    int direction;  //* Direction of the traffic flow in the lane; 1 north, 
+                    //* 2 east, 3 south, 4 west
 
   public:
-    ///Constructors
-    // Default Constructor
+
+    //**************************************************************************
+    //* Constructors & Destructors
+
+    //* Default Constructor
     Lane();
-    // Constructor
+
+    //* Constructor
+    //* @param  length      number of sections in the lane
+    //* @param  intSec1     first intersection section in the lane
+    //* @param  intSec2     second intersection section in the lane
+    //* @param  direction   traffic flow direction of the lane; 1 = north, 
+    //*                     2 = east, 3 = south, 4 = west 
     Lane(int length, Section* intSec1, Section* intSec2, int direction);
 
-    // Destructor
+    //* Destructor
     ~Lane();
 
-    ///Functions
-    // Changes occupied status
+    //**************************************************************************
+    //* Functions
+
+    //* Changes occupied status     //* ??? what is this
+
+    //* ???
+    //* ???
     Section* getSection(int i);
-    inline int getDirection() {return direction;}
-    void allotSections(Vehicle vehicle);//Do we need this?
+
+    //* Returns the direction of the lane
+    //* @return     integer direction of the lane; 1 = north, 2 = east, 
+    //*             3 = south, 4 = west 
+    inline int getDirection() { return direction; }
 
 };
 

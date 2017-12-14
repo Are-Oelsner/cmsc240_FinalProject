@@ -12,22 +12,22 @@ class Section {
   private:
 
     //**************************************************************************
-    /// Private Variables
+    //* Private Variables
 
-    // Traffic flow variables 
+    //* Traffic flow variables
     bool north; //* TODO
     bool east;  //* TODO
     bool south; //* TODO
     bool west;  //* TODO
 
-    // Neighbors
+    //* Neighbors
     Section* up;        //* Up neighbor
     Section* right;     //* Right neighbor
     Section* down;      //* Down neighbor
     Section* left;      //* Left neighbor
 
-    // Vehicle occupied variable 
-    bool occupied;
+
+    bool occupied;  //* Vehicle occupied variable 
 
   public:
 
@@ -92,19 +92,19 @@ class Section {
 
     //* TODO
     //* @return     TODO
-    inline Section* getUp() { return up; }
+    inline Section* getUpSection() { return up; }
 
     //* TODO
     //* @return     TODO
-    inline Section* getRight() { return right; }
+    inline Section* getRightSection() { return right; }
 
     //* TODO
     //* @return     TODO
-    inline Section* getDown() { return down; }
+    inline Section* getDownSection() { return down; }
 
     //* TODO
     //* @return     TODO
-    inline Section* getLeft() { return left; }
+    inline Section* getLeftSection() { return left; }
 
     //**********
     //* Occupied
