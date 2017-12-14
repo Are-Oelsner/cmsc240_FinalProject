@@ -8,10 +8,12 @@
 #include <fstream>
 #include <cctype>
 #include <sstream>
+
 using namespace std;
 
 void parser::parseConfigFile(string filename)
 {
+
 	cout << "Parsing" << endl;
 	ifstream file(filename);
     string line;
@@ -93,9 +95,7 @@ void parser::parseConfigFile(string filename)
                 {
                		section_num = atof(token.c_str());
                	}
-            }
-                
-              
+            }     
    	 	}
 	}
 }

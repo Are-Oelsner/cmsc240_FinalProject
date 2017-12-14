@@ -5,68 +5,145 @@
 #ifndef __SECTION_H__
 #define __SECTION_H__
 
+//******************************************************************************
+//* TODO
 class Section {
+
   private:
-    ///Private Variables
-    //Traffic flow variables 
-    bool north;
-    bool east;
-    bool south;
-    bool west;
 
-    //neighbors
-    Section* up;
-    Section* right;
-    Section* down;
-    Section* left;
+    //**************************************************************************
+    /// Private Variables
 
-    //Vehicle occupied variable 
+    // Traffic flow variables 
+    bool north; //* TODO
+    bool east;  //* TODO
+    bool south; //* TODO
+    bool west;  //* TODO
+
+    // Neighbors
+    Section* up;        //* Up neighbor
+    Section* right;     //* Right neighbor
+    Section* down;      //* Down neighbor
+    Section* left;      //* Left neighbor
+
+    // Vehicle occupied variable 
     bool occupied;
 
   public:
-    ///Constructors
-    //Default Constructor
+
+    //**************************************************************************
+    //* Constructors & Destructors
+
+    //* Default Constructor
     Section();
-    //Constructor
+
+    //* Constructor
+    //* @param  n   TODO
+    //* @param  e   TODO
+    //* @param  s   TODO
+    //* @param  w   TODO
     Section(bool n, bool e, bool s, bool w);
+
+    //* Constructor
+    //* @param  up      TODO
+    //* @param  right   TODO
+    //* @param  down    TODO
+    //* @param  left    TODO
     Section(Section up, Section right, Section down, Section left);
+
+    //* Constructor
+    //* @param  up      TODO
+    //* @param  right   TODO
+    //* @param  down    TODO
+    //* @param  left    TODO
+    //* @param  n       TODO
+    //* @param  e       TODO
+    //* @param  s       TODO
+    //* @param  w       TODO
     Section(Section up, Section right, Section down, Section left, bool n, bool e, bool s, bool w);
     
-    //Destructor
+    //* Destructor
     ~Section();
 
-    ///Getters
-    //Traffic Flow
-    inline bool getNorth() {return north;}
-    inline bool getEast() {return east;}
-    inline bool getSouth() {return south;}
-    inline bool getWest() {return west;}
+    //**************************************************************************
+    //* Get Functions
 
-    //Neighbors
-    inline Section* getUp() {return up;}
-    inline Section* getRight() {return right;}
-    inline Section* getDown() {return down;}
-    inline Section* getLeft() {return left;}
+    //**************
+    //* Traffic Flow
 
-    //Occupied
-    inline bool getOccupied() {return occupied;}
+    //* TODO
+    //* @return     TODO
+    inline bool getNorth() { return north; }
 
-    ///Setters
-    //Set Flow
+    //* TODO
+    //* @return     TODO
+    inline bool getEast() { return east;  }
+
+    //* TODO
+    //* @return     TODO
+    inline bool getSouth() { return south; }
+
+    //* TODO
+    //* @return     TODO
+    inline bool getWest() { return west;  }
+
+    //***********
+    //* Neighbors
+
+    //* TODO
+    //* @return     TODO
+    inline Section* getUp() { return up; }
+
+    //* TODO
+    //* @return     TODO
+    inline Section* getRight() { return right; }
+
+    //* TODO
+    //* @return     TODO
+    inline Section* getDown() { return down; }
+
+    //* TODO
+    //* @return     TODO
+    inline Section* getLeft() { return left; }
+
+    //**********
+    //* Occupied
+
+    //* TODO
+    //* @return     TODO
+    inline bool getOccupied() { return occupied; }
+
+    //**************************************************************************
+    //* Set Functions
+
+    //* TODO
+    //* @param  n   TODO
+    //* @param  i   TODO                                // !!! IMPROVE PARAM NAMES !!!
     void setFlow(bool n, int i);
-  //inline void setNorth(bool n) {north = n;}
-  //inline void setEast(bool e) {east = e;}
-  //inline void setSouth(bool s) {south = s;}
-  //inline void setWest(bool w) {west = w;}
 
-    //Neighbors 
-    void setNeighbor(Section* s, int i);
-  //inline void setRight(Section* s) {right = s;}
-  //inline void setDown(Section* s) {down = s;}
-  //inline void setLeft(Section* s) {left = s;}
+    //inline void setNorth(bool n) {north = n;}
+    //inline void setEast(bool e) {east = e;}
+    //inline void setSouth(bool s) {south = s;}
+    //inline void setWest(bool w) {west = w;}
 
-    //Occupied
-    inline void setOccupied(bool o) {occupied = o;}
+    //***********
+    //* Neighbors
+
+    //* TODO
+    //* @param  _section   TODO
+    //* @param  _i   TODO                               // !!! IMPROVE PARAM NAME !!!
+    void setNeighbor(Section* _section, int _i);
+
+    //inline void setRight(Section* s) {right = s;}
+    //inline void setDown(Section* s) {down = s;}
+    //inline void setLeft(Section* s) {left = s;}
+
+    //**********
+    //* Occupied
+
+    //* TODO
+    //* @param  _occupied   TODO
+    inline void setOccupied(bool _occupied) { occupied = _occupied; }
 
 }
 
