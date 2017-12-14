@@ -3,14 +3,32 @@
 //* Date: 	
 
 #include "Vehicle.h"
+#include "Parser.h"
 
     Vehicle::Vehicle() {
     	inIntersection = false; // Vehicles will spawn at the end of the lanes
     	nearIntersection = false;
-    	probRight = 
-    	probLeft = 
+    	probRight = parser.getRight_Prob();
+    	probLeft = parser.getLeft_Prob();
     	probStraight = 1.0 - probRight - probLeft;
+    	size = 2; // Default constructor spawns basic car
+    }
 
+    Vehicle::Vehicle(string type) {
+    	if(type.equals("car") {
+    		size = 2;
+    	}
+    	else if(type.equals("suv") {
+    		size = 3;
+    	}
+    	else if(type.equals("truck") {
+    		size = 4;
+    	}
+    	inIntersection = false; // Vehicles will spawn at the end of the lanes
+    	nearIntersection = false;
+    	probRight = getRight_Prob();
+    	probLeft = getLeft_Prob();
+    	probStraight = 1.0 - probRight - probLeft;
     }
 
     Vehicle::decidePath(double probRight, double probLeft) {
@@ -84,7 +102,7 @@
     			if(backSection.getNearEdge()) {
     				backSection.setOccupied(false);
     				// Vehicle is out of view - delete it's front and back sections
-    				delete frontSection;
+    				delete frontSection; //****** what about other sections -- figure out something here
     				delete backSection;
     			}
     			// Move one section of the vehicle out of view 

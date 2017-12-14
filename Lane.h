@@ -1,3 +1,7 @@
+//* CMSC240 Final Project : Vehicle.cpp
+//* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
+//* Date: 
+
 #ifndef __LANE_H__
 #define __LANE_H__
 
@@ -6,6 +10,8 @@
 #include "Vehicle"
 #include "Section"
 
+//******************************************************************************
+//* TODO
 class Lane {
   private:
     ///Private Variables

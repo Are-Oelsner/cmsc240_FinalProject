@@ -1,3 +1,7 @@
+//* CMSC240 Final Project : Vehicle.cpp
+//* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
+//* Date:
+
 #ifndef __random_h__
 #define __random_h__
 

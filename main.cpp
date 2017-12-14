@@ -1,3 +1,6 @@
+//* CMSC240 Final Project : Vehicle.cpp
+//* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
+//* Date:
 
 //main class
 #include "parser.h"

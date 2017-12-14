@@ -1,3 +1,7 @@
+//* CMSC240 Final Project : Vehicle.cpp
+//* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
+//* Date: 
+
 #include <TrafficLight.h> 
 #include <iostream>
 using namespace std;

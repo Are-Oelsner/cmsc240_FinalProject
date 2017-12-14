@@ -36,6 +36,9 @@ class Vehicle {
     //* Default Constructor
     Vehicle();
 
+    //* Constructor
+    Vehicle(string type);
+
     //* Destructor
     ~Vehicle();
 

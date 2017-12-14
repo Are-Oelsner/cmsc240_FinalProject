@@ -1,6 +1,6 @@
-/* Author: Are Oelsner
- * Lane Class
- */
+//* CMSC240 Final Project : Vehicle.cpp
+//* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
+//* Date: 
 
 #include "Lane.h"
 
@@ -23,6 +23,7 @@ Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   intSec2.setNeighbor(intSec2, direction);
   intSec2.setFlow(direction);
 
+}
 
 
 
