@@ -1,4 +1,4 @@
-//* CMSC240 Final Project : Vehicle.cpp
+//* CMSC240 Final Project : TrafficLight.cpp 
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
 //* Date: 
 
