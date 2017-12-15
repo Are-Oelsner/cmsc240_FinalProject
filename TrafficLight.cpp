@@ -1,6 +1,6 @@
 //* CMSC240 Final Project : TrafficLight.cpp 
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+//* Date: 12/15
 
 #include "TrafficLight.h"
 #include <iostream>
