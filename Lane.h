@@ -1,6 +1,6 @@
-//* CMSC240 Final Project : Vehicle.cpp
+//* CMSC240 Final Project : Lane.h
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+//* Date:12/14/17
 
 #ifndef __LANE_H__
 #define __LANE_H__
@@ -11,7 +11,7 @@
 #include "Section"
 
 //******************************************************************************
-//* TODO
+//* Lane class contains a vector of Section* and an int specifying the direction. 
 class Lane {
 
   private:

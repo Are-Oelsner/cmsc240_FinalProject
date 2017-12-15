@@ -12,20 +12,12 @@ class Section {
   private:
 
     //**************************************************************************
-    //* Private Variables
-
-    //* Traffic flow variables
-    bool north; //* TODO
-    bool east;  //* TODO
-    bool south; //* TODO
-    bool west;  //* TODO
-
+    /// Private Variables
     //* Neighbors
     Section* up;        //* Up neighbor
     Section* right;     //* Right neighbor
     Section* down;      //* Down neighbor
     Section* left;      //* Left neighbor
-
 
     bool occupied;  //* Vehicle occupied variable 
 
@@ -37,31 +29,6 @@ class Section {
     //* Default Constructor
     Section();
 
-    //* Constructor
-    //* @param  n   TODO
-    //* @param  e   TODO
-    //* @param  s   TODO
-    //* @param  w   TODO
-    Section(bool n, bool e, bool s, bool w);
-
-    //* Constructor
-    //* @param  up      TODO
-    //* @param  right   TODO
-    //* @param  down    TODO
-    //* @param  left    TODO
-    Section(Section up, Section right, Section down, Section left);
-
-    //* Constructor
-    //* @param  up      TODO
-    //* @param  right   TODO
-    //* @param  down    TODO
-    //* @param  left    TODO
-    //* @param  n       TODO
-    //* @param  e       TODO
-    //* @param  s       TODO
-    //* @param  w       TODO
-    Section(Section up, Section right, Section down, Section left, bool n, bool e, bool s, bool w);
-    
     //* Destructor
     ~Section();
 
@@ -69,23 +36,23 @@ class Section {
     //* Get Functions
 
     //**************
-    //* Traffic Flow
+    //* Traffic Flow TODO we might not need these
 
     //* TODO
-    //* @return     TODO
-    inline bool getNorth() { return north; }
+    //* @return     bool 
+    inline bool getNorth() { return up != NULL; } 
 
     //* TODO
-    //* @return     TODO
-    inline bool getEast() { return east;  }
+    //* @return     bool
+    inline bool getEast() { return right != NULL;  }
 
     //* TODO
-    //* @return     TODO
-    inline bool getSouth() { return south; }
+    //* @return     bool
+    inline bool getSouth() { return down != NULL; }
 
     //* TODO
-    //* @return     TODO
-    inline bool getWest() { return west;  }
+    //* @return     bool
+    inline bool getWest() { return left != NULL;  }
 
     //***********
     //* Neighbors
@@ -116,31 +83,15 @@ class Section {
     //**************************************************************************
     //* Set Functions
 
-    //* TODO
-    //* @param  n   TODO
-    //* @param  i   TODO                                // !!! IMPROVE PARAM NAMES !!!
-    void setFlow(bool n, int i);
-
-    //inline void setNorth(bool n) {north = n;}
-    //inline void setEast(bool e) {east = e;}
-    //inline void setSouth(bool s) {south = s;}
-    //inline void setWest(bool w) {west = w;}
-
     //***********
     //* Neighbors
-
     //* TODO
     //* @param  _section   TODO
-    //* @param  _i   TODO                               // !!! IMPROVE PARAM NAME !!!
-    void setNeighbor(Section* _section, int _i);
-
-    //inline void setRight(Section* s) {right = s;}
-    //inline void setDown(Section* s) {down = s;}
-    //inline void setLeft(Section* s) {left = s;}
+    //* @param  direction   TODO                            
+    void setNeighbor(Section* _section, int direction);
 
     //**********
     //* Occupied
-
     //* TODO
     //* @param  _occupied   TODO
     inline void setOccupied(bool _occupied) { occupied = _occupied; }

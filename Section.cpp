@@ -4,29 +4,22 @@
 
 #include "Section.h"
 
-	Section::Section() {
+Section::Section() {
+	up = NULL;
+	right = NULL;
+	down = NULL;
+	left = NULL;
 
+	occupied = false;
+}
+
+Section::~Section(){ }
+
+void setNeighbor(Section* _section, int direction){
+	switch(direction) {
+		case 1: up = _section; break;
+		case 2: right = _section; break;
+		case 3: down = _section; break;
+		case 4: left = _section; break;
 	}
-
-	Section::Section(bool n, bool e, bool s, bool w) {
-
-	}
-
-	Section::Section(Section up, Section right, Section down, Section left){
-
-	}
-
-	Section::Section(Section up, Section right, Section down, Section left, bool n, bool e, bool s, bool w){
-
-
-	}
-
-	Section::~Section(){ }
-
-	void Section::setFlow(bool n, int i){
-
-	}
-
-	void setNeighbor(Section* _section, int _i){
-
-	}
+}

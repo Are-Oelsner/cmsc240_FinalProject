@@ -1,6 +1,6 @@
-//* CMSC240 Final Project : Vehicle.cpp
+//* CMSC240 Final Project : Intersection.h
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 	
+//* Date:12/14/17
 
 #ifndef __INTERSECTION_H__
 #define __INTERSECTION_H__
@@ -9,7 +9,7 @@
 #include "Section.h"
 
 //******************************************************************************
-//* TODO
+//* Intersection Class owns Lanes and intersection sections. 
 class Intersection {
 
   protected:
@@ -17,21 +17,20 @@ class Intersection {
     //**************************************************************************
     //* Private Variables
 
-  	//*******
+    //*******
     //* Lanes
-    
-    Lane north;	//* TODO
-    Lane east;	//* TODO
-    Lane south;	//* TODO
-    Lane west;	//* TODO
+    Lane north;	
+    Lane east;	
+    Lane south;	
+    Lane west;	
 
-	//**************
+    //**************
     //* Intersection
 
-    Section NW;	//* TODO
-    Section NE;	//* TODO
-    Section SE;	//* TODO
-    Section SW;	//* TODO
+    Section NW;
+    Section NE;
+    Section SE;
+    Section SW;	
 
   public:
     
