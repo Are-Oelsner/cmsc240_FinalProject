@@ -1,4 +1,4 @@
-//* CMSC240 Final Project : Vehicle.cpp
+//* CMSC240 Final Project : Parser.h
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
 //* Date:   
 
@@ -6,56 +6,56 @@
 #define __PARSER_H__
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
-//******************************************************************************
-//* TODO
+
 class Parser {
 
 protected:
 
-	double left_prob;      //* TODO
-	double right_prob;     //* TODO
+	double left_prob;
+	double right_prob;
+    
+
+	double g_ticks;
+	double y_ticks;
+	double r_ticks;
 
 
-	double g_ticks;        //* TODO
-	double y_ticks;        //* TODO
-	double r_ticks;        //* TODO
+	double car_prob;
+    double SUV_prob;
+	double truck_prob;
 
-
-	double car_prob;       //* TODO
-	double SUV_prob;       //* TODO
-	double truck_prob;     //* TODO
-
-    int section_num;       //* TODO
-
+    int section_num;
+    vector<string> info1;
 public:
 
-    //* TODO
+
 	void parseConfigFile(string filename); 
     
     //get methods for the variables
-    //* TODO
+
     double getLeft_Prob();
-    //* TODO
+    
     double getRight_Prob();
     
-    //* TODO
+    double getStraight_Prob();
+    
+
     double getG_Ticks();
-    //* TODO
+
     double getY_Ticks();
-    //* TODO
+
     double getR_Ticks();
     
-    //* TODO
     double getCar_Prob();
-    //* TODO
+
     double getSUV_Prob();
-    //* TODO
+
     double getTruck_Prob();
-    
-    //* TODO
+
     int getSection_Num();
 
 };

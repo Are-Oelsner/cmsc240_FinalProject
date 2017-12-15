@@ -1,150 +1,131 @@
-//* CMSC240 Final Project : Vehicle.cpp
+//* CMSC240 Final Project : Parser.cpp 
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date:   
+//* Date:  Dec 15, 2017 
+//*This class parses the config file  
 
-#include "parser.h"
+#include "Parser.h"
 #include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <cctype>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
-void parser::parseConfigFile(string filename)
+
+//parses config file and puts result in vector
+void Parser::parseConfigFile(string filename)
 {
 
-	cout << "Parsing" << endl;
-	ifstream file(filename);
+
+    cout << "Opening config file" << endl;
+     ifstream in;
+    in.open(filename.c_str());
+    if(in.bad()){
+      cerr<< "Cannot open input file";
+        exit(1);
+    }
     string line;
-    while( getline( file, line ) )   
-    {
-       	std::istringstream iss( line );
-        string result;
-        if( std::getline( iss, result , '=') )
-        {
-            if(result.compare("left_probability"))
-            {
-            	std::string token;
-            	if(std::getline( iss, token, ';' ) )
-                {
-                    left_prob = atof(token.c_str());
-                }
-         
-            }
-            
-            else if(result.compare("right_probability"))
-            {
- 				std::string token;
- 				if(std::getline( iss, token, ';' ) )
-                {
-                	cout << token << endl;
-               		right_prob = atof(token.c_str());
-               	}
-            }
+    
 
-            else if(result.compare("g_ticks"))
-            {
- 				std::string token;
- 				if(std::getline( iss, token, ';' ) )
-                {
-                	 std::cout << token << std::endl;
-               		g_ticks = atof(token.c_str());
-               	}
-            }
-               
+    vector<string> info;
+    while(getline(in, line)){
+      if(line[0] != '#' && line[0] != '\0'){
+              stringstream info(line);
+      string segment;
+      vector<string> seglist;
+      while(getline(info, segment, '=')){
+          seglist.push_back(segment);
+      }
+      //left probability at index 0
+      if(seglist[0].compare("left_probability")==1){
 
-            else if(result.compare("y_ticks"))
-            {
- 				std::string token;
- 				if(std::getline( iss, token, ';' ) )
-                {
-
-               		y_ticks = atof(token.c_str()); 
-               	}
-            }
-
-            else if(result.compare("r_ticks"))
-            {
- 				std::string token;
- 				if(std::getline( iss, token, ';' ) )
-                {
-               		r_ticks = atof(token.c_str());
-               	}
-            }
-            else if(result.compare("car_prob"))
-            {
- 				std::string token;
- 				if(std::getline( iss, token, ';' ) )
-                {
-               		car_prob = atof(token.c_str());
-               	}
-            }
-            else if(result.compare("SUV_prob"))
-            {
- 				std::string token;
- 				if(std::getline( iss, token, ';' ) )
-                {
-               		SUV_prob = atof(token.c_str());
-               	}
-            }
-            else if(result.compare("section_num"))
-            {
- 				std::string token;
- 				if(std::getline( iss, token, ';' ) )
-                {
-               		section_num = atof(token.c_str());
-               	}
-            }     
-   	 	}
-	}
+          info1.push_back(seglist[1]);
+      } 
+      //index 1
+      else if(seglist[0].compare("right_probability")==1){
+           info1.push_back(seglist[1]);
+      } 
+      //index 2
+      else if(seglist[0].compare("g_ticks")==1){
+          info1.push_back(seglist[1]);
+      } 
+      //index 3
+      else if(seglist[0].compare("y_ticks")==1){
+           info1.push_back(seglist[1]);
+      }
+      //index 4
+      else if(seglist[0].compare("r_ticks")==1){
+           info1.push_back(seglist[1]);
+      }
+      //index 5
+      else if(seglist[0].compare("car_prob")==1){
+          info1.push_back(seglist[1]);
+      }
+      //index 6
+      else if(seglist[0].compare("SUV_prob")==1){
+          info1.push_back(seglist[1]);
+      }
+      //index 7
+      else if(seglist[0].compare("section_num")==1){
+           info1.push_back(seglist[1]);
+      }
+          
+      }
+    }
 }
 
 
-
-double parser::getLeft_Prob()
+//GETTERS
+double Parser::getLeft_Prob()
 {
-	return left_prob;
+  return atof(info1[0].c_str());
 }
 
-double parser::getRight_Prob()
+double Parser::getRight_Prob()
 {
-	return right_prob;
+	 return atof(info1[1].c_str());
+}
+
+double Parser::getStraight_Prob()
+{
+  return 1-atof(info1[1].c_str())-atof(info1[0].c_str());
 }
     
-double parser::getG_Ticks()
+double Parser::getG_Ticks()
 {
-	return g_ticks;
+	 return atof(info1[2].c_str());
 }
 
-double parser::getY_Ticks()
+double Parser::getY_Ticks()
 {
-	return y_ticks;
+	 return atof(info1[3].c_str());
 }	
 
-double parser::getR_Ticks()
+double Parser::getR_Ticks()
 {
-	return r_ticks;
+	 return atof(info1[4].c_str());
 }
     
-double parser::getCar_Prob()
+double Parser::getCar_Prob()
 {	
-	return car_prob;
+	 return atof(info1[5].c_str());
 }
 
-double parser::getSUV_Prob()
+double Parser::getSUV_Prob()
 {
-	return SUV_prob;
+	 return atof(info1[6].c_str());
 }
 
-double parser::getTruck_Prob()
+double Parser::getTruck_Prob()
 {
-	return truck_prob;
+	 return 1.0 - atof(info1[6].c_str())-atof(info1[5].c_str());
 }
 
-int parser::getSection_Num()
+int Parser::getSection_Num()
 {
-	return section_num;
+	 return atof(info1[7].c_str());
 }
 
 

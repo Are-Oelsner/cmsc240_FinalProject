@@ -2,9 +2,18 @@
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
 //* Date: 
 
-#include <TrafficLight.h> 
+#include "TrafficLight.h"
 #include <iostream>
 using namespace std;
+
+//change the color 
+TrafficLight::TrafficLight(int greenT, int redT, int yellowT)
+{
+	greenTime = greenT;
+	redTime = redT;
+	yellowTime = yellowT;
+	currentColor = green;
+}
 
 
 void TrafficLight::change(Color newColor)
@@ -12,6 +21,7 @@ void TrafficLight::change(Color newColor)
 	currentColor = newColor;
 }
 
+//COLOR GETTERS
 int TrafficLight::getGreenTime()
 {
 	return greenTime;
@@ -27,32 +37,20 @@ int TrafficLight::getRedTime()
 	return redTime;
 }
 
-void TrafficLight::setGreenTime(int time)
-{
-	greenTime = time;
-}
 
-void TrafficLight::setRedTime(int time)
-{
-	redTime = time;
-}
-void TrafficLight::setYellowTime(int time)
-{
-	yellowTime = time;
-}
-
-Color TrafficLight::getColor()
+//get current color
+TrafficLight::Color TrafficLight::getColor()
 {
 	return currentColor;
 }
 
 int TrafficLight::timeRemaining(Color color, int timeElapsed)
 {
-	if(color === green) 
+	if(color == green) 
 	{
 		return greenTime-timeElapsed;
 	}
-	if(color === yellow)
+	if(color == yellow)
 	{
 		return yellowTime - timeElapsed;
 	}

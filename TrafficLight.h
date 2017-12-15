@@ -8,10 +8,29 @@
 
 class TrafficLight
 {
-protected:
-	//traffic color enum
-	enum Color { red, green, yellow};
+public:
+    
+    //traffic color enum
+    enum Color { red, green, yellow};
+    
+    //constructor
+    TrafficLight(int green, int red, int yellow);
+    
+    void change(Color newColor);
+    
+    //getters
+    int getGreenTime();
+    int getYellowTime();
+    int getRedTime();
+    
+    //get color
+    Color getColor();
+    
+    
+    //remaining time
+    int timeRemaining(Color color, int timeElapsed);
 
+protected:
 	//time
 	int greenTime; 
 	int yellowTime;
@@ -20,29 +39,6 @@ protected:
 	//variable to store current state
 	Color currentColor;
 
-
-
-public:
-	void change(Color to, Color from);
-
-	//getters
-	int getGreenTime();
-	int getYellowTime();
-	int getRedTime();
-
-	//setters 
-	void setGreenTime(int time);
-	void setRedTime(int time);
-	void setYellowTime(int time);
-	Color getColor();
-
-
-	//remaining time
-	int timeRemaining(Color color, int timeElapsed);
-
-
-
-
-}
+};
 
 #endif
