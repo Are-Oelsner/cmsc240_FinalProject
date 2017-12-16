@@ -2,6 +2,7 @@
  */
 
 #include "Section.h"
+#include <iostream>
 using namespace std;
 
 int main() {
