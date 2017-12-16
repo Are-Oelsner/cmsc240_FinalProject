@@ -1,6 +1,7 @@
-//* CMSC240 Final Project : Lane.h
-//* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+/* CMSC240 Final Project : Lane.h
+ * Authors: Are Oelsner, Maddie Shea, Ryan Jennings
+ * Date: 12/15/17
+ */
 
 #ifndef __LANE_H__
 #define __LANE_H__
@@ -28,7 +29,7 @@ class Lane {
     int direction;  //* Direction of the traffic flow in the lane; 1 north, 
                     //* 2 east, 3 south, 4 west
 
-    TrafficLight trafficLight;
+    TrafficLight trafficLight; //* TrafficLight object
 
   public:
 
