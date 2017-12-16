@@ -1,11 +1,57 @@
-default:
-	g++ RandomTester.cpp
+#Makefile Variables
+CC = g++     
+LD = $(CC)
+CCFLAGS = -Wall -Wno-deprecated --std=c++11 -g -c   
+LDFLAGS = -Wall --std=c++11 -Wno-deprecated -g
+OBJS = main.o Intersection.o Lane.o Section.o Clock.o Random.o Parser.o TrafficLight.o Vehicle.o
+TESTS = SectionTester MainTester ParserTester
+################################################################################
+
+#compiles main from .o files
+main: $(OBJS) 
+	$(LD) $(LDFLAGS) $(OBJS) -o $@
+
+r: #runs main
+	./main simulation.config
+
+clean: #removes executable and output file
+	rm main
+	rm SectionTester
+	rm ParserTester
+	rm mainTester
+
+reallyclean: clean #cleans and removes all .o files
+	rm *.o
 
 o:
-	vim -p Vehicle.h Intersection.h Lane.h Section.h TrafficLight.h Random.h Clock.h Parser.h
+	vim main.cpp +":tabf Section.cpp" +":vsplit Section.h" +":tabf Lane.cpp" +":vsplit Lane.h" +":tabf Intersection.cpp" +":vsplit Intersection.h"
 
-o:
-	vim -p *.h
+test: $(TESTS) #TODO finish
 
-clean:
-	rm a.out
+################################################################################
+# O Compilers -- reduces recompilation TODO finish
+################################################################################
+main.o: main.cpp Intersection.cpp TrafficLight.cpp Clock.cpp
+	$(CC) $(CCFLAGS) $<
+
+Intersection.o: Intersection.cpp Lane.cpp Section.cpp
+	$(CC) $(CCFLAGS) $<
+
+Lane.o: Lane.cpp Section.cpp
+	$(CC) $(CCFLAGS) $<
+
+Section.o: Section.cpp 
+	$(CC) $(CCFLAGS) $<
+	
+Clock.o: Clock.cpp 
+	$(CC) $(CCFLAGS) $<
+
+Random.o: Random.cpp 
+	$(CC) $(CCFLAGS) $<
+
+################################################################################
+# Tester O Compilers -- reduces recompilation TODO finish
+################################################################################
+SectionTester: SectionTester.cpp Section.cpp
+	$(CC) $(LDFLAGS) SectionTester.cpp Section.cpp -o $@
+
