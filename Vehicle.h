@@ -25,10 +25,10 @@ class Vehicle {
     						//* based on the probabilities to go right, left, or
     						//* straight ('s'/straight, 'r'/right, 'l'/left)
 
-    Section* sections[];	//* Sections that the Vehicle occupies
-    Section* frontSection;  //* Section that contains the front of the Vehicle
-    Section* backSection; 	//* Section that contians the back of the Vehicle
-    Lane* currLane; 		//* Lane that the Vehicle is currently in
+    vector<Section*> sections;	//* Sections that the Vehicle occupies
+    Section* frontSection;      //* Section that contains the front of the Vehicle
+    Section* backSection; 	    //* Section that contians the back of the Vehicle
+    Lane* currLane; 		    //* Lane that the Vehicle is currently in
 
     double probRight;
     double probLeft;

@@ -15,13 +15,26 @@ using namespace std;
 
 Parser::Parser(string filename) {
   parseConfigFile(filename);
+
+  left_prob = atof(info1[0].c_str());
+  right_prob = atof(info1[1].c_str());
+  staight_prob = 1-atof(info1[1].c_str())-atof(info1[0].c_str());
+  
+  g_ticks = atof(info1[2].c_str());
+  y_ticks = atof(info1[3].c_str());
+  r_ticks = atof(info1[4].c_str());
+
+  car_prob = atof(info1[5].c_str());
+  suv_prob = atof(info1[6].c_str());
+  truck_prob = 1.0 - atof(info1[6].c_str())-atof(info1[5].c_str());
+  
+  section_num = atof(info1[7].c_str());
+
 }
 
 //parses config file and puts result in vector
 void Parser::parseConfigFile(string filename)
 {
-
-
     cout << "Opening config file" << endl;
      ifstream in;
     in.open(filename.c_str());

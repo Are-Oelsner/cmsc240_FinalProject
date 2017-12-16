@@ -1,6 +1,6 @@
 //* CMSC240 Final Project : Intersection.cpp
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date:12/14/17
+//* Date: 
 
 #include "Intersection.h"
 

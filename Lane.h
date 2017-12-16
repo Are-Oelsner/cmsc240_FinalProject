@@ -1,6 +1,6 @@
 //* CMSC240 Final Project : Lane.h
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date:12/14/17
+//* Date: 
 
 #ifndef __LANE_H__
 #define __LANE_H__
@@ -8,8 +8,9 @@
 #include <vector>
 #include <cstdlib> 
 
-#include "Vehicle.h"
+//#include "Vehicle.h"
 #include "Section.h"
+#include "TrafficLight.h"
 
 using namespace std;
 
@@ -26,6 +27,8 @@ class Lane {
 
     int direction;  //* Direction of the traffic flow in the lane; 1 north, 
                     //* 2 east, 3 south, 4 west
+
+    TrafficLight trafficLight;
 
   public:
 
@@ -49,8 +52,6 @@ class Lane {
     //**************************************************************************
     //* Functions
 
-    //* Changes occupied status     //* ??? what is this
-
     //* ???
     //* ???
     Section* getSection(int i);
@@ -59,6 +60,8 @@ class Lane {
     //* @return     integer direction of the lane; 1 = north, 2 = east, 
     //*             3 = south, 4 = west 
     inline int getDirection() { return direction; }
+
+    inline TrafficLight getTrafficLight() { return trafficLight; }
 
 };
 

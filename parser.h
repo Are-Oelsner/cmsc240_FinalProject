@@ -14,7 +14,7 @@ using namespace std;
 //* TODO - Class description
 class Parser {
 
-protected:
+private:
 
     //**************************************************************************
     //* Functions
