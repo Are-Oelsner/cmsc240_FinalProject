@@ -6,6 +6,7 @@
 #include "Parser.h"
 #include "TrafficLight.h"
 #include "Clock.h"
+#include "Intersection.h"
 #include <iostream>
 
 using namespace std;
@@ -17,22 +18,16 @@ Clock c; //create clock
 int main(int argc, const char * argv[])
 {
 	//store values in public variables 
-	double lefProb = p.getLeftProb();
+	double leftProb = p.getLeftProb();
 	double rightProb = p.getRightProb();
-	double straiProb = p.getStraightProb();
+	double straightProb = p.getStraightProb();
 	double g = p.getGTicks();
 	double r = p.getRTicks();
 	double y = p.getYTicks();
 	double carProb = p.getCarProb();
 	double truckProb = p.getTruckProb();
 	double SUVProb = p.getSUVProb();
-	double sectNum = p.getSectionNum();
-
-	//create clock 
-	
-	c.incrementTime();
-	cout << c.getTime() << endl;
-
+	double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
 
 
 	//set up traffic light 
@@ -41,6 +36,9 @@ int main(int argc, const char * argv[])
 	TrafficLight light = TrafficLight(g, r, y);
 	//how to change a light!
 	//light.change(TrafficLight::red);
+
+	//create new instersection 
+	Intersection* trafficIntersection = new Intersection();
 	
 	//start simulation
 	int carsLeft = 0;

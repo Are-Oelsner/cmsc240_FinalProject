@@ -11,22 +11,22 @@ TESTS = SectionTester MainTester ParserTester
 main: $(OBJS) 
 	$(LD) $(LDFLAGS) $(OBJS) -o $@
 
-r: #runs main
+r: 									#runs main
 	./main simulation.config
 
-clean: #removes executable and output file
+clean: 							#removes executable and output file
 	rm main
 	rm SectionTester
 	rm ParserTester
 	rm mainTester
 
-reallyclean: clean #cleans and removes all .o files
+reallyclean: clean 	#cleans and removes all .o files
 	rm *.o
 
 o:
 	vim main.cpp +":tabf Section.cpp" +":vsplit Section.h" +":tabf Lane.cpp" +":vsplit Lane.h" +":tabf Intersection.cpp" +":vsplit Intersection.h"
 
-test: $(TESTS) #TODO finish
+test: $(TESTS) 			#TODO finish
 
 ################################################################################
 # O Compilers -- reduces recompilation TODO finish
