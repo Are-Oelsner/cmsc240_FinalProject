@@ -29,7 +29,7 @@ int main(int argc, const char * argv[])
 	double sectNum = p.getSectionNum();
 
 	//create clock 
-	cout << c.getTime() << endl;
+	
 	c.incrementTime();
 	cout << c.getTime() << endl;
 
@@ -47,7 +47,10 @@ int main(int argc, const char * argv[])
 	int carsRight =0;
 	int carStraight = 0;
 	int totalCars = 0;
-	while()
+	while(c.getTime()!=60)
+	{
+
+	}
 
 	return 0;
 }
