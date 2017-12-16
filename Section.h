@@ -24,8 +24,9 @@ class Section {
 
     bool occupied;          //* Vehicle occupied variable 
     bool nearEdge;          //* If the section is the last in the lane
-    bool nearIntersection;   //* If the section is directly connected to an 
+    bool nearIntersection;  //* If the section is directly connected to an 
                             //* Intersection Section
+    bool inIntersection;    //* If the section is in the intersection
 
   public:
 
@@ -92,6 +93,10 @@ class Section {
 
     //* TODO
     //* @return     TODO
+    inline bool getInIntersection() { return inIntersection; }
+
+    //* TODO
+    //* @return     TODO
     inline bool getNearEdge() { return nearEdge; }
 
     //**************************************************************************
@@ -119,6 +124,10 @@ class Section {
     //* intersection section
     //* @param  _nearIntersection  true if near the intersection, false if not
     inline void setNearIntersection(bool _nearIntersection) { nearIntersection = _nearIntersection; }
+
+    //* Sets whether section is in the intersection
+    //* @param  _nearIntersection  true if the section is in the intersection, false if not
+    inline void setInIntersection(bool _inIntersection) { inIntersection = _inIntersection; }
 
 };
 

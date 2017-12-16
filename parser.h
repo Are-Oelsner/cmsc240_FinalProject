@@ -28,6 +28,7 @@ private:
 
 	double left_prob;      //* Probability that a Vehicle will turn left
 	double right_prob;     //* Probability that a Vehicle will turn right
+    double straight_prob;
     
 
 	double g_ticks;        //* Number of ticks for a green light
@@ -35,7 +36,7 @@ private:
 	double r_ticks;        //* Number of ticks for a red light
 
 	double car_prob;       //* Probability that a Vehicle will spawn as a Car
-    double SUV_prob;       //* Probability that a Vehicle will spawn as a SUV
+    double suv_prob;       //* Probability that a Vehicle will spawn as a SUV
 	double truck_prob;     //* Probability that a Vehicle will spawn as a Truck
 
     int section_num;        //* Number of Sections in a Lane
