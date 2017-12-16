@@ -30,7 +30,7 @@ class Vehicle {
     Section* backSection; 	    //* Section that contians the back of the Vehicle
     Lane* currLane; 		    //* Lane that the Vehicle is currently in
 
-    double probRight;
+    double probRight; 
     double probLeft;
     double probStraight;
 
@@ -43,7 +43,7 @@ class Vehicle {
     Vehicle();
 
     //* Constructor
-    Vehicle(string _type, double _probRight, double _probLeft);
+    Vehicle(string _type, double _probRight, double _probLeft, Lane lane);
 
     //* Destructor
     ~Vehicle();

@@ -11,8 +11,8 @@ Lane::Lane() {
 
 Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
 
-	if(length % 2 != 0) {
-		cout << "Error: length: " << length << " must be even" << endl;
+	if(length % 2 != 0 || length < 12) {
+		cout << "Error: length: " << length << " must be even and at least 12" << endl;
 		exit(0);
 	}
 

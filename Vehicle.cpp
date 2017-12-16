@@ -9,15 +9,22 @@
 using namespace std;
 
     Vehicle::Vehicle() {
-    	inIntersection = false; // Vehicles will spawn at the end of the lanes
-    	nearIntersection = false;
+
+    	currLane = new Lane();
+
+    	inIntersection = false; 	// Vehicles will spawn at the end of the lanes
+    	nearIntersection = false;	// Vehicles will spawn at least one section back from the intersection
+
     	probRight = 0;
     	probLeft = 0;
-    	probStraight = 1.0 - probRight - probLeft;
+    	probStraight = 1.0;	// Default to remaining straight
+
     	size = 2; // Default constructor spawns basic car
     }
 
-    Vehicle::Vehicle(string _type, double _probRight, double _probLeft) {
+    Vehicle::Vehicle(string _type, double _probRight, double _probLeft, Lane lane) {
+
+    	currLane = &lane;
 
     	if( _type.compare("car") == 0 ) {
     		size = 2;
@@ -37,6 +44,7 @@ using namespace std;
     	probStraight = 1.0 - probRight - probLeft;
     }
 
+    // TODO
     void Vehicle::decidePath(double _probRight, double _probLeft) {
     	path = 's';
     }
@@ -56,7 +64,7 @@ using namespace std;
     		pathBlocked = frontSection->getUpSection()->getOccupied();
     	}
 
-    	// Get the current state of the traffic light in the Vehicles's lane
+    	// Get the current state of the traffic light in the Vehicle's lane
     	TrafficLight::Color lightColor = currLane->getTrafficLight().getColor();
     	bool lightIsGreen = (lightColor == 1);
     	nearIntersection = frontSection->getUpSection()->getNearIntersection();
