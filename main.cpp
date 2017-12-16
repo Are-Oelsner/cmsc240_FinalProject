@@ -18,16 +18,16 @@ Clock c; //create clock
 int main(int argc, const char * argv[])
 {
 	//store values in public variables 
-	double lefProb = p.getLeftProb();
+	double leftProb = p.getLeftProb();
 	double rightProb = p.getRightProb();
-	double straiProb = p.getStraightProb();
+	double straightProb = p.getStraightProb();
 	double g = p.getGTicks();
 	double r = p.getRTicks();
 	double y = p.getYTicks();
 	double carProb = p.getCarProb();
 	double truckProb = p.getTruckProb();
 	double SUVProb = p.getSUVProb();
-	double sectNum = p.getSectionNum();
+	double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
 
 
 	//set up traffic light 
