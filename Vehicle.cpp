@@ -57,13 +57,14 @@ using namespace std;
     	}
 
     	// Get the current state of the traffic light in the Vehicles's lane
-    	string light = currLane->getTrafficLight();
+    	TrafficLight::Color lightColor = currLane->getTrafficLight().getColor();
+    	bool lightIsGreen = (lightColor == 1);
     	nearIntersection = frontSection->getUpSection()->getNearIntersection();
 
     	/* If there is a Vehicle directly in front of it or the Vehicle is near 
     	*  the intersection and the light is not green, then the Vehicle cannot
     	*  legally move */
-    	if (pathBlocked || (nearIntersection && !(light.compare("green") == 0))) {
+    	if (pathBlocked || (nearIntersection && !lightIsGreen)) {
     		return false;
     	}
 
@@ -82,7 +83,7 @@ using namespace std;
 
 
     	// Check if any section of the vehicle is in the intersection
-		for(int i = 0; i < sections.length; i++) {
+		for(int i = 0; i < sections.size(); i++) {
 			if(sections[i]->getInIntersection()){
 				inIntersection = true;
 				break;
