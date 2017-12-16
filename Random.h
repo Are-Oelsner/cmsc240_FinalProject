@@ -19,11 +19,7 @@ class Random {
     inline static int randint() { //inline means implementation is in header
       return Random::randint01(Random::rng);
     }
-    inline static int randint(int a, int b) {
-      double u = Random::randdouble(RAndom::rng);
-      int mappedValue = a + (int)((b - a + 1)*u);
-      return mappedValue;
-    }
+    static int randint(int a, int b);
 };
 
 // Static members must be defined @ file-level scope

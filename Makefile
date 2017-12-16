@@ -3,7 +3,7 @@ CC = g++
 LD = $(CC)
 CCFLAGS = -Wall -Wno-deprecated --std=c++11 -g -c   
 LDFLAGS = -Wall --std=c++11 -Wno-deprecated -g
-OBJS = main.o Intersection.o Lane.o Section.o Clock.o Random.o Parser.o TrafficLight.o Vehicle.o
+OBJS = main.o Intersection.o Lane.o Section.o Clock.o Parser.o TrafficLight.o Vehicle.o
 TESTS = SectionTester MainTester ParserTester
 ################################################################################
 
@@ -31,7 +31,7 @@ test: $(TESTS) #TODO finish
 ################################################################################
 # O Compilers -- reduces recompilation TODO finish
 ################################################################################
-main.o: main.cpp Intersection.cpp TrafficLight.cpp Clock.cpp
+main.o: main.cpp Intersection.cpp TrafficLight.cpp Clock.cpp Random.cpp
 	$(CC) $(CCFLAGS) $<
 
 Intersection.o: Intersection.cpp Lane.cpp Section.cpp
