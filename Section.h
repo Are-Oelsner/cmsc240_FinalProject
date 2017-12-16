@@ -5,6 +5,8 @@
 #ifndef __SECTION_H__
 #define __SECTION_H__
 
+using namespace std;
+
 //******************************************************************************
 //* TODO
 class Section {
@@ -13,13 +15,17 @@ class Section {
 
     //**************************************************************************
     /// Private Variables
+
     //* Neighbors
     Section* up;        //* Up neighbor
     Section* right;     //* Right neighbor
     Section* down;      //* Down neighbor
     Section* left;      //* Left neighbor
 
-    bool occupied;  //* Vehicle occupied variable 
+    bool occupied;          //* Vehicle occupied variable 
+    bool nearEdge;          //* If the section is the last in the lane
+    bool nearIntersection;   //* If the section is directly connected to an 
+                            //* Intersection Section
 
   public:
 
@@ -35,7 +41,7 @@ class Section {
     //**************************************************************************
     //* Get Functions
 
-    //**************
+    //**************************************************************************
     //* Traffic Flow TODO we might not need these
 
     //* TODO
@@ -54,7 +60,7 @@ class Section {
     //* @return     bool
     inline bool getWest() { return left != NULL;  }
 
-    //***********
+    //**************************************************************************
     //* Neighbors
 
     //* TODO
@@ -73,29 +79,47 @@ class Section {
     //* @return     TODO
     inline Section* getLeftSection() { return left; }
 
-    //**********
-    //* Occupied
+    //**************************************************************************
+    //* Other
 
     //* TODO
     //* @return     TODO
     inline bool getOccupied() { return occupied; }
 
+    //* TODO
+    //* @return     TODO
+    inline bool getNearIntersection() { return nearIntersection; }
+
+    //* TODO
+    //* @return     TODO
+    inline bool getNearEdge() { return nearEdge; }
+
     //**************************************************************************
     //* Set Functions
 
-    //***********
+    //**************************************************************************
     //* Neighbors
     //* TODO
     //* @param  _section   TODO
     //* @param  direction   TODO                            
     void setNeighbor(Section* _section, int direction);
 
-    //**********
-    //* Occupied
+    //**************************************************************************
+    //* Other
+
     //* TODO
     //* @param  _occupied   TODO
     inline void setOccupied(bool _occupied) { occupied = _occupied; }
 
-}
+    //* Sets whether the section is near the edge of the lane
+    //* @param  _nearEdge  TODO
+    inline void setNearEdge(bool _nearEdge) { nearEdge = _nearEdge; }
+
+    //* Sets whether section is a section directly connected to an 
+    //* intersection section
+    //* @param  _nearIntersection  true if near the intersection, false if not
+    inline void setNearIntersection(bool _nearIntersection) { nearIntersection = _nearIntersection; }
+
+};
 
 #endif

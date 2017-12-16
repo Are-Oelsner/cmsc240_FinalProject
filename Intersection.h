@@ -8,6 +8,8 @@
 #include "Lane.h"
 #include "Section.h"
 
+using namespace std;
+
 //******************************************************************************
 //* Intersection Class owns Lanes and intersection sections. 
 class Intersection {
@@ -17,14 +19,14 @@ class Intersection {
     //**************************************************************************
     //* Private Variables
 
-    //*******
+    //**************************************************************************
     //* Lanes
     Lane north;	
     Lane east;	
     Lane south;	
     Lane west;	
 
-    //**************
+    //**************************************************************************
     //* Intersection
 
     Section NW;

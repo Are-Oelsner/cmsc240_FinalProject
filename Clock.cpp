@@ -2,6 +2,10 @@
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
 //* Date:
 
+#include "Clock.h"
+
+using namespace std;
+
 double Clock::getTime()
 {
 	return time;

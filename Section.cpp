@@ -4,6 +4,8 @@
 
 #include "Section.h"
 
+using namespace std;
+
 Section::Section() {
 	up = NULL;
 	right = NULL;
@@ -11,6 +13,8 @@ Section::Section() {
 	left = NULL;
 
 	occupied = false;
+	nearEdge = false;
+	nearIntersection = false;
 }
 
 Section::~Section(){ }

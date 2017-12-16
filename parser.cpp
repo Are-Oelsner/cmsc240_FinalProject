@@ -13,6 +13,9 @@
 
 using namespace std;
 
+Parser::Parser(string filename) {
+  parseConfigFile(filename);
+}
 
 //parses config file and puts result in vector
 void Parser::parseConfigFile(string filename)
@@ -78,52 +81,52 @@ void Parser::parseConfigFile(string filename)
 
 
 //GETTERS
-double Parser::getLeft_Prob()
+double Parser::getLeftProb()
 {
   return atof(info1[0].c_str());
 }
 
-double Parser::getRight_Prob()
+double Parser::getRightProb()
 {
 	 return atof(info1[1].c_str());
 }
 
-double Parser::getStraight_Prob()
+double Parser::getStraightProb()
 {
   return 1-atof(info1[1].c_str())-atof(info1[0].c_str());
 }
     
-double Parser::getG_Ticks()
+double Parser::getGTicks()
 {
 	 return atof(info1[2].c_str());
 }
 
-double Parser::getY_Ticks()
+double Parser::getYTicks()
 {
 	 return atof(info1[3].c_str());
 }	
 
-double Parser::getR_Ticks()
+double Parser::getRTicks()
 {
 	 return atof(info1[4].c_str());
 }
     
-double Parser::getCar_Prob()
+double Parser::getCarProb()
 {	
 	 return atof(info1[5].c_str());
 }
 
-double Parser::getSUV_Prob()
+double Parser::getSUVProb()
 {
 	 return atof(info1[6].c_str());
 }
 
-double Parser::getTruck_Prob()
+double Parser::getTruckProb()
 {
 	 return 1.0 - atof(info1[6].c_str())-atof(info1[5].c_str());
 }
 
-int Parser::getSection_Num()
+int Parser::getSectionNum()
 {
 	 return atof(info1[7].c_str());
 }

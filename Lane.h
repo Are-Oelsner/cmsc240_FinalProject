@@ -7,8 +7,10 @@
 
 #include <vector>
 
-#include "Vehicle"
-#include "Section"
+#include "Vehicle.h"
+#include "Section.h"
+
+using namespace std;
 
 //******************************************************************************
 //* Lane class contains a vector of Section* and an int specifying the direction. 

@@ -17,6 +17,13 @@ class Parser {
 protected:
 
     //**************************************************************************
+    //* Functions
+
+    //* Parses information from the file given the filename
+    //* @param  string   Name of the file to parse from
+    void parseConfigFile(string filename); 
+
+    //**************************************************************************
     //* Private Variables
 
 	double left_prob;      //* Probability that a Vehicle will turn left
@@ -37,55 +44,52 @@ protected:
 public:
 
     //**************************************************************************
-    //* Functions
+    //* Constructors & Destructors
 
-    //* Parses information from the file given the filename
-    //* @param  string   Name of the file to parse from
-	void parseConfigFile(string filename); 
+    Parser(string filename);
     
-
     //**************************************************************************
     //* Get Functions
 
     //* Returns the probability that a Vehicle will turn left
     //* @return     double probability that a Vehicle will turn left
-    double getLeft_Prob();
+    double getLeftProb();
     
     //* Returns the probability that a Vehicle will turn left
     //* @return     double probability that a Vehicle will turn left
-    double getRight_Prob();
+    double getRightProb();
     
     //* Returns the probability that a Vehicle will remain straight
     //* @return     double probability that a Vehicle will remain straight
-    double getStraight_Prob();
+    double getStraightProb();
     
     //* Returns the number of ticks for a green light
     //* @return     double number of ticks for a green light
-    double getG_Ticks();
+    double getGTicks();
 
     //* Returns the number of ticks for a yellow light
     //* @return     double number of ticks for a yellow light
-    double getY_Ticks();
+    double getYTicks();
 
     //* Returns the number of ticks for a red light
     //* @return     double number of ticks for a red light
-    double getR_Ticks();
+    double getRTicks();
     
     //* Returns the probability that a Vehicle will be spawned as a Car
     //* @return     double probability that a Vehicle will be spawned as a Car
-    double getCar_Prob();
+    double getCarProb();
 
     //* Returns the probability that a Vehicle will be spawned as a SUV
     //* @return     double probability that a Vehicle will be spawned as a SUV
-    double getSUV_Prob();
+    double getSUVProb();
 
     //* Returns the probability that a Vehicle will be spawned as a Truck
     //* @return     double probability that a Vehicle will be spawned as a Truck
-    double getTruck_Prob();
+    double getTruckProb();
 
     //* Returns the number of Sections in a Lane
     //* @return     integer number of Sections in a Lane
-    int getSection_Num();
+    int getSectionNum();
 
 };
 

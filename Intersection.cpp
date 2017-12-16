@@ -4,39 +4,48 @@
 
 #include "Intersection.h"
 
-Intersection::
-Intersection() {
-	length = 20; //default length
+Intersection::Intersection() {
+	int length = 20; //default length
 
 	// Creates intersection sections
-	NW = new Section();
-	NE = new Section();
-	SE = new Section();
-	SW = new Section();
+	NW = Section();
+	NE = Section();
+	SE = Section();
+	SW = Section();
+
+  // TEMPORARY FIX -- NOT SURE WHAT YOU WANTED TO DO WITH THE TYPES HERE
+  Section* NWptr = &NW;
+  Section* NEptr = &NE;
+  Section* SEptr = &SE;
+  Section* SWptr = &SW;
 
 	// Creates Lanes
-	north(length, SE, NE, 1);
-	east(length, SW, SE, 2);
-	south(length, NW, SW, 3);
-	west(length, NE, NW, 4);
+	north = Lane(length, SEptr, NEptr, 1);
+	east = Lane(length, SWptr, SEptr, 2);
+	south = Lane(length, NWptr, SWptr, 3);
+	west = Lane(length, NEptr, NWptr, 4);
 }
 
-Intersection::
-Intersection(int length) {
+Intersection::Intersection(int length) {
 	// Creates intersection sections
-	NW = new Section();
-	NE = new Section();
-	SE = new Section();
-	SW = new Section();
+	NW = Section();
+	NE = Section();
+	SE = Section();
+	SW = Section();
+
+  // TEMPORARY FIX -- NOT SURE WHAT YOU WANTED TO DO WITH THE TYPES HERE
+  Section* NWptr = &NW;
+  Section* NEptr = &NE;
+  Section* SEptr = &SE;
+  Section* SWptr = &SW;
 
 	// Creates Lanes
-	north(length, SE, NE, 1);
-	east(length, SW, SE, 2);
-	south(length, NW, SW, 3);
-	west(length, NE, NW, 4);
+	north = Lane(length, SEptr, NEptr, 1);
+  east = Lane(length, SWptr, SEptr, 2);
+  south = Lane(length, NWptr, SWptr, 3);
+  west = Lane(length, NEptr, NWptr, 4);
 }
 
 //TODO? 
-Intersection::
-~Intersection() {
+Intersection::~Intersection() {
 }

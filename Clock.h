@@ -5,6 +5,8 @@
 #ifndef __CLOCK_H__
 #define __CLOCK_H__
 
+using namespace std;
+
 //******************************************************************************
 //* TODO
 class Clock {
@@ -31,6 +33,6 @@ public:
 	double getTime();
 	//* TODO
 	double incrementTime(double time);
-}
+};
 
 #endif

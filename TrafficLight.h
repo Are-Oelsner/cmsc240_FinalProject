@@ -9,18 +9,6 @@
 //* TODO - Class description
 class TrafficLight {
 
-protected:
-
-	//**************************************************************************
-    //* Private Variables
-
-	Color currentColor;	//* Current color of the TrafficLight
-
-	//* Times
-	int greenTime; 	//* Time duration of a green light
-	int yellowTime;	//* Time duration of a yellow light
-	int redTime;	//* Time duration of a red light
-
 public:
 
 	//**************************************************************************
@@ -69,6 +57,18 @@ public:
     
     //* Remaining time duration of the current color
     int timeRemaining(int timeElapsed);
+
+    protected:
+
+	//**************************************************************************
+    //* Private Variables
+
+	Color currentColor;	//* Current color of the TrafficLight
+
+	//* Times
+	int greenTime; 	//* Time duration of a green light
+	int yellowTime;	//* Time duration of a yellow light
+	int redTime;	//* Time duration of a red light
 
 };
 

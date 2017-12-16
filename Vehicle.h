@@ -8,6 +8,8 @@
 #include "Section.h"
 #include "Lane.h"
 
+using namespace std;
+
 //******************************************************************************
 //* This class includes the data and functions of a Vehicle.
 class Vehicle {
@@ -16,7 +18,7 @@ class Vehicle {
 
     int size;				//* Integer size of the Vehicle
     bool inIntersection;	//* True if the Vehicle is in an intersection
-    bool nearIntersection	//* True if the front of the Vehicle is in the 
+    bool nearIntersection;	//* True if the front of the Vehicle is in the 
     						//* section immediately before the intersection
     
     char path;				//* The path that the Vehicle will ultimately take 
@@ -28,6 +30,10 @@ class Vehicle {
     Section* backSection; 	//* Section that contians the back of the Vehicle
     Lane* currLane; 		//* Lane that the Vehicle is currently in
 
+    double probRight;
+    double probLeft;
+    double probStraight;
+
   public:
 
     //**************************************************************************
@@ -37,7 +43,7 @@ class Vehicle {
     Vehicle();
 
     //* Constructor
-    Vehicle(string type);
+    Vehicle(string _type, double _probRight, double _probLeft);
 
     //* Destructor
     ~Vehicle();
@@ -49,21 +55,16 @@ class Vehicle {
     //* probabilities that it will turn right, left, or continue straight.
     //* @param  probRight   double probability that the Vehicle will turn right
     //* @param 	probLeft 	double probability that the Vehicle will turn left
-    void decidePath(double probRight, double probLeft);
+    void decidePath(double _probRight, double _probLeft);
 
     //* Returns whether the vehicle can move in the given direction
     //* @param  	direction 	char direction to check availability for the 
     //* 						Vehicle to move ('s', 'r', 'l')
     //* @return 	true if the vehicle can move in the desired direction
-    bool canMove(char direction);
+    bool canMove(char _direction);
 
     //* Moves the vehicle one unit forward, right, or left
     void move();
-
-    //* Check if the traffic light is green 
-    //* @return 	true if the light in the Vehicle's current lane is green
-    bool checkIsLightGreen();
-
 
 };
 

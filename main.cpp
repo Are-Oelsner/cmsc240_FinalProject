@@ -7,25 +7,25 @@
 #include "TrafficLight.h"
 #include <iostream>
 
+using namespace std;
+
 //create instance variables 
-Parser p;
+Parser p = Parser("simulation.config");
 
 
 int main(int argc, const char * argv[])
 {
-	//parse congfig file 
-	p.parseConfigFile("simulation.config");
 	//store values in public variables 
-	double lefProb = p.getLeft_Prob();
-	double rightProb = p.getRight_Prob();
-	double straiProb = p.getStraight_Prob();
-	double g = p.getG_Ticks();
-	double r = p.getR_Ticks();
-	double y = p.getY_Ticks();
-	double carProb = p.getCar_Prob();
-	double truckProb = p.getTruck_Prob();
-	double SUVProb = p.getSUV_Prob();
-	double sectNum = p.getSection_Num();
+	double lefProb = p.getLeftProb();
+	double rightProb = p.getRightProb();
+	double straiProb = p.getStraightProb();
+	double g = p.getGTicks();
+	double r = p.getRTicks();
+	double y = p.getYTicks();
+	double carProb = p.getCarProb();
+	double truckProb = p.getTruckProb();
+	double SUVProb = p.getSUVProb();
+	double sectNum = p.getSectionNum();
 
 
 	//set up traffic light 

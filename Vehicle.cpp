@@ -3,61 +3,67 @@
 //* Date: 	
 
 #include "Vehicle.h"
-#include "Parser.h"
+
+#include <string>
+
+using namespace std;
 
     Vehicle::Vehicle() {
     	inIntersection = false; // Vehicles will spawn at the end of the lanes
     	nearIntersection = false;
-    	probRight = parser.getRight_Prob();
-    	probLeft = parser.getLeft_Prob();
+    	probRight = 0;
+    	probLeft = 0;
     	probStraight = 1.0 - probRight - probLeft;
     	size = 2; // Default constructor spawns basic car
     }
 
-    Vehicle::Vehicle(string type) {
-    	if(type.equals("car") {
+    Vehicle::Vehicle(string _type, double _probRight, double _probLeft) {
+
+    	if( _type.compare("car") == 0 ) {
     		size = 2;
     	}
-    	else if(type.equals("suv") {
+    	else if( _type.compare("suv") == 0 ) {
     		size = 3;
     	}
-    	else if(type.equals("truck") {
+    	else if( _type.compare("truck") == 0 ) {
     		size = 4;
     	}
+
     	inIntersection = false; // Vehicles will spawn at the end of the lanes
     	nearIntersection = false;
-    	probRight = getRight_Prob();
-    	probLeft = getLeft_Prob();
+
+    	probRight = _probRight;
+    	probLeft = _probLeft;
     	probStraight = 1.0 - probRight - probLeft;
     }
 
-    Vehicle::decidePath(double probRight, double probLeft) {
+    void Vehicle::decidePath(double _probRight, double _probLeft) {
     	path = 's';
     }
 
-    Vehicle::canMove(char direction) {
+    bool Vehicle::canMove(char _direction) {
 
     	// Check if the section in the desired direction is occupied
     	bool pathBlocked;
 
-    	if(direction == 'l') {
-			pathBlocked = frontSection.getLeftSection().getOccupied();
+    	if(_direction == 'l') {
+			pathBlocked = frontSection->getLeftSection()->getOccupied();
     	}
-    	else if(direction == 'r') {
-    		pathBlocked = frontSection.getRightSection().getOccupied();
+    	else if(_direction == 'r') {
+    		pathBlocked = frontSection->getRightSection()->getOccupied();
     	}
     	else {
-    		pathBlocked = frontSection.getNextSection().getOccupied();
+    		pathBlocked = frontSection->getUpSection()->getOccupied();
     	}
 
     	// Get the current state of the traffic light in the Vehicles's lane
-    	string light = currLane.getTrafficLight();
-    	nearIntersection = frontSection.getNextSection().getNearIntersection();
+    	string light = currLane->getTrafficLight();
+    	nearIntersection = frontSection->getUpSection()->getNearIntersection();
 
     	/* If there is a Vehicle directly in front of it or the Vehicle is near 
     	*  the intersection and the light is not green, then the Vehicle cannot
     	*  legally move */
-    	if (pathBlocked || (nearIntersection && !light.equals("green"))) {
+    	if (pathBlocked || (nearIntersection && !(light.compare("green") == 0))) {
     		return false;
     	}
 
@@ -65,18 +71,19 @@
     	return true;
     }
 
-    Vehicle::move() {
+    void Vehicle::move() {
 
     	char direction = 's';
 
-    	bool frontCanTurnRight = frontSection.hasRightSection();
-    	bool frontCanTurnLeft = frontSection.hasLeftSection();
-    	bool backCanTurnRight = backSection.hasRightSection();
-    	bool backCanTurnLeft = backSection.hasLeftSection();
+    	bool frontCanTurnRight = frontSection->getRightSection() != NULL;
+    	bool frontCanTurnLeft = frontSection->getLeftSection() != NULL;
+    	bool backCanTurnRight = backSection->getRightSection() != NULL;
+    	bool backCanTurnLeft = backSection->getLeftSection() != NULL;
+
 
     	// Check if any section of the vehicle is in the intersection
 		for(int i = 0; i < sections.length; i++) {
-			if(section.getInIntersection()){
+			if(sections[i]->getInIntersection()){
 				inIntersection = true;
 				break;
 			}
@@ -87,7 +94,7 @@
     	if(inIntersection) {
     		// If the Vehicle's path indicates that it will turn left or right,
     		// check if a turn needs to occur
-    		if(path == 'l' && canTurnLeft || path == 'r' && canTurnRight) {
+    		if( (path == 'l' && frontCanTurnLeft) || (path == 'r' && frontCanTurnRight) ) {
     			direction = path;
     		}
     	}
@@ -96,44 +103,46 @@
     	else if(canMove(direction)) {
     		// HANDLE FRONT SECTION
     		// Set the front section of this vehicle one section forward
-    		if(frontSection.getNearEdge()) {
+    		if(frontSection->getNearEdge()) {
     			// If the front and back sections are the same, move the vehicle
     			// out of view
-    			if(backSection.getNearEdge()) {
-    				backSection.setOccupied(false);
+    			if(backSection->getNearEdge()) {
+    				backSection->setOccupied(false);
     				// Vehicle is out of view - delete it's front and back sections
-    				delete frontSection; //****** what about other sections -- figure out something here
-    				delete backSection;
+
+    				// delete frontSection; //****** what about other sections -- figure out something here
+    				// delete backSection;
+
     			}
     			// Move one section of the vehicle out of view 
-    			else if {
-    				frontSection = frontSection.getPrevSection();
+    			else {
+    				frontSection = frontSection->getDownSection();
     			}
 			}
     		else if(path == 's') {
-    			frontSection = frontSection.getNextSection();
+    			frontSection = frontSection->getUpSection();
     		}
     		else if (path == 'l' && frontCanTurnLeft) {
-    			frontSection = frontSection.getLeftSection();
+    			frontSection = frontSection->getLeftSection();
     		}
     		else if (path == 'r' && frontCanTurnRight) {
-    			frontSection = frontSection.getRightSection();
+    			frontSection = frontSection->getRightSection();
     		}
     		// Set new front section to be occupied
-    		frontSection.setOccupied(true);
+    		frontSection->setOccupied(true);
 
     		// HANDLE BACK SECTION
     		// Set original back section to be unoccupied
-    		backSection.setOccupied(false);
+    		backSection->setOccupied(false);
     		// Set the back section of this vehicle one section forward
     		if(path == 's') {
-    			backSection = backSection.getNextSection();
+    			backSection = backSection->getUpSection();
     		}
     		else if (path == 'l' && backCanTurnLeft) {
-    			backSection = backSection.getLeftSection();
+    			backSection = backSection->getLeftSection();
     		}
     		else if (path == 'r' && backCanTurnRight) {
-    			backSection = backSection.getRightSection();
+    			backSection = backSection->getRightSection();
     		}
 
     	}
