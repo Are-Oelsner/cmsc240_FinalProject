@@ -4,8 +4,6 @@
 
 #include "Vehicle.h"
 
-#include <string>
-
 using namespace std;
 
     Vehicle::Vehicle(string _type, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections) {
