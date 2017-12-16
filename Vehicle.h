@@ -7,6 +7,7 @@
 
 #include "Section.h"
 #include "Lane.h"
+#include <string>
 
 using namespace std;
 
