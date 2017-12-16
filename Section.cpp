@@ -14,6 +14,7 @@ Section::Section() {
 	occupied = false;
 	nearEdge = false;
 	nearIntersection = false;
+	inIntersection = false;
 }
 
 Section::~Section(){ }
