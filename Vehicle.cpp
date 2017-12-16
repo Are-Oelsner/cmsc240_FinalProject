@@ -82,7 +82,7 @@ using namespace std;
 
 
     	// Check if any section of the vehicle is in the intersection
-		for(int i = 0; i < sections.length; i++) {
+		for(int i = 0; i < sections.size(); i++) {
 			if(sections[i]->getInIntersection()){
 				inIntersection = true;
 				break;
