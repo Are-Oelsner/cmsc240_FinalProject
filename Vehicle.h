@@ -7,6 +7,7 @@
 
 #include "Section.h"
 #include "Lane.h"
+#include "TrafficLight.h"
 
 using namespace std;
 
@@ -39,11 +40,8 @@ class Vehicle {
     //**************************************************************************
     //* Constructors & Destructors
 
-    //* Default Constructor
-    Vehicle();
-
     //* Constructor
-    Vehicle(string _type, double _probRight, double _probLeft, Lane lane);
+    Vehicle(string _type, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections);
 
     //* Destructor
     ~Vehicle();

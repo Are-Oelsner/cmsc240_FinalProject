@@ -8,23 +8,10 @@
 
 using namespace std;
 
-    Vehicle::Vehicle() {
+    Vehicle::Vehicle(string _type, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections) {
 
-    	currLane = new Lane();
-
-    	inIntersection = false; 	// Vehicles will spawn at the end of the lanes
-    	nearIntersection = false;	// Vehicles will spawn at least one section back from the intersection
-
-    	probRight = 0;
-    	probLeft = 0;
-    	probStraight = 1.0;	// Default to remaining straight
-
-    	size = 2; // Default constructor spawns basic car
-    }
-
-    Vehicle::Vehicle(string _type, double _probRight, double _probLeft, Lane lane) {
-
-    	currLane = &lane;
+    	currLane = _lane;
+    	sections = _sections;
 
     	if( _type.compare("car") == 0 ) {
     		size = 2;
