@@ -19,11 +19,13 @@ Section::Section() {
 
 Section::~Section(){ }
 
-void setNeighbor(Section* _section, int direction){
+void
+Section::
+setNeighbor(Section* _section, int direction) {
 	switch(direction) {
-		case 1: up = _section; break;
-		case 2: right = _section; break;
-		case 3: down = _section; break;
-		case 4: left = _section; break;
+		case 1: this->up = _section; break;
+		case 2: this->right = _section; break;
+		case 3: this->down = _section; break;
+		case 4: this->left = _section; break;
 	}
 }

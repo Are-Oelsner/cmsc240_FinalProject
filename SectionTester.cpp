@@ -2,11 +2,13 @@
  */
 
 #include "Section.h"
+#include <iostream>
+
 using namespace std;
 
 int main() {
 	// Testing Default Constructor
-	Section* section = new Section();
+  Section* section = new Section();
 
 	// Testing Default Traffic Flow
 	cout << "getNorth(): " << section->getNorth() << ". [false]" << endl;
