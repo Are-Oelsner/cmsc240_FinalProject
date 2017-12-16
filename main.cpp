@@ -5,13 +5,14 @@
 //main class
 #include "Parser.h"
 #include "TrafficLight.h"
+#include "Clock.h"
 #include <iostream>
 
 using namespace std;
 
 //create instance variables 
 Parser p = Parser("simulation.config");
-
+Clock c; //create clock
 
 int main(int argc, const char * argv[])
 {
@@ -27,14 +28,22 @@ int main(int argc, const char * argv[])
 	double SUVProb = p.getSUVProb();
 	double sectNum = p.getSectionNum();
 
+	//create clock 
+	cout << c.getTime() << endl;
+	c.incrementTime();
+	cout << c.getTime() << endl;
+
+
 
 	//set up traffic light 
 	//b/c color is enum 
 	//0=red, 1=green, 3=yellow
-	TrafficLight light = TrafficLight((int)g, (int)r, (int)y);
+	TrafficLight light = TrafficLight(g, r, y);
 	//how to change a light!
 	light.change(TrafficLight::red);
 	
+
+
 
 	return 0;
 }

@@ -6,8 +6,12 @@
 #include <iostream>
 using namespace std;
 
-//change the color 
-TrafficLight::TrafficLight(int greenT, int redT, int yellowT)
+
+TrafficLight::TrafficLight() {}
+
+TrafficLight::~TrafficLight() {}
+//contructor
+TrafficLight::TrafficLight(double greenT, double redT, double yellowT)
 {
 	greenTime = greenT;
 	redTime = redT;
@@ -22,17 +26,17 @@ void TrafficLight::change(Color newColor)
 }
 
 //COLOR GETTERS
-int TrafficLight::getGreenTime()
+double TrafficLight::getGreenTime()
 {
 	return greenTime;
 }
 
-int TrafficLight::getYellowTime()
+double TrafficLight::getYellowTime()
 {
 	return yellowTime;
 }
 
-int TrafficLight::getRedTime()
+double TrafficLight::getRedTime()
 {
 	return redTime;
 }
@@ -44,13 +48,13 @@ TrafficLight::Color TrafficLight::getColor()
 	return currentColor;
 }
 
-int TrafficLight::timeRemaining(Color color, int timeElapsed)
+double TrafficLight::timeRemaining(double timeElapsed)
 {
-	if(color == green) 
+	if(currentColor == green) 
 	{
 		return greenTime-timeElapsed;
 	}
-	if(color == yellow)
+	if(currentColor == yellow)
 	{
 		return yellowTime - timeElapsed;
 	}

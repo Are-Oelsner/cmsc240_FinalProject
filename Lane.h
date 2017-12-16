@@ -6,6 +6,7 @@
 #define __LANE_H__
 
 #include <vector>
+#include <cstdlib> 
 
 #include "Vehicle.h"
 #include "Section.h"

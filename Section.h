@@ -4,7 +4,7 @@
 
 #ifndef __SECTION_H__
 #define __SECTION_H__
-
+#include <cstdlib> 
 using namespace std;
 
 //******************************************************************************

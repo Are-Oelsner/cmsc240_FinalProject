@@ -4,14 +4,20 @@
 
 #include "Clock.h"
 
-using namespace std;
+Clock::Clock()
+{
+	time = 0;
+}
+
+Clock::~Clock() {}
+
 
 double Clock::getTime()
 {
 	return time;
 }
 
-double Clock::incrementTime(double time)
+double Clock::incrementTime()
 {
 	time++;
 	return time;

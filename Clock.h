@@ -5,18 +5,19 @@
 #ifndef __CLOCK_H__
 #define __CLOCK_H__
 
-using namespace std;
 
 //******************************************************************************
-//* TODO
+//* TODO - Clock class description
 class Clock {
 
 protected:
 
-	double time;	//* TODO
+	
 
 public:
-
+    
+    double time;    //* Publilc variable for time
+    
 	//**************************************************************************
     //* Constructors & Destructors
 
@@ -32,7 +33,7 @@ public:
 	//* TODO
 	double getTime();
 	//* TODO
-	double incrementTime(double time);
+	double incrementTime();
 };
 
 #endif

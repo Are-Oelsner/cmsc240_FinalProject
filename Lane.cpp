@@ -2,10 +2,9 @@
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
 //* Date:12/14/17
 
+
 #include "Lane.h"
 #include <iostream>
-
-using namespace std;
 
 Lane::Lane() {
 }

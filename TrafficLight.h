@@ -24,7 +24,7 @@ public:
     TrafficLight();
 
     //* Constructor
-    TrafficLight(int green, int red, int yellow);
+    TrafficLight(double green, double red, double yellow);
 
     //* Destructor
     ~TrafficLight();
@@ -41,22 +41,22 @@ public:
 
     //* Returns the time duration of a green light
     //* @return integer time duration of a green light
-    int getGreenTime();
+    double getGreenTime();
 
     //* Returns the time duration of a yellow light
     //* @return integer time duration of a yellow light
-    int getYellowTime();
+    double getYellowTime();
 
     //* Returns the time duration of a red light
     //* @return integer time duration of a red light
-    int getRedTime();
+    double getRedTime();
     
     //* Returns the current color of the TrafficLight
     //* @return  Color 	current color of the TrafficLight
     Color getColor();
     
     //* Remaining time duration of the current color
-    int timeRemaining(int timeElapsed);
+    double timeRemaining(double timeElapsed);
 
     protected:
 
@@ -66,9 +66,9 @@ public:
 	Color currentColor;	//* Current color of the TrafficLight
 
 	//* Times
-	int greenTime; 	//* Time duration of a green light
-	int yellowTime;	//* Time duration of a yellow light
-	int redTime;	//* Time duration of a red light
+	double greenTime; 	//* Time duration of a green light
+	double yellowTime;	//* Time duration of a yellow light
+	double redTime;	//* Time duration of a red light
 
 };
 
