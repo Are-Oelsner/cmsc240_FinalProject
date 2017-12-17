@@ -54,6 +54,7 @@
     east.printLane();
     south.printLane();
     west.printLane();
+    cout << "****************************************************************************" << endl;
   }
 
   void Intersection::update() {

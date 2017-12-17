@@ -51,18 +51,29 @@ int main(int argc, const char * argv[]) {
 	int carStraight = 0;
 	int totalCars = 0;
 
-	// *** Add duration to parser file?
+	// *** Add endTime to parser file?
 	// *** Add frequency of vehicle spawn to parser file?
 
-	// timer start();
-	// while timer <= duration {
+	double endTime = 10.0;
+	double duration;
+	clock_t start;
+	int seconds = 0;
+
+	start = clock();
+	duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+	while ( duration < endTime ) {
 
 		// spawn a vehicle
 		// trafficIntersection->addVehicle( newVehicle );
 
 		trafficIntersection->update();
 
-	// }
+		while (duration < seconds + 1) {
+			duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+		}
+		seconds++;
+
+	}
 
 
 
