@@ -31,6 +31,13 @@ class Lane {
 
     TrafficLight trafficLight; //* TrafficLight object
 
+    //* Returns true if the lane can allocate a given number of sections at the
+    //* beginning of the lane and false if it cannot. 
+    //* @param  size    number of sections to check if the lane can allocate
+    //* @return true if the lane can allocate a given number of sections at the
+    //*         beginning of the lane and false if it cannot
+    bool canAllocSections(int size);
+
   public:
 
     //**************************************************************************
@@ -53,8 +60,9 @@ class Lane {
     //**************************************************************************
     //* Functions
 
-    //* ???
-    //* ???
+    //* Returns the section in the lane at the given index
+    //* @param i index of the section to return
+    //* @return     Section* of the section at index i
     Section* getSection(int i);
 
     //* Print's Contents of Lane
@@ -66,7 +74,11 @@ class Lane {
     //*             3 = south, 4 = west 
     inline int getDirection() { return direction; }
 
+    //* Returns the TrafficLight located in this lane
+    //* @return     the TrafficLight in this Lane
     inline TrafficLight getTrafficLight() { return trafficLight; }
+
+    vector<Section*> allocSections(int size);
 
 };
 

@@ -4,7 +4,7 @@
 
 #include "Vehicle.h"
 
-  Vehicle::Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane, vector<Section*> _sections) {
+  Vehicle::Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane) {
 
     hasPassedLight = false;
 
@@ -16,21 +16,26 @@
     // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
     Vehicle::decideType(_carProb, _suvProb, _truckProb);
 
+    sections = frontCurrLane->allocSections(size);
+
+    // Set front and back sections occupied by the Vehicle
+    frontSection = sections[sections.size() - 1];
+    backSection = sections[0];
+
+    /*
     // ********* FIND A BETTER WAY TO DO THIS? ******
     sections = _sections;
     // Set the sections that the Vehicle has spawned in to be occupied
     for(int i = 0; i < _sections.size(); i++) {
       _sections[i]->setOccupied(true);
     }
+    */
 
   	inIntersection = false;    // Vehicles will spawn at the end of the lanes
   	nearIntersection = false;  // Minimum lane length prevents spawning near or
                                // in the Intersection
 
   	Vehicle::decidePath(_rightProb, _leftProb);
-
-    frontSection = _sections[_sections.size() - 1];
-    backSection = _sections[0];
   }
 
   Vehicle::~Vehicle(){ }

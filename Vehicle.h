@@ -47,7 +47,7 @@ class Vehicle {
     //* Constructors & Destructors
 
     //* Constructor
-    Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane, vector<Section*> _sections);
+    Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane);
 
     //* Destructor
     ~Vehicle();

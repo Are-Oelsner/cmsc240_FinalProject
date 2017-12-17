@@ -64,6 +64,9 @@ int main(int argc, const char * argv[]) {
 	while ( duration < endTime ) {
 
 		// spawn a vehicle
+		Lane* laneToSpawnVehicle = trafficIntersection->getNorthLane();
+
+		Vehicle newVehicle = Vehicle( carProb, SUVProb, truckProb, rightProb, leftProb, laneToSpawnVehicle);
 		// trafficIntersection->addVehicle( newVehicle );
 
 		trafficIntersection->update();

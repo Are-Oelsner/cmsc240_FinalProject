@@ -77,3 +77,25 @@
 
     cout << endl;
   }
+
+  bool Lane::canAllocSections(int size) {
+    for(int i = 0; i < size; i++) {
+      if( getSection(i)->getOccupied() ) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  vector<Section*> Lane::allocSections(int size) {
+    // Sections allocated
+    vector<Section*> sections;
+
+    if( canAllocSections(size) ) {
+        for( int i = 0; i < size; i++ ) {
+          sections.push_back(getSection(i));
+        }
+    }
+
+    return sections;
+  }
