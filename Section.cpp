@@ -5,45 +5,49 @@
 #include "Section.h"
 
 
-	Section::Section() {
-		up = NULL;
-		right = NULL;
-		down = NULL;
-		left = NULL;
+Section::Section() {
+  up = NULL;
+  right = NULL;
+  down = NULL;
+  left = NULL;
 
-		occupied = false;
-		nearEdge = false;
-		nearIntersection = false;
-		inIntersection = false;
-	}
+  occupied = false;
+  nearEdge = false;
+  nearIntersection = false;
+  inIntersection = false;
+}
 
-	Section::~Section(){ }
+Section::~Section() {}
 
-	void Section::setNeighbor(Section* _section, int direction) {
-		switch(direction) {
-			case 1: this->up = _section; break;
-			case 2: this->right = _section; break;
-			case 3: this->down = _section; break;
-			case 4: this->left = _section; break;
-		}
-	}
+void 
+Section::
+setNeighbor(Section* _section, int direction) {
+  switch(direction) {
+    case 1: this->up = _section; break;
+    case 2: this->right = _section; break;
+    case 3: this->down = _section; break;
+    case 4: this->left = _section; break;
+  }
+}
 
-	void Section::draw() {
-		cout << "[";
-		if( this->inIntersection ) {
-			cout << " I ";
-		}
-		if( this ->nearIntersection ) {
-			cout << " N ";
-		}
-		if( this->occupied ) {
-			cout << " O ";
-		}
-		if( this->occupied ) {
-			cout << " E ";
-		}
-		cout << "] ";
-	}
+void
+Section::
+printSection() {
+  cout << "[";
+  if( this->inIntersection ) {
+    cout << " I ";
+  }
+  if( this ->nearIntersection ) {
+    cout << " N ";
+  }
+  if( this->occupied ) {
+    cout << " O ";
+  }
+  if( this->occupied ) {
+    cout << " E ";
+  }
+  cout << "] ";
+}
 
 
 

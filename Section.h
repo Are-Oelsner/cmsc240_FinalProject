@@ -133,7 +133,7 @@ class Section {
     inline void setInIntersection(bool _inIntersection) { inIntersection = _inIntersection; }
 
     //* Drawing function used for testing and simulation display
-    void draw();
+    void printSection();
 
 };
 
