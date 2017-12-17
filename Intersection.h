@@ -7,6 +7,7 @@
 
 #include "Lane.h"
 #include "Section.h"
+#include "Vehicle.h"
 
 using namespace std;
 

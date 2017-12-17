@@ -51,6 +51,23 @@ int main(int argc, const char * argv[]) {
 	int carStraight = 0;
 	int totalCars = 0;
 
+	// *** Add duration to parser file?
+	// *** Add frequency of vehicle spawn to parser file?
+
+	// timer start();
+	// while timer <= duration {
+
+		// spawn a vehicle
+		// trafficIntersection->addVehicle( newVehicle );
+
+		trafficIntersection->update();
+
+	// }
+
+
+
+	//	************************* OLD TESTER **************************
+	/*
 	//while(c.getTime()!= 60){
 	//timer = clock();
 
@@ -82,6 +99,7 @@ int main(int argc, const char * argv[]) {
 
 		cout << "*******************************************" << endl;
 	}
+	*/
 
 	return 0;
 }
