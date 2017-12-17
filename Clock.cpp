@@ -4,23 +4,18 @@
 
 #include "Clock.h"
 
-Clock::Clock()
-{
-	time = 0;
-}
+	Clock::Clock() {
+		time = 0;
+	}
 
-Clock::~Clock() {}
-
-
-double Clock::getTime()
-{
-	return time;
-}
-
-double Clock::incrementTime()
-{
-	time++;
-	return time;
-}
+	Clock::~Clock() { }
 
 
+	double Clock::getTime() {
+		return time;
+	}
+
+	double Clock::incrementTime() {
+		time++;
+		return time;
+	}

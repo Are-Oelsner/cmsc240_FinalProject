@@ -4,6 +4,8 @@
 
 #include "Vehicle.h"
 
+#include <iostream>
+
 using namespace std;
 
   Vehicle::Vehicle(string _type, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections) {
@@ -27,7 +29,16 @@ using namespace std;
   	probRight = _probRight;
   	probLeft = _probLeft;
   	probStraight = 1.0 - probRight - probLeft;
+
+    for(int i = 0; i < _sections.size(); i++) {
+      _sections[i]->setOccupied(true);
+    }
+
+    frontSection = _sections[_sections.size() - 1];
+    backSection = _sections[0];
   }
+
+  Vehicle::~Vehicle(){}
 
   // TODO
   void Vehicle::decidePath(double _probRight, double _probLeft) {

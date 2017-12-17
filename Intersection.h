@@ -52,6 +52,12 @@ class Intersection {
 
     //* Print Intersection
     void printIntersection();
+
+    inline Lane* getNorthLane() { return &north; }
+    inline Lane* getEastLane() { return &east; }
+    inline Lane* getSouthLane() { return &south; }
+    inline Lane* getWestLane() { return &west; }
+
 };
 
 #endif
