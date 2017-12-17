@@ -4,7 +4,10 @@
 
 #ifndef __SECTION_H__
 #define __SECTION_H__
-#include <cstdlib> 
+
+#include <cstdlib>
+#include <iostream> 
+
 using namespace std;
 
 //******************************************************************************
@@ -128,6 +131,9 @@ class Section {
     //* Sets whether section is in the intersection
     //* @param  _nearIntersection  true if the section is in the intersection, false if not
     inline void setInIntersection(bool _inIntersection) { inIntersection = _inIntersection; }
+
+    //* Drawing function used for testing and simulation display
+    void draw();
 
 };
 
