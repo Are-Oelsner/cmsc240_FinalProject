@@ -66,7 +66,7 @@ Lane::
 printLane() {
   cout << "[";
   for(Section* sec : sections) {
-    sec.printSection();
+    sec->printSection();
   }
   cout << "]";
 }
