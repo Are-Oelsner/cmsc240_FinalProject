@@ -43,7 +43,7 @@ printSection() {
   if( this->occupied ) {
     cout << " O ";
   }
-  if( this->occupied ) {
+  if( this->nearEdge ) {
     cout << " E ";
   }
   cout << "] ";
