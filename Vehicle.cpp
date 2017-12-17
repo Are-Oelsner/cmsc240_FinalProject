@@ -4,18 +4,17 @@
 
 #include "Vehicle.h"
 
-#include <iostream>
-
-using namespace std;
-
   Vehicle::Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane, vector<Section*> _sections) {
 
-  	currLane = _lane;
+    hasPassedLight = false;
 
-    // currLane->allocSections(int size) ?? returns vector<Section*>
+  	frontCurrLane = _lane;
+    backCurrLane = _lane;
+
+    // currLane->allocSections(int size)  returns vector<Section*>
 
     // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
-    decideType(_carProb, _suvProb, _truckProb);
+    Vehicle::decideType(_carProb, _suvProb, _truckProb);
 
     // ********* FIND A BETTER WAY TO DO THIS? ******
     sections = _sections;
@@ -28,13 +27,13 @@ using namespace std;
   	nearIntersection = false;  // Minimum lane length prevents spawning near or
                                // in the Intersection
 
-  	decidePath(_rightProb, _leftProb);
+  	Vehicle::decidePath(_rightProb, _leftProb);
 
     frontSection = _sections[_sections.size() - 1];
     backSection = _sections[0];
   }
 
-  Vehicle::~Vehicle(){}
+  Vehicle::~Vehicle(){ }
 
   void Vehicle::decideType(double _carProb, double _suvProb, double _truckProb) {
 
@@ -53,8 +52,10 @@ using namespace std;
       double suvNumLine = _suvProb + carNumLine;
       double truckNumLine = _truckProb + suvNumLine;
 
-      Random rand = Random();
-      double val = rand.randDouble(0,1);
+      size = 2; // delete this later
+
+      /*
+      double val = Random::getRandDouble(0.0,1.0);
 
       if(val <= carNumLine) {
         size = 2;
@@ -67,6 +68,7 @@ using namespace std;
       else if(val <= truckNumLine) {
         size = 4;
       }
+      */
     }
   }
 
@@ -81,20 +83,22 @@ using namespace std;
   	// Check if the section in the desired direction is occupied
   	bool pathBlocked;
 
-  	if(_direction == 'l') {
-		  pathBlocked = frontSection->getLeftSection()->getOccupied();
+    int frontLaneDir = frontCurrLane->getDirection();
+
+  	if( _direction == 'l' && !hasPassedLight ) {
+		  pathBlocked = frontSection->getLeft(frontLaneDir)->getOccupied();
   	}
-  	else if(_direction == 'r') {
-  		pathBlocked = frontSection->getRightSection()->getOccupied();
+  	else if( _direction == 'r' && !hasPassedLight ) {
+  		pathBlocked = frontSection->getRight(frontLaneDir)->getOccupied();
   	}
   	else {
-  		pathBlocked = frontSection->getUpSection()->getOccupied();
+  		pathBlocked = frontSection->getStraight(frontLaneDir)->getOccupied();
   	}
 
-  	// Get the current state of the traffic light in the Vehicle's lane
-  	TrafficLight::Color lightColor = currLane->getTrafficLight().getColor();
-  	bool lightIsGreen = (lightColor == 1);
-  	nearIntersection = frontSection->getUpSection()->getNearIntersection();
+    // Get the current state of the traffic light in the Vehicle's lane
+    TrafficLight::Color lightColor = frontCurrLane->getTrafficLight().getColor();
+    bool lightIsGreen = (lightColor == 1);
+    nearIntersection = frontSection->getStraight(frontLaneDir)->getNearIntersection();
 
   	/* If there is a Vehicle directly in front of it or the Vehicle is near 
   	*  the intersection and the light is not green, then the Vehicle cannot
@@ -110,13 +114,19 @@ using namespace std;
 
   void Vehicle::move() {
 
-    char direction = 's';
+    int frontLaneDir = frontCurrLane->getDirection();
+    int backLaneDir = backCurrLane->getDirection();
 
-    bool frontCanTurnRight = frontSection->getRightSection() != NULL;
-    bool frontCanTurnLeft = frontSection->getLeftSection() != NULL;
-    bool backCanTurnRight = backSection->getRightSection() != NULL;
-    bool backCanTurnLeft = backSection->getLeftSection() != NULL;
+    bool frontCanTurnRight = frontSection->getRight(frontLaneDir) != NULL;
+    bool frontCanTurnLeft = frontSection->getLeft(frontLaneDir) != NULL;
+    bool backCanTurnRight = backSection->getRight(backLaneDir) != NULL;
+    bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
 
+    cout << "front right: " << frontCanTurnRight << endl;
+    cout << "front left: " << frontCanTurnLeft << endl;
+
+    cout << "back right: " << backCanTurnRight << endl;
+    cout << "back left: " << backCanTurnLeft << endl;
 
     // Check if any section of the vehicle is in the intersection
     for(int i = 0; i < sections.size(); i++) {
@@ -126,6 +136,7 @@ using namespace std;
       }
     }
 
+    char direction = 's';
     // If the Vehicle is attempting to move while in the intersection, check
     // if it should turn or continue straight
     if(inIntersection) {
@@ -136,8 +147,7 @@ using namespace std;
       }
     }
 
-
-    else if(canMove(direction)) {
+    if(canMove(direction)) {
       // HANDLE FRONT SECTION
       // Set the front section of this vehicle one section forward
       if(frontSection->getNearEdge()) {
@@ -153,17 +163,19 @@ using namespace std;
         }
         // Move one section of the vehicle out of view 
         else {
-          frontSection = frontSection->getDownSection();
+          frontSection = frontSection->getBack(frontLaneDir);
         }
       }
       else if(path == 's') {
-        frontSection = frontSection->getUpSection();
+        frontSection = frontSection->getStraight(frontLaneDir);
       }
       else if (path == 'l' && frontCanTurnLeft) {
-        frontSection = frontSection->getLeftSection();
+        frontSection = frontSection->getLeft(frontLaneDir);
+        hasPassedLight = true;
       }
       else if (path == 'r' && frontCanTurnRight) {
-        frontSection = frontSection->getRightSection();
+        frontSection = frontSection->getRight(frontLaneDir);
+        hasPassedLight = true;
       }
       // Set new front section to be occupied
       frontSection->setOccupied(true);
@@ -173,13 +185,13 @@ using namespace std;
       backSection->setOccupied(false);
       // Set the back section of this vehicle one section forward
       if(path == 's') {
-        backSection = backSection->getUpSection();
+        backSection = backSection->getStraight(backLaneDir);
       }
       else if (path == 'l' && backCanTurnLeft) {
-        backSection = backSection->getLeftSection();
+        backSection = backSection->getLeft(backLaneDir);
       }
       else if (path == 'r' && backCanTurnRight) {
-        backSection = backSection->getRightSection();
+        backSection = backSection->getRight(backLaneDir);
       }
 
     }

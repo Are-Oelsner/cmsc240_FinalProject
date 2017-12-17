@@ -80,7 +80,7 @@ getLeft(int direction) {
 
 Section*
 Section::
-getLeft(int direction) {
+getBack(int direction) {
   switch(direction) {
     case 1: return this->down;
     case 2: return this->left;

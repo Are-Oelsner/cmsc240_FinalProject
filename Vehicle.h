@@ -10,7 +10,6 @@
 #include "Random.h"
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -23,11 +22,17 @@ class Vehicle {
     bool inIntersection;	//* True if the Vehicle is in an intersection
     bool nearIntersection;	//* True if the front of the Vehicle is in the 
     						//* section immediately before the intersection
+    bool hasPassedLight;    //* True if the Vehicle has passed into the 
+                            //* intersection and no longer needs to check the
+                            //* TrafficLight; False otherwise
 
     vector<Section*> sections;	//* Sections that the Vehicle occupies
     Section* frontSection;      //* Section that contains the front of the Vehicle
     Section* backSection; 	    //* Section that contians the back of the Vehicle
-    Lane* currLane; 		    //* Lane that the Vehicle is currently in
+    Lane* frontCurrLane; 		//* Lane that the front of the Vehicle is 
+                                //* currently in
+    Lane* backCurrLane;         //* Lane that the back of the Vehicle is 
+                                //* currently in
 
     char path;      //* The path that the Vehicle will ultimately take 
                     //* based on the probabilities to go right, left, or

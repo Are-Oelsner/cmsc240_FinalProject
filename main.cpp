@@ -64,13 +64,14 @@ int main(int argc, const char * argv[]) {
 		spawnSections.push_back(trafficIntersection->getEastLane()->getSection(i));
 	}
 
-	Vehicle newVehicle = Vehicle(carProb, SUVProb, truckProb, rightProb, leftProb, straightProb, trafficIntersection->getEastLane(), spawnSections);
+	Vehicle newVehicle = Vehicle(carProb, SUVProb, truckProb, rightProb, leftProb, trafficIntersection->getEastLane(), spawnSections);
 
 	cout << endl;
 
 	trafficIntersection->printIntersection();
 
-	// newVehicle.move();
+	// for each vehicle : vehicle[i].move()
+	newVehicle.move();
 
 	return 0;
 }
