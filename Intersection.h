@@ -47,6 +47,11 @@ class Intersection {
 
     //* Destructor
     ~Intersection();
+
+    //* Functions
+
+    //* Print Intersection
+    void printIntersection();
 };
 
 #endif

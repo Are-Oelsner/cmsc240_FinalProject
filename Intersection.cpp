@@ -49,3 +49,12 @@ Intersection::Intersection(int length) {
 //TODO? 
 Intersection::~Intersection() {
 }
+
+void
+Intersection::
+printIntersection() {
+  north.printLane();
+  east.printLane();
+  south.printLane();
+  west.printLane();
+}
