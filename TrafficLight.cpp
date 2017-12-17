@@ -3,60 +3,50 @@
 //* Date: 12/15
 
 #include "TrafficLight.h"
-#include <iostream>
-using namespace std;
 
+	TrafficLight::TrafficLight() {}
 
-TrafficLight::TrafficLight() {}
-
-TrafficLight::~TrafficLight() {}
-//contructor
-TrafficLight::TrafficLight(double greenT, double redT, double yellowT)
-{
-	greenTime = greenT;
-	redTime = redT;
-	yellowTime = yellowT;
-	currentColor = green;
-}
-
-
-void TrafficLight::change(Color newColor)
-{
-	currentColor = newColor;
-}
-
-//COLOR GETTERS
-double TrafficLight::getGreenTime()
-{
-	return greenTime;
-}
-
-double TrafficLight::getYellowTime()
-{
-	return yellowTime;
-}
-
-double TrafficLight::getRedTime()
-{
-	return redTime;
-}
-
-
-//get current color
-TrafficLight::Color TrafficLight::getColor()
-{
-	return currentColor;
-}
-
-double TrafficLight::timeRemaining(double timeElapsed)
-{
-	if(currentColor == green) 
-	{
-		return greenTime-timeElapsed;
+	TrafficLight::~TrafficLight() {}
+	//contructor
+	TrafficLight::TrafficLight(double greenT, double redT, double yellowT) {
+		greenTime = greenT;
+		redTime = redT;
+		yellowTime = yellowT;
+		currentColor = green;
 	}
-	if(currentColor == yellow)
-	{
-		return yellowTime - timeElapsed;
+
+
+	void TrafficLight::change(Color newColor) {
+		currentColor = newColor;
 	}
-	return 0;
-}
+
+	//COLOR GETTERS
+	double TrafficLight::getGreenTime() {
+		return greenTime;
+	}
+
+	double TrafficLight::getYellowTime() {
+		return yellowTime;
+	}
+
+	double TrafficLight::getRedTime() {
+		return redTime;
+	}
+
+
+	//get current color
+	TrafficLight::Color TrafficLight::getColor() {
+		return currentColor;
+	}
+
+	double TrafficLight::timeRemaining(double timeElapsed) {
+		if(currentColor == green) 
+		{
+			return greenTime-timeElapsed;
+		}
+		if(currentColor == yellow)
+		{
+			return yellowTime - timeElapsed;
+		}
+		return 0;
+	}

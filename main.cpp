@@ -73,5 +73,15 @@ int main(int argc, const char * argv[]) {
 	// for each vehicle : vehicle[i].move()
 	newVehicle.move();
 
+	trafficIntersection->printIntersection();
+
+	for(int i = 0; i < 7; i++) {
+		newVehicle.move();
+
+		trafficIntersection->printIntersection();
+
+		cout << "*******************************************" << endl;
+	}
+
 	return 0;
 }

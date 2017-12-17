@@ -5,6 +5,10 @@
 #ifndef __TRAFFIC_H__
 #define __TRAFFIC_H__
 
+#include <iostream>
+
+using namespace std;
+
 //******************************************************************************
 //* TODO - Class description
 class TrafficLight {

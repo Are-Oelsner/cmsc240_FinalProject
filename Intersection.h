@@ -27,12 +27,16 @@ class Intersection {
     Lane west;	
 
     //**************************************************************************
-    //* Intersection
-
+    //* Intersection Sections
     Section NW;
     Section NE;
     Section SE;
-    Section SW;	
+    Section SW;
+
+    //**************************************************************************
+    //* Vehicles
+    vector<Vehicle> vehicles;
+
 
   public:
     
@@ -57,6 +61,10 @@ class Intersection {
     inline Lane* getEastLane() { return &east; }
     inline Lane* getSouthLane() { return &south; }
     inline Lane* getWestLane() { return &west; }
+
+    inline void addVehicle(Vehicle _vehicle) { vehicles.push_back(_vehicle); }
+
+    void update();
 
 };
 

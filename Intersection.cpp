@@ -55,3 +55,14 @@
     south.printLane();
     west.printLane();
   }
+
+  void Intersection::update() {
+
+    // Handle light timing here?
+
+
+    for(int i = 0; i < vehicles.size(); i++) {
+      vehicles[i].move();
+    }
+
+  }
