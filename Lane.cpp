@@ -35,7 +35,7 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   intSec2->setInIntersection(true);
 	sections.push_back(intSec1);
 	sections[(length/2)-1]->setNeighbor(sections[length/2], direction);
-	sections[length/2]->setNeighbor(sections[(length/2)-1], opposite);
+	sections[length/2]->setNeighbor(sections[(length/2)-1], opposite); //TODO error here
 
 	sections.push_back(intSec2);
 	sections[length/2]->setNeighbor(sections[(length/2)+1], direction);

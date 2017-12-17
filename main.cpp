@@ -47,7 +47,7 @@ int main(int argc, const char * argv[])
 	int totalCars = 0;
 	while(c.getTime()!=60)
 	{
-
+    trafficIntersection->printIntersection();
 	}
 
 	return 0;

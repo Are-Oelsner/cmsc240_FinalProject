@@ -14,6 +14,9 @@ main: $(OBJS)
 r: 									#runs main
 	./main simulation.config
 
+gdb:
+	gdb ./main 
+
 clean: 							#removes executable and output file
 	rm main
 	rm SectionTester
