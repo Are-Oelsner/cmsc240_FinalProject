@@ -61,14 +61,6 @@ class Vehicle {
     //* @param 	_probLeft 	double probability that the Vehicle will turn left
     void decidePath(double _rightProb, double _leftProb);
 
-    //* Decides what type of Vehicle will be based on the given probabilities
-    //* that the Vehicle will spawn as a Car/SUV/Truck, and assigned the
-    //* Vehicle's size accordingly; 2/Car, 3/SUV, 4/Truck
-    //* @param  _carProb    double probability that the Vehicle will be a Car
-    //* @param  _suvProb    double probability that the Vehicle will be a SUV
-    //* @param  _truckProb  double probability that the Vehicle will be a Truck
-    void decideType(double _carProb, double _suvProb, double _truckProb);
-
     //* Returns whether the vehicle can move in the given direction
     //* @param  	direction 	char direction to check availability for the 
     //* 						Vehicle to move ('s', 'r', 'l')

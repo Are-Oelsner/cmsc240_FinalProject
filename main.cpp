@@ -34,6 +34,8 @@ int main(int argc, const char * argv[]) {
 	double SUVProb = p.getSUVProb();
 	double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
 
+  int* vehicleType = new int[4]; // Array of the next vehicle type for each lane
+
 
 	//set up traffic light 
 	//b/c color is enum 
@@ -62,11 +64,18 @@ int main(int argc, const char * argv[]) {
 	start = clock();
 	duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
 	while ( duration < endTime ) {
+    for(int i = 1; i <= 4; i++) {
+      Lane* lane = trafficIntersection->getLane(i);
+      if(vehicleType[i] == NULL) {
+        Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, laneToSpawnVehicle);
+      trafficIntersection->addVehicle(newVehicle);
+
+      
+    
 
 		// spawn a vehicle
 		Lane* laneToSpawnVehicle = trafficIntersection->getNorthLane();
 
-		Vehicle newVehicle = Vehicle( carProb, SUVProb, truckProb, rightProb, leftProb, laneToSpawnVehicle);
 		// trafficIntersection->addVehicle( newVehicle );
 
 		trafficIntersection->update();

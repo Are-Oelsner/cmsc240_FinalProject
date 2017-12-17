@@ -4,17 +4,14 @@
 
 #include "Vehicle.h"
 
-  Vehicle::Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane) {
+  Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane) {
 
     hasPassedLight = false;
 
   	frontCurrLane = _lane;
     backCurrLane = _lane;
 
-    // currLane->allocSections(int size)  returns vector<Section*>
-
-    // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
-    Vehicle::decideType(_carProb, _suvProb, _truckProb);
+    this.size = size; // Sets vehicle type
 
     sections = frontCurrLane->allocSections(size);
 
