@@ -7,7 +7,9 @@
 
 #include "Section.h"
 #include "Lane.h"
+#include "Random.h"
 
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -18,23 +20,21 @@ class Vehicle {
 
   protected:
 
-    int size;				//* Integer size of the Vehicle
     bool inIntersection;	//* True if the Vehicle is in an intersection
     bool nearIntersection;	//* True if the front of the Vehicle is in the 
     						//* section immediately before the intersection
-    
-    char path;				//* The path that the Vehicle will ultimately take 
-    						//* based on the probabilities to go right, left, or
-    						//* straight ('s'/straight, 'r'/right, 'l'/left)
 
     vector<Section*> sections;	//* Sections that the Vehicle occupies
     Section* frontSection;      //* Section that contains the front of the Vehicle
     Section* backSection; 	    //* Section that contians the back of the Vehicle
     Lane* currLane; 		    //* Lane that the Vehicle is currently in
 
-    double probRight; 
-    double probLeft;
-    double probStraight;
+    char path;      //* The path that the Vehicle will ultimately take 
+                    //* based on the probabilities to go right, left, or
+                    //* straight ('s'/straight, 'r'/right, 'l'/left)
+
+    int size;   //* Integer size of the Vehicle, indicates what type of Vehicle
+                //* it is; (2/Car, 3/SUV, 4/Truck)
 
   public:
 
@@ -42,7 +42,7 @@ class Vehicle {
     //* Constructors & Destructors
 
     //* Constructor
-    Vehicle(string _type, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections);
+    Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane, vector<Section*> _sections);
 
     //* Destructor
     ~Vehicle();
@@ -52,9 +52,17 @@ class Vehicle {
 
     //* Decides what path the Vehicle will ultimately take based on the given
     //* probabilities that it will turn right, left, or continue straight.
-    //* @param  probRight   double probability that the Vehicle will turn right
-    //* @param 	probLeft 	double probability that the Vehicle will turn left
-    void decidePath(double _probRight, double _probLeft);
+    //* @param  _probRight   double probability that the Vehicle will turn right
+    //* @param 	_probLeft 	double probability that the Vehicle will turn left
+    void decidePath(double _rightProb, double _leftProb);
+
+    //* Decides what type of Vehicle will be based on the given probabilities
+    //* that the Vehicle will spawn as a Car/SUV/Truck, and assigned the
+    //* Vehicle's size accordingly; 2/Car, 3/SUV, 4/Truck
+    //* @param  _carProb    double probability that the Vehicle will be a Car
+    //* @param  _suvProb    double probability that the Vehicle will be a SUV
+    //* @param  _truckProb  double probability that the Vehicle will be a Truck
+    void decideType(double _carProb, double _suvProb, double _truckProb);
 
     //* Returns whether the vehicle can move in the given direction
     //* @param  	direction 	char direction to check availability for the 

@@ -8,31 +8,27 @@
 
 using namespace std;
 
-  Vehicle::Vehicle(string _type, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections) {
+  Vehicle::Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane, vector<Section*> _sections) {
 
   	currLane = _lane;
-  	sections = _sections;
 
-  	if( _type.compare("car") == 0 ) {
-  		size = 2;
-  	}
-  	else if( _type.compare("suv") == 0 ) {
-  		size = 3;
-  	}
-  	else if( _type.compare("truck") == 0 ) {
-  		size = 4;
-  	}
+    // currLane->allocSections(int size) ?? returns vector<Section*>
 
-  	inIntersection = false; // Vehicles will spawn at the end of the lanes
-  	nearIntersection = false;
+    // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
+    decideType(_carProb, _suvProb, _truckProb);
 
-  	probRight = _probRight;
-  	probLeft = _probLeft;
-  	probStraight = 1.0 - probRight - probLeft;
-
+    // ********* FIND A BETTER WAY TO DO THIS? ******
+    sections = _sections;
+    // Set the sections that the Vehicle has spawned in to be occupied
     for(int i = 0; i < _sections.size(); i++) {
       _sections[i]->setOccupied(true);
     }
+
+  	inIntersection = false;    // Vehicles will spawn at the end of the lanes
+  	nearIntersection = false;  // Minimum lane length prevents spawning near or
+                               // in the Intersection
+
+  	decidePath(_rightProb, _leftProb);
 
     frontSection = _sections[_sections.size() - 1];
     backSection = _sections[0];
@@ -40,8 +36,43 @@ using namespace std;
 
   Vehicle::~Vehicle(){}
 
+  void Vehicle::decideType(double _carProb, double _suvProb, double _truckProb) {
+
+    // Error catching
+    if ( (_carProb + _suvProb + _truckProb) != 1) {
+      cout << "Invalid probabilities: ( Car: " << _carProb  << ", SUV: " << _suvProb << ", Truck: " << _truckProb << " )" << endl;
+      cout << "Probabilities of Vehicle types must add to 1. (_carProb + _suvProb + _truckProb = 1)" << endl;
+      cout << "Usage: Vehicle(double _carProb, double _suvProb, double _truckProb, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections)" << endl;
+      exit(0);
+    }
+
+    // If the probabilities are valid, decide what type the vehicle will be
+    else {
+
+      double carNumLine = _carProb;
+      double suvNumLine = _suvProb + carNumLine;
+      double truckNumLine = _truckProb + suvNumLine;
+
+      Random rand = Random();
+      double val = rand.randDouble(0,1);
+
+      if(val <= carNumLine) {
+        size = 2;
+      }
+
+      else if(val <= suvNumLine) {
+        size = 3;
+      }
+
+      else if(val <= truckNumLine) {
+        size = 4;
+      }
+    }
+  }
+
+
   // TODO
-  void Vehicle::decidePath(double _probRight, double _probLeft) {
+  void Vehicle::decidePath(double _rightProb, double _leftProb) {
     	path = 's';
   }
 

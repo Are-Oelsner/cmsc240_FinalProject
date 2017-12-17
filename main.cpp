@@ -57,12 +57,14 @@ int main(int argc, const char * argv[]) {
 	//while((float)timer/CLOCKS_PER_SEC <= .10f)
     trafficIntersection->printIntersection();
 	//}
+
+	// ***** FIND A BETTER WAY TO ALLOCATE SECTIONS TO A VEHICLE *******
 	vector<Section*> spawnSections;
 	for(int i = 0; i < 3; i++) {
 		spawnSections.push_back(trafficIntersection->getEastLane()->getSection(i));
 	}
-	string type = "car";
-	Vehicle newVehicle = Vehicle(type, 0, 0, trafficIntersection->getEastLane(), spawnSections);
+
+	Vehicle newVehicle = Vehicle(carProb, SUVProb, truckProb, rightProb, leftProb, straightProb, trafficIntersection->getEastLane(), spawnSections);
 
 	cout << endl;
 
