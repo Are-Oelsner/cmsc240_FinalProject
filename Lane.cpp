@@ -36,19 +36,17 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   intSec2->setInIntersection(true);
 	sections.push_back(intSec1);
 	sections[(length/2)-1]->setNeighbor(sections[length/2], direction);
-  cout << "Before suspected error" << endl;
-	sections[length/2]->setNeighbor(sections[(length/2)-1], opposite); //TODO error here
-  cout << "After suspected error" << endl;
+	//sections[length/2]->setNeighbor(sections[(length/2)-1], opposite); //TODO error here
 
 	sections.push_back(intSec2);
 	sections[length/2]->setNeighbor(sections[(length/2)+1], direction);
-	sections[(length/2)+1]->setNeighbor(sections[length/2], opposite); 
+	//sections[(length/2)+1]->setNeighbor(sections[length/2], opposite);  // TODO error here as well
 
 	// adds sections after intersection
-	for(int i = (length/2)+2; i < length; i++) { 
+	for(int i = (length/2)+2; i < length; i++) { //TODO there appears to be another error in this loop
 		sections.push_back(new Section());
 		sections[i-1]->setNeighbor(sections[i], direction); // sets next neighbor
-		sections[i]->setNeighbor(sections[i-1], opposite); // sets previous neighbor
+		//sections[i]->setNeighbor(sections[i-1], opposite); // sets previous neighbor TODO error here as well works first loop then crashes second
     if( i == length-1 ) {
       sections[i]->setNearEdge(true);
     }
