@@ -73,9 +73,11 @@ Section* Lane::getSection(int i) {
 void
 Lane::
 printLane() {
-  cout << "[";
+
   for(Section* sec : sections) {
     sec->printSection();
   }
-  cout << "]";
+
+  cout << endl;
+
 }

@@ -15,8 +15,8 @@ using namespace std;
 Parser p = Parser("simulation.config");
 Clock c; //create clock
 
-int main(int argc, const char * argv[])
-{
+int main(int argc, const char * argv[]) {
+
 	//store values in public variables 
 	double leftProb = p.getLeftProb();
 	double rightProb = p.getRightProb();
@@ -42,13 +42,13 @@ int main(int argc, const char * argv[])
 	
 	//start simulation
 	int carsLeft = 0;
-	int carsRight =0;
+	int carsRight = 0;
 	int carStraight = 0;
 	int totalCars = 0;
-	while(c.getTime()!=60)
-	{
-    trafficIntersection->printIntersection();
-	}
+	
+	//while(c.getTime()!= 60){
+    	trafficIntersection->printIntersection();
+	//}
 
 	return 0;
 }
