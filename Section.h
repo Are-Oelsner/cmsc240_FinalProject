@@ -114,6 +114,10 @@ class Section {
     //* @return     TODO
     Section* getLeft(int direction);
 
+    //* TODO
+    //* @return     TODO
+    Section* getBack(int direction);
+
     //**************************************************************************
     //* Set Functions
 

@@ -78,6 +78,17 @@ getLeft(int direction) {
   }
 }
 
+Section*
+Section::
+getLeft(int direction) {
+  switch(direction) {
+    case 1: return this->down;
+    case 2: return this->left;
+    case 3: return this->up;
+    case 4: return this->right;
+  }
+}
+
 
 
 
