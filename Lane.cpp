@@ -61,6 +61,16 @@ Section* Lane::getSection(int i) {
 	return sections[i];
 }
 
+void
+Lane::
+printLane() {
+  cout << "[";
+  for(Section* sec : sections) {
+    sec.printSection();
+  }
+  cout << "]";
+}
+
 
 
 

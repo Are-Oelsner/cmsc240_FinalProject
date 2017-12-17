@@ -57,6 +57,10 @@ class Lane {
     //* ???
     Section* getSection(int i);
 
+    //* Print's Contents of Lane
+    //* @return void
+    void printLane();
+
     //* Returns the direction of the lane
     //* @return     integer direction of the lane; 1 = north, 2 = east, 
     //*             3 = south, 4 = west 
