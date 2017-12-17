@@ -10,6 +10,7 @@ Lane::Lane() {
 }
 
 Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
+  cout << "Constructing lane: " << direction << endl;
 
 	if(length % 2 != 0 || length < 12) {
 		cout << "Error: length: " << length << " must be even and at least 12" << endl;
@@ -51,8 +52,7 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
     }
 	}
 	this->direction = direction;
-
-
+  cout << "Finished constructing lane: " << direction << endl;
 }
 
 Lane::~Lane(){}
