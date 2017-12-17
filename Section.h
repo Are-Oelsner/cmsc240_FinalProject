@@ -102,6 +102,10 @@ class Section {
     //* @return     TODO
     inline bool getNearEdge() { return nearEdge; }
 
+    //* TODO
+    //* @return     TODO
+    Section* getRight(int direction);
+
     //**************************************************************************
     //* Set Functions
 
