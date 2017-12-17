@@ -24,37 +24,43 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
 
 	sections.push_back(new Section()); // first section in lane
 
-	// adds sections before intersection
+	// Add and connect sections before intersection
 	for(int i = 1; i < (length/2) - 1; i++) { 
 		sections.push_back(new Section());
-		sections[i-1]->setNeighbor(sections[i], direction); // sets next neighbor
-		sections[i]->setNeighbor(sections[i-1], opposite); // sets previous neighbor
-    if( i == (length/2) - 2 ) {
-      sections[i]->setNearIntersection(true);
-    }
+
+		sections[i-1]->setNeighbor(sections[i], direction); // set next neighbor
+		sections[i]->setNeighbor(sections[i-1], opposite); // set previous neighbor
 	}
 
-	// adds intersection sections
+	// Add intersection sections, set them to be flagged inIntersection
   intSec1->setInIntersection(true);
   intSec2->setInIntersection(true);
 	sections.push_back(intSec1);
-	sections[(length/2)-1]->setNeighbor(sections[length/2], direction);
-	//sections[length/2]->setNeighbor(sections[(length/2)-1], opposite); //TODO error here
+  sections.push_back(intSec2);
 
-	sections.push_back(intSec2);
-	sections[length/2]->setNeighbor(sections[(length/2)+1], direction);
-	//sections[(length/2)+1]->setNeighbor(sections[length/2], opposite);  // TODO error here as well
+  // Connect last added section to intSec1 and vice-versa
+  sections[(length/2) - 2]->setNeighbor(sections[length/2 - 1], direction);
+  sections[length/2 - 1]->setNeighbor(sections[(length/2) - 2], opposite);
 
-	// adds sections after intersection
-	for(int i = (length/2)+2; i < length; i++) { //TODO there appears to be another error in this loop
+  // Connect intSec1 to intSec2 and vice-versa
+	sections[(length/2) - 1]->setNeighbor(sections[length/2], direction);
+	sections[length/2]->setNeighbor(sections[(length/2) - 1], opposite);
+
+	// Add and connect sections after intersection
+	for(int i = (length/2) + 1; i < length; i++) { 
 		sections.push_back(new Section());
-		sections[i-1]->setNeighbor(sections[i], direction); // sets next neighbor
-		//sections[i]->setNeighbor(sections[i-1], opposite); // sets previous neighbor TODO error here as well works first loop then crashes second
-    if( i == length-1 ) {
-      sections[i]->setNearEdge(true);
-    }
+
+		sections[i - 1]->setNeighbor(sections[i], direction); // sets next neighbor
+		sections[i]->setNeighbor(sections[i - 1], opposite); // sets previous neighbor TODO error here as well works first loop then crashes second
 	}
+
 	this->direction = direction;
+
+  // Set section before intersection to be flagged nearIntersection
+  sections[(length/2) - 2]->setNearIntersection(true);
+  // Set section before end of lane to be flagged nearEdge
+  sections[length - 1]->setNearEdge(true);
+
   cout << "Finished constructing lane: " << direction << endl;
 }
 
@@ -73,9 +79,3 @@ printLane() {
   }
   cout << "]";
 }
-
-
-
-
-
-
