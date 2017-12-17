@@ -47,12 +47,34 @@ void Section::printSection() {
 
 Section*
 Section::
-getRigth(int direction) {
+getRight(int direction) {
   switch(direction) {
     case 1: return this->right;
     case 2: return this->down;
     case 3: return this->left;
     case 4: return this->up;
+  }
+}
+
+Section*
+Section::
+getStraight(int direction) {
+  switch(direction) {
+    case 1: return this->up;
+    case 2: return this->right;
+    case 3: return this->down;
+    case 4: return this->left;
+  }
+}
+
+Section*
+Section::
+getLeft(int direction) {
+  switch(direction) {
+    case 1: return this->left;
+    case 2: return this->up;
+    case 3: return this->right;
+    case 4: return this->down;
   }
 }
 

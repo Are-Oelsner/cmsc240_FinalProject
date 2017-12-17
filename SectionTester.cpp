@@ -59,4 +59,7 @@ int main() {
 	cout << "getOccupied(): " << section->getOccupied() << ". [true]" << endl;
 	cout << "getNearIntersection(): " << section->getNearIntersection() << ". [true]" << endl;
 	cout << "getNearEdge(): " << section->getNearEdge() << ". [true]" << endl;
+
+	// Testing Getters 
+	cout << "getRight(): " << section->getRight(1) << ". [" << section->getRightSection() << "]" << endl;
 }

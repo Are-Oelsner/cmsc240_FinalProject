@@ -106,6 +106,14 @@ class Section {
     //* @return     TODO
     Section* getRight(int direction);
 
+    //* TODO
+    //* @return     TODO
+    Section* getStraight(int direction);
+
+    //* TODO
+    //* @return     TODO
+    Section* getLeft(int direction);
+
     //**************************************************************************
     //* Set Functions
 
