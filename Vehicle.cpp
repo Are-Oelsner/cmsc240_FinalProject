@@ -171,6 +171,7 @@ void Vehicle::move() {
     }
     // Move one section of the vehicle out of view 
     else {
+      frontSection->setOccupied(false);
       frontSection = frontSection->getBack(frontLaneDir);
       backSection = backSection->getStraight(backLaneDir);
     }
