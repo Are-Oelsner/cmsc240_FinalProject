@@ -38,15 +38,15 @@ int main(int argc, const char * argv[]) {
 
   double leftProb = 0.;
   double rightProb = .99;
-  double straightProb = .01;
+  //double straightProb = .01;
 
-  double g = p.getGTicks();
-  double r = p.getRTicks();
-  double y = p.getYTicks();
+  //double g = p.getGTicks();
+  //double r = p.getRTicks();
+  //double y = p.getYTicks();
   double carProb = p.getCarProb();
-  double truckProb = p.getTruckProb();
+  //double truckProb = p.getTruckProb();
   double SUVProb = p.getSUVProb();
-  double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
+  //double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
 
   int vehicleType[4]; // Array of the next vehicle type for each lane
   vehicleType[0] = 0;
