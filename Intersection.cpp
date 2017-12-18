@@ -67,14 +67,14 @@ void Intersection:: printIntersection() {
 void Intersection:: printIntersection2() {
   for(int i = 0; i < length; i++) {
     for(int j = 0; j < length; j++) {
-      if(i == (length/2)-1)
-        south.getSection((length-1)-j)->printSection();
-      else if(i == length/2)
-        north.getSection(j)->printSection();
-      else if(j == (length/2)-1)
-        west.getSection((length-1)-i)->printSection();
+      if(j == (length/2)-1)
+        south.getSection(i)->printSection();
       else if(j == length/2)
-        north.getSection(i)->printSection();
+        north.getSection((length-1)-i)->printSection();
+      else if(i == (length/2)-1)
+        west.getSection((length-1)-j)->printSection();
+      else if(i == length/2)
+        east.getSection(j)->printSection();
       else
         cout << "   ";
     }
