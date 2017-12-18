@@ -109,13 +109,13 @@ int main(int argc, const char * argv[]) {
         vehicleType[i] = 0; // resets vehicle type after it spawns. 
       }
     }
-  }
 
-  while (duration < seconds + 1) {
-    duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+    while (duration < seconds + 1) {
+      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+    }
+    seconds++;
+    trafficIntersection->update(seconds);
   }
-  seconds++;
-  trafficIntersection->update(seconds);
 
 
   std::vector<double> v;
