@@ -17,6 +17,10 @@
 
     sections = frontCurrLane->allocSections(size);
 
+    for(int i = 0; i < sections.size(); i++) {
+      sections[i]->setOccupied(true);
+    }
+
     // Set front and back sections occupied by the Vehicle
     frontSection = sections[sections.size() - 1];
     backSection = sections[0];
