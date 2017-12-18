@@ -163,6 +163,8 @@ void Vehicle::move() {
       // out of view
       if(backSection->getNearEdge()) {
         backSection->setOccupied(false);
+        delete frontSection;
+        delete backSection;
         // Vehicle is out of view - delete it's front and back sections
 
         // delete frontSection; //****** what about other sections -- figure out something here
