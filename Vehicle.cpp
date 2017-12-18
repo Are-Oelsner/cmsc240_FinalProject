@@ -8,11 +8,11 @@ string intToDir(int dir);
 
 Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane, Intersection* intersection) {
 
-  trafficIntersection = intersection;
   hasPassedLight = false;
 
   frontCurrLane = _lane;
   backCurrLane = _lane;
+  trafficIntersection = intersection;
 
   // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
   // Vehicle::decideType(_carProb, _suvProb, _truckProb);
