@@ -150,6 +150,7 @@ class Section {
 
     //* Drawing function used for testing and simulation display
     void printSection();
+    void printSection2();
 
 };
 
