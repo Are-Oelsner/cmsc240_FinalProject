@@ -78,7 +78,7 @@ int main(int argc, const char * argv[]) {
 
 		for(int i = 1; i <= 4; i++) {
 			//CAR 
-      double type = Random::getRandDouble(0.0,1.0);
+      		double type = Random::randDouble(0.0,1.0);
 			if(type <= carProb) { 
 				Lane* lane = trafficIntersection->getLane(i);
 				if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
