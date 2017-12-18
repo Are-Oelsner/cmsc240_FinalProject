@@ -82,6 +82,9 @@ class Intersection {
 
 <<<<<<< HEAD
     void update();
+=======
+    void update(double time, bool debug);
+>>>>>>> 91c7a2a54d0a54fea42c579a3ad924854e740b60
 
 };
 

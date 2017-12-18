@@ -98,6 +98,8 @@ getLane(int direction) {
 
 
 
+void Intersection::update(bool debug) {
+
   counter++;
   // Handle light timing here? Update trafficlights?
   TrafficLight nTraffic = north.getTrafficLight();
