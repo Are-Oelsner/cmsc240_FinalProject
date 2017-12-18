@@ -102,10 +102,10 @@ void Intersection::update(double time) {
   double s = south.getTrafficLight().timeRemaining(time);
   double w = west.getTrafficLight().timeRemaining(time);
 
+  printIntersection2();
+
   for(int i = 0; i < vehicles.size(); i++) {
     vehicles[i].move();
   }
-
-  printIntersection2();
 
 }
