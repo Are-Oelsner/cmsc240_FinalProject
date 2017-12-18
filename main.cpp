@@ -60,6 +60,9 @@ int main(int argc, const char * argv[]) {
 	int carsRight = 0;
 	int carStraight = 0;
 	int totalCars = 0;
+	int totalSUV = 0;
+	int totalTruck = 0;
+	int totalVehicles = 0;
 
 	// *** Add endTime to parser file?
 	// *** Add frequency of vehicle spawn to parser file?
@@ -82,6 +85,13 @@ int main(int argc, const char * argv[]) {
         // not store vehicle type and try again next timestep. 
         if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
           Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
+          //for stats
+          totalVehicles++;
+          if(vehicleType[i]==2) { totalCars++;}
+          if(vehicleType[i]==3) { totalSUV++;}
+          if(vehicleType[i]==4) {totalTruck++;}
+
+
           trafficIntersection->addVehicle(newVehicle);
           vehicleType[i] = 0; // resets vehicle type after it spawns. 
         }
@@ -96,8 +106,10 @@ int main(int argc, const char * argv[]) {
 		seconds++;
 
 	}
-	double n = Random::randDouble(0, 5.0);
-	cout << n << endl;
+	std::vector<double> v;
+	Statistics* stats = new Statistics(totalCars, totalSUV, totalTruck, totalVehicles,
+		0,0,0, v,v,v);	
+	stats->printStatistics();
 
 
 
