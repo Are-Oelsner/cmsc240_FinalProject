@@ -114,7 +114,7 @@ bool Vehicle::canMove(char _direction) {
     TrafficLight::Color lightColor = frontCurrLane->getTrafficLight().getColor();
     bool lightIsGreen = (lightColor == 1);
     //TODO this would set it one section early 
-    nearIntersection = frontSection->getStraight(frontLaneDir)->getNearIntersection();
+    nearIntersection = frontSection->getNearIntersection();
     if(nearIntersection && !lightIsGreen) 
       return false;
   }
