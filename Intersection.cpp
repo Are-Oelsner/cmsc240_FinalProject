@@ -100,33 +100,30 @@ getLane(int direction) {
 
 void Intersection::update(bool debug) {
 
-  counter++;
-  // Handle light timing here? Update trafficlights?
-  TrafficLight nTraffic = north.getTrafficLight();
-  TrafficLight eTraffic = east.getTrafficLight();
-  TrafficLight sTraffic = south.getTrafficLight();
-  TrafficLight wTraffic = west.getTrafficLight();
+  counter0++;
+  counter1++;
+ cout << northTrafficLight.getColor() << endl;
 
-  double n = nTraffic.timeRemaining(counter);
-  double e = eTraffic.timeRemaining(counter);
-  double s = sTraffic.timeRemaining(counter);
-  double w = wTraffic.timeRemaining(counter);
+  double n = northTrafficLight.timeRemaining(counter1);
+  double e = eastTrafficLight.timeRemaining(counter0);
+  double s = southTrafficLight.timeRemaining(counter1);
+  double w =westTrafficLight.timeRemaining(counter0);
 
   if(n==0) {
-    nTraffic.change(); 
-    counter=0;
+    northTrafficLight.change(); 
+    counter1=0;
   }
   if(e==0) {
-    eTraffic.change();
-    counter = 0;
+    eastTrafficLight.change();
+    counter0 = 0;
   }
   if(s==0) {
-    sTraffic.change();
-    counter = 0;
+    southTrafficLight.change();
+    counter1 = 0;
   }
   if(w==0) {
-    wTraffic.change();
-    counter=0;
+    westTrafficLight.change();
+    counter0=0;
   }
 
   for(int i = 0; i < vehicles.size(); i++) {
