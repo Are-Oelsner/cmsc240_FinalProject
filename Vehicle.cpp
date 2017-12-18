@@ -97,7 +97,6 @@ void Vehicle::decidePath(double _rightProb, double _leftProb) {
 }
 
 bool Vehicle::canMove(char _direction) {
-  cout << "In canMove" << endl;
 
   // Check if the section in the desired direction is occupied
   bool pathBlocked;
@@ -105,16 +104,13 @@ bool Vehicle::canMove(char _direction) {
   int frontLaneDir = frontCurrLane->getDirection();
 
   if( _direction == 'l' && frontSection->getLeft(frontLaneDir) != NULL) {
-    cout << "blocked at A" << endl;
     pathBlocked = frontSection->getLeft(frontLaneDir)->getOccupied();
   }
   else if( _direction == 'r' && frontSection->getRight(frontLaneDir) != NULL) {
-    cout << "blocked at B" << endl;
     pathBlocked = frontSection->getRight(frontLaneDir)->getOccupied();
   }
-  else if( _direction == 's' && frontSection->getStraight(frontLaneDir) != NULL) {
+  else if( _direction == 's' && frontSection->getStraight(frontLaneDir) != NULL) {//TODO here
     pathBlocked = frontSection->getStraight(frontLaneDir)->getOccupied();
-    cout << "blocked at C: " << pathBlocked << endl;
   }
 
   // Get the current state of the traffic light in the Vehicle's lane
@@ -124,7 +120,6 @@ bool Vehicle::canMove(char _direction) {
     //TODO this would set it one section early 
     nearIntersection = frontSection->getNearIntersection();
     if(nearIntersection && !lightIsGreen) {
-      cout << "Returning false for light" << endl;
       return false;
     }
   }
@@ -133,12 +128,10 @@ bool Vehicle::canMove(char _direction) {
    *  the intersection and the light is not green, then the Vehicle cannot
    *  legally move */
   if (pathBlocked) { //TODO problem here
-    cout << "Returning false for pathBlocked" << endl;
     return false;
   }
 
   // Otherwise, the Vehicle is permitted to move in the desired direction
-  cout << "returning can move" << endl;
   return true;
 }
 
