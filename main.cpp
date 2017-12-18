@@ -65,18 +65,20 @@ int main(int argc, const char * argv[]) {
 	duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
 	while ( duration < endTime ) {
     for(int i = 1; i <= 4; i++) {
-      Lane* lane = trafficIntersection->getLane(i);
-      if(vehicleType[i] == NULL) {
-        Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, laneToSpawnVehicle);
-      trafficIntersection->addVehicle(newVehicle);
-
-      
-    
-
-		// spawn a vehicle
-		Lane* laneToSpawnVehicle = trafficIntersection->getNorthLane();
-
-		// trafficIntersection->addVehicle( newVehicle );
+      if(true) { // TODO probability of car attempting to spawn each timestep
+        Lane* lane = trafficIntersection->getLane(i);
+        if(vehicleType[i] == NULL) {// If Vehicle spawned last timestep roll for new type
+          vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
+        }
+        // If the lane has space for the vehicle this timestep then add it, if
+        // not store vehicle type and try again next timestep. 
+        if(lane->canAllocSections(vehicleType[i])) { 
+          Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
+          trafficIntersection->addVehicle(newVehicle);
+          vehicleType[i] = NULL; // resets vehicle type after it spawns. 
+        }
+      }
+    }
 
 		trafficIntersection->update();
 

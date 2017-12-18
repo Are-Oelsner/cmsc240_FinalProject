@@ -11,7 +11,7 @@
   	frontCurrLane = _lane;
     backCurrLane = _lane;
 
-    this.size = size; // Sets vehicle type
+    this->size = size; // Sets vehicle type
 
     sections = frontCurrLane->allocSections(size);
 
@@ -37,42 +37,42 @@
 
   Vehicle::~Vehicle(){ }
 
-  void Vehicle::decideType(double _carProb, double _suvProb, double _truckProb) {
-
-    // Error catching
-    if ( (_carProb + _suvProb + _truckProb) != 1) {
-      cout << "Invalid probabilities: ( Car: " << _carProb  << ", SUV: " << _suvProb << ", Truck: " << _truckProb << " )" << endl;
-      cout << "Probabilities of Vehicle types must add to 1. (_carProb + _suvProb + _truckProb = 1)" << endl;
-      cout << "Usage: Vehicle(double _carProb, double _suvProb, double _truckProb, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections)" << endl;
-      exit(0);
-    }
-
-    // If the probabilities are valid, decide what type the vehicle will be
-    else {
-
-      double carNumLine = _carProb;
-      double suvNumLine = _suvProb + carNumLine;
-      double truckNumLine = _truckProb + suvNumLine;
-
-      size = 2; // delete this later
-
-      /*
-      double val = Random::getRandDouble(0.0,1.0);
-
-      if(val <= carNumLine) {
-        size = 2;
-      }
-
-      else if(val <= suvNumLine) {
-        size = 3;
-      }
-
-      else if(val <= truckNumLine) {
-        size = 4;
-      }
-      */
-    }
-  }
+//  void Vehicle::decideType(double _carProb, double _suvProb, double _truckProb) {
+//
+//    // Error catching
+//    if ( (_carProb + _suvProb + _truckProb) != 1) {
+//      cout << "Invalid probabilities: ( Car: " << _carProb  << ", SUV: " << _suvProb << ", Truck: " << _truckProb << " )" << endl;
+//      cout << "Probabilities of Vehicle types must add to 1. (_carProb + _suvProb + _truckProb = 1)" << endl;
+//      cout << "Usage: Vehicle(double _carProb, double _suvProb, double _truckProb, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections)" << endl;
+//      exit(0);
+//    }
+//
+//    // If the probabilities are valid, decide what type the vehicle will be
+//    else {
+//
+//      double carNumLine = _carProb;
+//      double suvNumLine = _suvProb + carNumLine;
+//      double truckNumLine = _truckProb + suvNumLine;
+//
+//      size = 2; // delete this later
+//
+//      /*
+//      double val = Random::getRandDouble(0.0,1.0);
+//
+//      if(val <= carNumLine) {
+//        size = 2;
+//      }
+//
+//      else if(val <= suvNumLine) {
+//        size = 3;
+//      }
+//
+//      else if(val <= truckNumLine) {
+//        size = 4;
+//      }
+//      */
+//    }
+//  }
 
 
   // TODO

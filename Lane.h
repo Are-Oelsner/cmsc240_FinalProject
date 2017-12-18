@@ -31,13 +31,6 @@ class Lane {
 
     TrafficLight trafficLight; //* TrafficLight object
 
-    //* Returns true if the lane can allocate a given number of sections at the
-    //* beginning of the lane and false if it cannot. 
-    //* @param  size    number of sections to check if the lane can allocate
-    //* @return true if the lane can allocate a given number of sections at the
-    //*         beginning of the lane and false if it cannot
-    bool canAllocSections(int size);
-
   public:
 
     //**************************************************************************
@@ -79,6 +72,14 @@ class Lane {
     inline TrafficLight getTrafficLight() { return trafficLight; }
 
     vector<Section*> allocSections(int size);
+
+    //* Returns true if the lane can allocate a given number of sections at the
+    //* beginning of the lane and false if it cannot. 
+    //* @param  size    number of sections to check if the lane can allocate
+    //* @return true if the lane can allocate a given number of sections at the
+    //*         beginning of the lane and false if it cannot
+    bool canAllocSections(int size);
+
 
 };
 
