@@ -71,11 +71,6 @@ class Lane {
     //* @return     the TrafficLight in this Lane
     inline TrafficLight getTrafficLight() { return trafficLight; }
 
-
-    //* Sets the TrafficLight located in this lane
-    //* @return     void
-    inline void setTrafficLight(TrafficLight _trafficLight) {trafficLight = _trafficLight; }
-
     //* Returns a vector<Sections*> of the given number of sections
     //* @param  size    number of sections to allocate
     //* @return     vector<Section*> of sections allocated
