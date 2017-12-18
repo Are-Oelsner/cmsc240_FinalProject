@@ -30,7 +30,7 @@ reallyclean: clean 	#cleans and removes all .o files
 	rm *.o
 
 o:
-	vim main.cpp +":tabf Section.cpp" +":vsplit Section.h" +":tabf Lane.cpp" +":vsplit Lane.h" +":tabf Intersection.cpp" +":vsplit Intersection.h"
+	vim main.cpp +":tabf Section.cpp" +":vsplit Section.h" +":tabf Lane.cpp" +":vsplit Lane.h" +":tabf Intersection.cpp" +":vsplit Intersection.h" +":tabf Vehicle.cpp" +":vsplit Vehicle.h"
 
 test: $(TESTS) 			#TODO finish
 
