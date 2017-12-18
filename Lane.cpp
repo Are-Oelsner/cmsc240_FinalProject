@@ -80,7 +80,7 @@
 
   bool Lane::canAllocSections(int size) {
     for(int i = 0; i < size; i++) {
-      if( getSection(i)->getOccupied() ) {
+      if(getSection(i)->getOccupied() ) {
         return false;
       }
     }
