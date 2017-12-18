@@ -77,7 +77,8 @@ int main(int argc, const char * argv[]) {
   while ( duration < endTime ) {
 
     for(int i = 1; i <= 4; i++) {
-      if(true) { // TODO probability of car attempting to spawn each timestep
+    	//CAR 
+      if((int)endTime % (int)(endTime*carProb)==0) { 
         Lane* lane = trafficIntersection->getLane(i);
         if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
           vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
@@ -88,9 +89,45 @@ int main(int argc, const char * argv[]) {
           Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
           //for stats
           totalVehicles++;
-          if(vehicleType[i]==2) { totalCars++;}
-          if(vehicleType[i]==3) { totalSUV++;}
-          if(vehicleType[i]==4) {totalTruck++;}
+          totalCars++;
+
+
+          trafficIntersection->addVehicle(newVehicle);
+          vehicleType[i] = 0; // resets vehicle type after it spawns. 
+        }
+      }
+      //SUV
+      if((int)endTime % (int)(endTime*SUVProb)==0) { 
+        Lane* lane = trafficIntersection->getLane(i);
+        if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
+          vehicleType[i] = 3; // Change this to randomly pick based on probabilities TODO
+        }
+        // If the lane has space for the vehicle this timestep then add it, if
+        // not store vehicle type and try again next timestep. 
+        if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
+          Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
+          //for stats
+          totalVehicles++;
+          totalSUV++;
+
+
+          trafficIntersection->addVehicle(newVehicle);
+          vehicleType[i] = 0; // resets vehicle type after it spawns. 
+        }
+      }
+      //Truck
+    	else { 
+        Lane* lane = trafficIntersection->getLane(i);
+        if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
+          vehicleType[i] = 4; // Change this to randomly pick based on probabilities TODO
+        }
+        // If the lane has space for the vehicle this timestep then add it, if
+        // not store vehicle type and try again next timestep. 
+        if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
+          Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
+          //for stats
+          totalVehicles++;
+          totalTruck++; 
 
 
           trafficIntersection->addVehicle(newVehicle);
