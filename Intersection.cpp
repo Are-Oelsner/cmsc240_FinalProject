@@ -24,6 +24,12 @@
   	east = Lane(length, SWptr, SEptr, 2);
   	south = Lane(length, NWptr, SWptr, 3);
   	west = Lane(length, NEptr, NWptr, 4);
+
+    northTrafficLight = north.getTrafficLight();
+    eastTrafficLight = east.getTrafficLight();
+    southTrafficLight = south.getTrafficLight();
+    westTrafficLight = west.getTrafficLight();
+
   }
 
   Intersection::Intersection(int length) {
@@ -54,7 +60,7 @@
     east.printLane();
     south.printLane();
     west.printLane();
-    cout << "****************************************************************************" << endl;
+    cout << "***********************************************************************" << endl;
   }
 
   void Intersection::update() {

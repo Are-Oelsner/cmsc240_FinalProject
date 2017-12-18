@@ -11,8 +11,6 @@
   	frontCurrLane = _lane;
     backCurrLane = _lane;
 
-    // currLane->allocSections(int size)  returns vector<Section*>
-
     // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
     Vehicle::decideType(_carProb, _suvProb, _truckProb);
 
@@ -59,8 +57,7 @@
 
       size = 2; // delete this later
 
-      /*
-      double val = Random::getRandDouble(0.0,1.0);
+      double val = Random::randDouble(0.0,1.0);
 
       if(val <= carNumLine) {
         size = 2;
@@ -73,14 +70,26 @@
       else if(val <= truckNumLine) {
         size = 4;
       }
-      */
+      
     }
   }
 
-
-  // TODO
   void Vehicle::decidePath(double _rightProb, double _leftProb) {
-    	path = 's';
+
+    double rightNumLine = _rightProb;
+    double leftNumLine = _leftProb + rightNumLine;
+
+    double val = Random::randDouble(0.0, 1.0);
+
+    if( val < rightNumLine ) {
+      path = 'r';
+    }
+    else if ( val < leftNumLine ) {
+      path = 'l';
+    }
+    else {
+      path = 's';
+    }
   }
 
   bool Vehicle::canMove(char _direction) {

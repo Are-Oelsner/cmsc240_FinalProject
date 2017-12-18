@@ -78,6 +78,9 @@ class Lane {
     //* @return     the TrafficLight in this Lane
     inline TrafficLight getTrafficLight() { return trafficLight; }
 
+    //* Returns a vector<Sections*> of the given number of sections
+    //* @param  size    number of sections to allocate
+    //* @return     vector<Section*> of sections allocated
     vector<Section*> allocSections(int size);
 
 };

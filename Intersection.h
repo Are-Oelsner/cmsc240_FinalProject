@@ -8,6 +8,7 @@
 #include "Lane.h"
 #include "Section.h"
 #include "Vehicle.h"
+#include "TrafficLight.h"
 
 using namespace std;
 
@@ -37,6 +38,13 @@ class Intersection {
     //**************************************************************************
     //* Vehicles
     vector<Vehicle> vehicles;
+
+    //**************************************************************************
+    //* TrafficLights
+    TrafficLight northTrafficLight;
+    TrafficLight eastTrafficLight;
+    TrafficLight southTrafficLight;
+    TrafficLight westTrafficLight;
 
 
   public:
