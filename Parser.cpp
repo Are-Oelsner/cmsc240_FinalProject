@@ -1,7 +1,6 @@
 //* CMSC240 Final Project : Parser.cpp 
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date:  Dec 15, 2017 
-//*This class parses the config file  
+//* Date: 12/18/2017
 
 #include "Parser.h"
 

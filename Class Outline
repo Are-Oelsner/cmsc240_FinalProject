@@ -1,9 +1,8 @@
 Team Juliet: Ryan Jennings, Maddie Shea, Are Oelsner
 
-Preliminary Class Outline:
+Class Outline:
 
-// Utility class for data collection/statistics, traffic light timing
-Clock.h
+main.cpp
 
 // Utility class for random number generation
 Random.h
@@ -11,47 +10,69 @@ Random.h
 // Class for collecting statistics data
 Statistics.h
 
-IntersectionSimulation.h
+Intersection.h:
+-> includes Lane.h, Section.h, Vehicle.h, TrafficLight.h
 	- Vehicle[] vehicles
 	- Intersection intersection
 	- Lane*[4] lanes
 	- Clock simClock
 
-Vehicle.h
-	- Section*[] sectionsOccupied
+Vehicle.h:
+-> includes Section.h, Lane.h, Random.h
+	- Section*[] sections
 	- int size
 	- boolean inIntersection
+	- boolean nearIntersection
+	- boolean exited
+	- 
 
-	- void moveStright()
-	- void moveRight()
-	- void moveLeft()
+	- void move()
 	- boolean canMove()
 
-	Subclasses:
-		Car.h
-			* size = 2;
 
-		SUV.h
-			* size = 3;
-	
-		Truck.h
-			* size = 4;
-
-Section.h
-	- Section*[] neighborSections
+Section.h:
+	* Neighbor Sections:
+	- Section* up
+	- Section* right
+	- Section* down
+	- Section* left
 	- boolean occupied
-	- boolean partOfIntersection
+	- boolean nearEdge
+	- boolean nearIntersection
+	- boolean inIntersection
+	
+	* Getting sections relative to the Intersection
+	- Section* getUpSection()
+	- Section* getRightSection()
+	- Section* getDownSection()
+	- Section* getLeftSection()
 
-Lane.h
+	- bool getOccupied()
+	- bool getNearEdge()
+	- bool getNearIntersection()
+	- bool getInIntersection()
+	
+	* Getting sections relative to a Vehicle in the Section
+	- Section* getStraight()
+	- Section* getRight()
+	- Section* getBack()
+	- Section* getLeft()
+
+	- void setNeighbor(Section* _section, int direction)
+	
+	- void setOccupied(bool _occupied)
+
+Lane.h:
 	- Section*[] sections 	// Size given by user
 	- String direction		// N,S,E,W
 	- TrafficLight light
 
-TrafficLight.h
+TrafficLight.h:
 	- double greenTime	// Given by user
 	- double yellowTime // Given by user
-	- Clock trafficClock
 
-Intersection.h	
+
+Intersection.h:
+->
 	- Lane[4]
 	- Section[4] sections (? Or lanes so that we know the directions a vehicle can go?)

@@ -9,7 +9,6 @@
 #include <vector>
 #include <cstdlib> 
 
-//#include "Vehicle.h"
 #include "Section.h"
 #include "TrafficLight.h"
 
@@ -35,9 +34,6 @@ class Lane {
 
     //**************************************************************************
     //* Constructors & Destructors
-
-    //* Default Constructor
-    Lane();
 
     //* Constructor
     //* @param  length      number of sections in the lane
@@ -82,7 +78,6 @@ class Lane {
     //* @return true if the lane can allocate a given number of sections at the
     //*         beginning of the lane and false if it cannot
     bool canAllocSections(int size);
-
 
 };
 

@@ -1,9 +1,8 @@
 //* CMSC240 Final Project : Section.cpp
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+//* Date: 12/18/2017
 
 #include "Section.h"
-
 
 Section::Section() {
   up = NULL;
@@ -143,9 +142,6 @@ getBack(int direction) {
   }
 }
 
-
-
-
 // Original getDirection Functions, not constrained by traffic flow
 Section*
 Section::
@@ -190,4 +186,3 @@ getBackSection(int direction) {
     case 4: return this->right;
   }
 }
-

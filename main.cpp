@@ -65,8 +65,6 @@ int main(int argc, const char * argv[]) {
   Statistics* stats = new Statistics();	
 
   // Start simulation
-  // *** Add endTime to parser file?
-  // *** Add frequency of vehicle spawn to parser file?
 
   double endTime = 30.0;
   double duration;

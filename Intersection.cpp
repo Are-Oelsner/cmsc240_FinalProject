@@ -1,9 +1,9 @@
 //* CMSC240 Final Project : Intersection.cpp
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+//* Date: 12/18/2017
 
 #include "Intersection.h"
-#include <iostream> //TODO Remove 
+#include <iostream>
 
 Intersection::Intersection() {
   length = 20; //default length
@@ -14,7 +14,6 @@ Intersection::Intersection() {
   SE = Section();
   SW = Section();
 
-  // TEMPORARY FIX -- NOT SURE WHAT YOU WANTED TO DO WITH THE TYPES HERE
   Section* NWptr = &NW;
   Section* NEptr = &NE;
   Section* SEptr = &SE;
@@ -41,7 +40,6 @@ Intersection::Intersection(int length) {
   SE = Section();
   SW = Section();
 
-  // TEMPORARY FIX -- NOT SURE WHAT YOU WANTED TO DO WITH THE TYPES HERE
   Section* NWptr = &NW;
   Section* NEptr = &NE;
   Section* SEptr = &SE;
@@ -94,9 +92,6 @@ getLane(int direction) {
     case 4: return &west;
   }
 }
-
-
-
 
 void Intersection::update(bool debug) {
 
