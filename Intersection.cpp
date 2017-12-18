@@ -131,3 +131,30 @@ void Intersection::update(bool debug) {
   }
   printIntersection();
 }
+
+Lane*
+Intersection::
+getRightLane(int direction) {
+  switch(direction) {
+    case 1: return &east;
+    case 2: return &south;
+    case 3: return &west;
+    case 4: return &north;
+  }
+}
+
+Lane*
+Intersection::
+getLeftLane(int direction) {
+  switch(direction) {
+    case 1: return &west;
+    case 2: return &north;
+    case 3: return &east;
+    case 4: return &south;
+  }
+}
+
+
+
+
+
