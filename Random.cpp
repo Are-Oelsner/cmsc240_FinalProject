@@ -2,6 +2,7 @@
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
 //* Date:
 
+/*
 #include "Random.h"
 
 	int Random::randint(int a, int b) {
@@ -20,3 +21,4 @@
     	}
     	return result;
 	}
+*/

@@ -26,8 +26,21 @@ class Random {
 
     inline static int randint() { return Random::randint01(Random::rng); }
 
-    static int randint(int a, int b);
-    static double randDouble(double min, double max);
+    static int randint(int a, int b){
+      double u = Random::randdouble(Random::rng);
+      int mappedValue = a + (int)((b - a + 1)*u);
+      return mappedValue;
+    }
+
+    static double randDouble(double min, double max){
+      double before = rand() % (int)max + (int)min;
+      double after = (double)rand() / RAND_MAX;
+      double result = before + after;
+      if (result < min || result > max) {
+          result = randDouble(min, max);
+      }
+      return result;
+    }
 };
 
 #endif
