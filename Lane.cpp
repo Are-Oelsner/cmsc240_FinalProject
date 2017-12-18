@@ -9,8 +9,6 @@ Lane::Lane() {
 }
 
 Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
-  cout << "Constructing lane: " << direction << endl;
-
   if(length % 2 != 0 || length < 12) {
     cout << "Error: length: " << length << " must be even and at least 12" << endl;
     exit(0);
@@ -60,7 +58,6 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   // Set section before end of lane to be flagged nearEdge
   sections[length - 1]->setNearEdge(true);
 
-  cout << "Finished constructing lane: " << direction << endl;
 }
 
 Lane::~Lane(){}

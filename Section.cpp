@@ -30,23 +30,23 @@ void Section::setNeighbor(Section* _section, int direction) {
 
 void Section::printSection() {
   cout << "[";
-  if( this->inIntersection ) {
+  if( this->inIntersection ) { 
     if(this->occupied) 
-      cout << "i";
+      cout << "i"; // Occupied Intersection
     else
-      cout << "I";
+      cout << "I"; // Unoccupied intersection 
   }
   else if( this ->nearIntersection ) {
     if(this->occupied) 
-      cout << "n";
+      cout << "n"; // Occupied near intersection
     else
-      cout << "N";
+      cout << "N"; // unoccupied near intersection
   }
   else if( this->nearEdge ) {
     if(this->occupied) 
-      cout << "e";
+      cout << "e"; // Occupied edge
     else
-      cout << "E";
+      cout << "E"; // unoccupied edge
   }
   else {
     if(this->occupied) 
