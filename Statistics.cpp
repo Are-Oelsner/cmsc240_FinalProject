@@ -14,3 +14,39 @@ Statistics to collect:
 - ...
 
 */
+#include "Statistics.h"
+
+//default constructor 
+Statistics::Statistics() {} 
+
+
+//constructor 
+Statistics::Statistics(int cars, int SUV, int truck, int totalCar, int left, int right, 
+int straight, vector<double> leftTime, vector<double> rightTime, vector<double> straightTime)
+{
+	vehicleLeft = left;
+    vehicleRight=right;
+    vehicleStraight=straight;
+    totalCar = cars;
+    totalSUV = SUV;
+    totalTruck = truck;
+    totalVehicles = totalCar;
+    leftTime = this->leftTime;
+    rightTime = this->rightTime;
+    straightTime = this->straightTime;
+
+}
+
+
+//print 
+void Statistics::printStatistics()
+{
+	cout << "Printing Statistics" << endl;
+	cout << "Number of total vehicles spawned: " << totalVehicles << endl;
+	cout << "Number of total  cars spawned: " << totalCar << endl;
+	cout << "Number of total SUVs spawned: " << totalSUV << endl;
+	cout << "Number of total trucks spawned: " << totalTruck << endl;
+	cout << "Number of total vehicles turning left: " << vehicleLeft << endl;
+	cout << "Number of total vehicles turning right: " << vehicleRight << endl;
+	cout << "Number of total vehicles going straight " << vehicleStraight << endl;
+}

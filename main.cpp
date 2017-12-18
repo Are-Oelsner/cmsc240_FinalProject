@@ -45,22 +45,25 @@ int main(int argc, const char * argv[]) {
   vehicleType[4] = 0;
 
 
-  //set up traffic light 
-  //b/c color is enum 
-  //0=red, 1=green, 3=yellow
-  TrafficLight light = TrafficLight(g, r, y);
-  //how to change a light!
-  //light.change(TrafficLight::red);
 
-  // Create new intersection 
-  Intersection* trafficIntersection = new Intersection();
+	//set up traffic light 
+	//b/c color is enum 
+	//0=red, 1=green, 3=yellow
+	TrafficLight light = TrafficLight(g, r, y);
+	//how to change a light!
+	//light.change(TrafficLight::red);
 
-  // Start simulation
-  int carsLeft = 0;
-  int carsRight = 0;
-  int carStraight = 0;
-  int totalCars = 0;
-
+	// Create new intersection 
+	Intersection* trafficIntersection = new Intersection();
+	
+	// Start simulation
+	int carsLeft = 0;
+	int carsRight = 0;
+	int carStraight = 0;
+	int totalCars = 0;
+	int totalSUV = 0;
+	int totalTruck = 0;
+	int totalVehicles = 0;
   // *** Add endTime to parser file?
   // *** Add frequency of vehicle spawn to parser file?
 
@@ -72,6 +75,7 @@ int main(int argc, const char * argv[]) {
   start = clock();
   duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
   while ( duration < endTime ) {
+
     for(int i = 1; i <= 4; i++) {
       if(true) { // TODO probability of car attempting to spawn each timestep
         Lane* lane = trafficIntersection->getLane(i);
@@ -82,6 +86,13 @@ int main(int argc, const char * argv[]) {
         // not store vehicle type and try again next timestep. 
         if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
           Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
+          //for stats
+          totalVehicles++;
+          if(vehicleType[i]==2) { totalCars++;}
+          if(vehicleType[i]==3) { totalSUV++;}
+          if(vehicleType[i]==4) {totalTruck++;}
+
+
           trafficIntersection->addVehicle(newVehicle);
           vehicleType[i] = 0; // resets vehicle type after it spawns. 
         }
@@ -95,9 +106,16 @@ int main(int argc, const char * argv[]) {
     }
     seconds++;
 
-  }
+	}
+
+  std::vector<double> v;
+	Statistics* stats = new Statistics(totalCars, totalSUV, totalTruck, totalVehicles,
+		0,0,0, v,v,v);	
+	stats->printStatistics();
+
   double n = Random::randDouble(0, 5.0);
   cout << n << endl;
+
 
 
 
