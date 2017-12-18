@@ -46,7 +46,7 @@ class Section {
     //* Get Functions
 
     //**************************************************************************
-    //* Traffic Flow
+    //* Neighbors
     
     //* TODO
     //* @return     TODO
@@ -64,9 +64,10 @@ class Section {
     //* @return     TODO
     Section* getBackSection(int direction);
 
-    //**************************************************************************
-    //* Neighbors
     
+    //**************************************************************************
+    //* Traffic Flow
+
     //* TODO
     //* @return     TODO
     Section* getRight(int direction);

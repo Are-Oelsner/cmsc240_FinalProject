@@ -89,7 +89,7 @@ void Section::printSection2() {
 
 Section*
 Section::
-getRightSection(int direction) {
+getRight(int direction) {
   Section* tmp;
   switch(direction) {
     case 1: tmp = this->right;
@@ -100,58 +100,6 @@ getRightSection(int direction) {
   if(tmp->getNearIntersection()) 
     return NULL;
   return tmp;
-}
-
-Section*
-Section::
-getStraightSection(int direction) {
-  switch(direction) {
-    case 1: return this->up;
-    case 2: return this->right;
-    case 3: return this->down;
-    case 4: return this->left;
-  }
-}
-
-Section*
-Section::
-getLeftSection(int direction) {
-  Section* tmp;
-  switch(direction) {
-    case 1: tmp = this->left;
-    case 2: tmp = this->up;
-    case 3: tmp = this->right;
-    case 4: tmp = this->down;
-  }
-  if(this->getBack(direction)->getNearIntersection() == true)
-    return NULL;
-  return tmp;
-}
-
-Section*
-Section::
-getBackSection(int direction) {
-  switch(direction) {
-    case 1: return this->down;
-    case 2: return this->left;
-    case 3: return this->up;
-    case 4: return this->right;
-  }
-}
-
-
-
-
-// Original getDirection Functions, not constrained by traffic flow
-Section*
-Section::
-getRight(int direction) {
-  switch(direction) {
-    case 1: return this->right;
-    case 2: return this->down;
-    case 3: return this->left;
-    case 4: return this->up;
-  }
 }
 
 Section*
@@ -168,6 +116,61 @@ getStraight(int direction) {
 Section*
 Section::
 getLeft(int direction) {
+  Section* tmp;
+  switch(direction) {
+    case 1: tmp = this->left;
+    case 2: tmp = this->up;
+    case 3: tmp = this->right;
+    case 4: tmp = this->down;
+  }
+  if(this->getBack(direction) == NULL) {
+    return NULL;
+  }
+  if(this->getBack(direction)->getNearIntersection() == true)
+    return NULL;
+  return tmp;
+}
+
+Section*
+Section::
+getBack(int direction) {
+  switch(direction) {
+    case 1: return this->down;
+    case 2: return this->left;
+    case 3: return this->up;
+    case 4: return this->right;
+  }
+}
+
+
+
+
+// Original getDirection Functions, not constrained by traffic flow
+Section*
+Section::
+getRightSection(int direction) {
+  switch(direction) {
+    case 1: return this->right;
+    case 2: return this->down;
+    case 3: return this->left;
+    case 4: return this->up;
+  }
+}
+
+Section*
+Section::
+getStraightSection(int direction) {
+  switch(direction) {
+    case 1: return this->up;
+    case 2: return this->right;
+    case 3: return this->down;
+    case 4: return this->left;
+  }
+}
+
+Section*
+Section::
+getLeftSection(int direction) {
   switch(direction) {
     case 1: return this->left;
     case 2: return this->up;
@@ -178,7 +181,7 @@ getLeft(int direction) {
 
 Section*
 Section::
-getBack(int direction) {
+getBackSection(int direction) {
   switch(direction) {
     case 1: return this->down;
     case 2: return this->left;
