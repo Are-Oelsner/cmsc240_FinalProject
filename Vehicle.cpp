@@ -155,28 +155,27 @@ void Vehicle::move() {
     }
   }
 
+  if(frontSection->getNearEdge()) {
+    // If the front and back sections are the same, move the vehicle
+    // out of view
+    if(backSection->getNearEdge()) {
+      backSection->setOccupied(false);
+      delete frontSection;
+      delete backSection;
+    }
+    // Move one section of the vehicle out of view 
+    else {
+      frontSection = frontSection->getBack(frontLaneDir);
+      backSection = backSection->getStraight(backLaneDir);
+    }
+  }
+
   if(canMove(direction)) {
+
     // HANDLE FRONT SECTION
     // Set the front section of this vehicle one section forward
-    if(frontSection->getNearEdge()) {
-      // If the front and back sections are the same, move the vehicle
-      // out of view
-      if(backSection->getNearEdge()) {
-        backSection->setOccupied(false);
-        delete frontSection;
-        delete backSection;
-        // Vehicle is out of view - delete it's front and back sections
 
-        // delete frontSection; //****** what about other sections -- figure out something here
-        // delete backSection;
-
-      }
-      // Move one section of the vehicle out of view 
-      else {
-        frontSection = frontSection->getBack(frontLaneDir);
-      }
-    }
-    else if(path == 's') {
+    if(path == 's') {
       frontSection = frontSection->getStraight(frontLaneDir);
     }
     else if (path == 'l' && frontCanTurnLeft) {
@@ -203,6 +202,6 @@ void Vehicle::move() {
     else if (path == 'r' && backCanTurnRight) {
       backSection = backSection->getRight(backLaneDir);
     }
-
+    
   }
 }
