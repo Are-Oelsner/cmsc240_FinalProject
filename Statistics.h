@@ -31,7 +31,7 @@ public:
     //Constructors
     Statistics();
     
-    Statistics(int cars, int SUV, int truck, int totalCar, int left, int right, int straight, vector<double> leftTime, vector<double> rightTime, vector<double> straightTime);
+    Statistics(int cars, int SUV, int truck, int totalVehicles, int left, int right, int straight, vector<double> leftTime, vector<double> rightTime, vector<double> straightTime);
     
 
     

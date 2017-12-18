@@ -21,7 +21,7 @@ Statistics::Statistics() {}
 
 
 //constructor 
-Statistics::Statistics(int cars, int SUV, int truck, int totalCar, int left, int right, 
+Statistics::Statistics(int cars, int SUV, int truck, int totalVehicles, int left, int right, 
 int straight, vector<double> leftTime, vector<double> rightTime, vector<double> straightTime)
 {
 	vehicleLeft = left;
@@ -30,7 +30,7 @@ int straight, vector<double> leftTime, vector<double> rightTime, vector<double> 
     totalCar = cars;
     totalSUV = SUV;
     totalTruck = truck;
-    totalVehicles = totalCar;
+    totalVehicles = this->totalVehicles;
     leftTime = this->leftTime;
     rightTime = this->rightTime;
     straightTime = this->straightTime;
