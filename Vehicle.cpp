@@ -103,6 +103,8 @@ bool Vehicle::canMove(char _direction) {
 
   int frontLaneDir = frontCurrLane->getDirection();
 
+  nearIntersection = frontSection->getNearIntersection();
+
   if( _direction == 'l' && frontSection->getLeft(frontLaneDir) != NULL) {
     pathBlocked = frontSection->getLeft(frontLaneDir)->getOccupied();
   }
