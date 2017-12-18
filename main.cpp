@@ -88,7 +88,7 @@ int main(int argc, const char * argv[]) {
       if( lane->canAllocSections(vehicleType[i]) ) {  
         Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane); // Vehicle to be added
         trafficIntersection->addVehicle(newVehicle); // Adds vehicle to intersection
-        incrementVehicles(vehicleType[i]); // for statistics
+        stats->incrementVehicles(vehicleType[i]); // for statistics
         vehicleType[i] = 0; // resets vehicle type after it spawns. 
       }
     }

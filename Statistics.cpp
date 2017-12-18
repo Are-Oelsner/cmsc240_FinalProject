@@ -18,7 +18,7 @@ Statistics to collect:
 
 //default constructor 
 Statistics::Statistics() { 
-  vehicleLeft = left;
+  vehicleLeft = 0;
   vehicleRight=0;
   vehicleStraight=0;
 
@@ -51,9 +51,9 @@ void
 Statistics::
 incrementVehicles(int size) {
   switch(size) {
-    case 2: totalCars++; totalVehicles++; break;
-    case 3: totalSUV++; totalVehicles++; break;
-    case 4: totalTruck++; totalVehicles++; break;
+    case 2: totalCar++; totalVehicle++; break;
+    case 3: totalSUV++; totalVehicle++; break;
+    case 4: totalTruck++; totalVehicle++; break;
   }
 }
 
