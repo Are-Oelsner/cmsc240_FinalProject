@@ -16,7 +16,9 @@
     this->size = size; // Sets vehicle type
 
     sections = frontCurrLane->allocSections(size);
-
+    
+    frontSection->setOccupied(true);
+    backSection->setOccupied(true);
     for(int i = 0; i < sections.size(); i++) {
       sections[i]->setOccupied(true);
     }
