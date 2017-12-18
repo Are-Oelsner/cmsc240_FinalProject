@@ -52,6 +52,9 @@ Clock.o: Clock.cpp
 Random.o: Random.cpp 
 	$(CC) $(CCFLAGS) $<
 
+Vehicle.o: Vehicle.cpp Section.cpp Lane.cpp Random.cpp
+	$(CC) $(CCFLAGS) $<
+
 ################################################################################
 # Tester O Compilers -- reduces recompilation TODO finish
 ################################################################################
