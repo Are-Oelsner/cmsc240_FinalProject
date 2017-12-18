@@ -17,7 +17,7 @@ Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane) {
 
   sections = frontCurrLane->allocSections(size);
 
-  for(int i = 0; i < sections.size(); i++) {
+  for(int i = 0; (unsigned)i < sections.size(); i++) {
     sections[i]->setOccupied(true);
   }
 
@@ -147,7 +147,7 @@ void Vehicle::move() {
     bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
 
     // Check if any section of the vehicle is in the intersection
-    for(int i = 0; i < sections.size(); i++) {
+    for(int i = 0; (unsigned)i < sections.size(); i++) {
       if(sections[i]->getInIntersection()){
         inIntersection = true;
         break;
