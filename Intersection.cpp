@@ -95,7 +95,7 @@ getLane(int direction) {
   }
 }
 
-void Intersection::update(double time) {
+void Intersection::update(double time, bool debug) {
 
   // Handle light timing here? Update trafficlights?
   TrafficLight nTraffic = north.getTrafficLight();
@@ -117,7 +117,8 @@ void Intersection::update(double time) {
   printIntersection();
 
   for(int i = 0; i < vehicles.size(); i++) {
-    vehicles[i].printVehicle();
+    if(debug) 
+      vehicles[i].printVehicle();
     vehicles[i].move();
   }
 
