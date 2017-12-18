@@ -33,6 +33,8 @@ Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane) {
   // in the Intersection
 
   Vehicle::decidePath(_rightProb, _leftProb);
+
+  exited = false;
 }
 
 Vehicle::~Vehicle(){ }
@@ -133,82 +135,81 @@ bool Vehicle::canMove(char _direction) {
 
 void Vehicle::move() {
 
-  int frontLaneDir = frontCurrLane->getDirection();
-  int backLaneDir = backCurrLane->getDirection();
+  if(!exited) {
 
-  // TODO make sure these null comparisons work
-  bool frontCanTurnRight = frontSection->getRight(frontLaneDir) != NULL;
-  bool frontCanTurnLeft = frontSection->getLeft(frontLaneDir) != NULL;
-  bool backCanTurnRight = backSection->getRight(backLaneDir) != NULL;
-  bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
+    int frontLaneDir = frontCurrLane->getDirection();
+    int backLaneDir = backCurrLane->getDirection();
 
-  // Check if any section of the vehicle is in the intersection
-  for(int i = 0; i < sections.size(); i++) {
-    if(sections[i]->getInIntersection()){
-      inIntersection = true;
-      break;
+    // TODO make sure these null comparisons work
+    bool frontCanTurnRight = frontSection->getRight(frontLaneDir) != NULL;
+    bool frontCanTurnLeft = frontSection->getLeft(frontLaneDir) != NULL;
+    bool backCanTurnRight = backSection->getRight(backLaneDir) != NULL;
+    bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
+
+    // Check if any section of the vehicle is in the intersection
+    for(int i = 0; i < sections.size(); i++) {
+      if(sections[i]->getInIntersection()){
+        inIntersection = true;
+        break;
+      }
     }
-  }
 
-  char direction = 's';
-  // If the Vehicle is attempting to move while in the intersection, check
-  // if it should turn or continue straight
-  if(inIntersection) {
-    // If the Vehicle's path indicates that it will turn left or right,
-    // check if a turn needs to occur
-    if( (path == 'l' && frontCanTurnLeft) || (path == 'r' && frontCanTurnRight) ) {
-      direction = path;
+    char direction = 's';
+    // If the Vehicle is attempting to move while in the intersection, check
+    // if it should turn or continue straight
+    if(inIntersection) {
+      // If the Vehicle's path indicates that it will turn left or right,
+      // check if a turn needs to occur
+      if( (path == 'l' && frontCanTurnLeft) || (path == 'r' && frontCanTurnRight) ) {
+        direction = path;
+      }
     }
-  }
 
-  if(frontSection->getNearEdge()) {
-    // If the front and back sections are the same, move the vehicle
-    // out of view
-    if(backSection->getNearEdge()) {
+    if(frontSection->getNearEdge()) {
+      // If the front and back sections are the same, move the vehicle
+      // out of view
+      while (!backSection->getNearEdge()) {
+        backSection->setOccupied(false);
+        backSection = backSection->getStraight(backLaneDir);
+      }
       backSection->setOccupied(false);
-      //delete frontSection;
-      //delete backSection;
+      frontSection->setOccupied(false); 
+      exited = true;
     }
-    // Move one section of the vehicle out of view 
-    else {
-      frontSection->setOccupied(false);
-      frontSection = frontSection->getBack(frontLaneDir);
-      backSection = backSection->getStraight(backLaneDir);
-    }
-  }
 
-  if(canMove(direction)) {
+    else if(canMove(direction)) {
 
-    // HANDLE FRONT SECTION
-    // Set the front section of this vehicle one section forward
+      // HANDLE FRONT SECTION
+      // Set the front section of this vehicle one section forward
 
-    if(path == 's') {
-      frontSection = frontSection->getStraight(frontLaneDir);
-    }
-    else if (path == 'l' && frontCanTurnLeft) {
-      frontSection = frontSection->getLeft(frontLaneDir);
-      hasPassedLight = true;
-    }
-    else if (path == 'r' && frontCanTurnRight) {
-      frontSection = frontSection->getRight(frontLaneDir);
-      hasPassedLight = true;
-    }
-    // Set new front section to be occupied
-    frontSection->setOccupied(true);
+      if(path == 's') {
+        frontSection = frontSection->getStraight(frontLaneDir);
+      }
+      else if (path == 'l' && frontCanTurnLeft) {
+        frontSection = frontSection->getLeft(frontLaneDir);
+        hasPassedLight = true;
+      }
+      else if (path == 'r' && frontCanTurnRight) {
+        frontSection = frontSection->getRight(frontLaneDir);
+        hasPassedLight = true;
+      }
+      // Set new front section to be occupied
+      frontSection->setOccupied(true);
 
-    // HANDLE BACK SECTION
-    // Set original back section to be unoccupied
-    backSection->setOccupied(false);
-    // Set the back section of this vehicle one section forward
-    if(path == 's') {
-      backSection = backSection->getStraight(backLaneDir);
+      // HANDLE BACK SECTION
+      // Set original back section to be unoccupied
+      backSection->setOccupied(false);
+      // Set the back section of this vehicle one section forward
+      if(path == 's') {
+        backSection = backSection->getStraight(backLaneDir);
+      }
+      else if (path == 'l' && backCanTurnLeft) {
+        backSection = backSection->getLeft(backLaneDir);
+      }
+      else if (path == 'r' && backCanTurnRight) {
+        backSection = backSection->getRight(backLaneDir);
+      }
+      
     }
-    else if (path == 'l' && backCanTurnLeft) {
-      backSection = backSection->getLeft(backLaneDir);
-    }
-    else if (path == 'r' && backCanTurnRight) {
-      backSection = backSection->getRight(backLaneDir);
-    }
-    
   }
 }
