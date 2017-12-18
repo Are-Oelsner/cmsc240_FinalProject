@@ -12,7 +12,10 @@ main: $(OBJS)
 	$(LD) $(LDFLAGS) $(OBJS) -o $@
 
 r: 									#runs main
-	./main simulation.config
+	./main simulation.config 0
+
+d: 									#runs debug main
+	./main simulation.config 1
 
 gdb:
 	gdb ./main 

@@ -24,8 +24,12 @@ clock_t timer;
 
 int main(int argc, const char * argv[]) {
 
-  // Prints out additional debugging info if true
-  bool debug = true;
+  // Prints out additional debugging info
+  bool debug;
+  if(*argv[argc-1] == '1') 
+    debug = true;
+  else 
+    debug = false;
 
   // Store parser values in public variables 
   double leftProb = p.getLeftProb();

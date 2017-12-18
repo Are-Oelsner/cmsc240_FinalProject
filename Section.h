@@ -46,23 +46,43 @@ class Section {
     //* Get Functions
 
     //**************************************************************************
-    //* Traffic Flow TODO we might not need these
+    //* Traffic Flow
+    
+    //* TODO
+    //* @return     TODO
+    Section* getRightSection(int direction);
 
     //* TODO
-    //* @return     bool 
-    inline bool getNorth() { return up != NULL; } 
+    //* @return     TODO
+    Section* getStraightSection(int direction);
 
     //* TODO
-    //* @return     bool
-    inline bool getEast() { return right != NULL;  }
+    //* @return     TODO
+    Section* getLeftSection(int direction);
 
     //* TODO
-    //* @return     bool
-    inline bool getSouth() { return down != NULL; }
+    //* @return     TODO
+    Section* getBackSection(int direction);
+
+    //**************************************************************************
+    //* Neighbors
+    
+    //* TODO
+    //* @return     TODO
+    Section* getRight(int direction);
 
     //* TODO
-    //* @return     bool
-    inline bool getWest() { return left != NULL;  }
+    //* @return     TODO
+    Section* getStraight(int direction);
+
+    //* TODO
+    //* @return     TODO
+    Section* getLeft(int direction);
+
+    //* TODO
+    //* @return     TODO
+    Section* getBack(int direction);
+
 
     //**************************************************************************
     //* Neighbors
@@ -101,22 +121,6 @@ class Section {
     //* TODO
     //* @return     TODO
     inline bool getNearEdge() { return nearEdge; }
-
-    //* TODO
-    //* @return     TODO
-    Section* getRight(int direction);
-
-    //* TODO
-    //* @return     TODO
-    Section* getStraight(int direction);
-
-    //* TODO
-    //* @return     TODO
-    Section* getLeft(int direction);
-
-    //* TODO
-    //* @return     TODO
-    Section* getBack(int direction);
 
     //**************************************************************************
     //* Set Functions
