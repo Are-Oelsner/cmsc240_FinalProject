@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
   double SUVProb = p.getSUVProb();
   double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
 
-  int* vehicleType = new int[4]; // Array of the next vehicle type for each lane
+  int vehicleType[4]; // Array of the next vehicle type for each lane
   vehicleType[0] = 0;
   vehicleType[1] = 0;
   vehicleType[2] = 0;
