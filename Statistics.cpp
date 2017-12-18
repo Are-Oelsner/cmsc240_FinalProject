@@ -17,26 +17,22 @@ Statistics to collect:
 #include "Statistics.h"
 
 //default constructor 
-Statistics::Statistics() {} 
+Statistics::Statistics() { 
+  vehicleLeft = left;
+  vehicleRight=0;
+  vehicleStraight=0;
 
+  //Vehicle Stats
+  totalCar = 0;
+  totalSUV = 0;
+  totalTruck = 0;
+  totalVehicle = 0;
 
-//constructor 
-Statistics::Statistics(int cars, int SUV, int truck, int totalVehicles, int left, int right, 
-int straight, vector<double> leftTime, vector<double> rightTime, vector<double> straightTime)
-{
-	vehicleLeft = left;
-    vehicleRight=right;
-    vehicleStraight=straight;
-    totalCar = cars;
-    totalSUV = SUV;
-    totalTruck = truck;
-    totalVehicle = totalVehicles;
-    leftTime = this->leftTime;
-    rightTime = this->rightTime;
-    straightTime = this->straightTime;
-
+  //Timing Vectors TODO
+  leftTime;
+  rightTime;
+  straightTime;
 }
-
 
 //print 
 void Statistics::printStatistics()
@@ -50,3 +46,14 @@ void Statistics::printStatistics()
 	cout << "Number of total vehicles turning right: " << vehicleRight << endl;
 	cout << "Number of total vehicles going straight " << vehicleStraight << endl;
 }
+
+void 
+Statistics::
+incrementVehicles(int size) {
+  switch(size) {
+    case 2: totalCars++; totalVehicles++; break;
+    case 3: totalSUV++; totalVehicles++; break;
+    case 4: totalTruck++; totalVehicles++; break;
+  }
+}
+

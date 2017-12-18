@@ -31,13 +31,22 @@ public:
     //Constructors
     Statistics();
     
-    Statistics(int cars, int SUV, int truck, int totalVehicles, int left, int right, int straight, vector<double> leftTime, vector<double> rightTime, vector<double> straightTime);
+    Statistics(int left, int right, int straight, vector<double> leftTime, vector<double> rightTime, vector<double> straightTime);
     
 
     
     //*********************************************************
     //Methods
     void printStatistics();
+
+    //Increments vehicles based on input size
+    void incrementVehicles(int size);
+
+    //Increments Vehicle turn stats
+    inline void incrementLeft() {vehicleLeft++;}
+    inline void incrementRight() {vehicleRight++;}
+    inline void incrementStraight() {vehicleStraight++;}
+
     
     
     

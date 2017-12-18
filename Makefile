@@ -4,7 +4,7 @@ LD = $(CC)
 CCFLAGS = -Wall -Wno-deprecated --std=c++11 -g -c   
 LDFLAGS = -Wall --std=c++11 -Wno-deprecated -g
 OBJS = main.o Intersection.o Lane.o Section.o Clock.o Parser.o TrafficLight.o Vehicle.o Random.o Statistics.o
-TESTS = SectionTester MainTester ParserTester
+TESTS = SectionTester ParserTester #MainTester 
 ################################################################################
 
 #compiles main from .o files
@@ -32,10 +32,13 @@ reallyclean: clean 	#cleans and removes all .o files
 o:
 	vim main.cpp +":tabf Section.cpp" +":vsplit Section.h" +":tabf Lane.cpp" +":vsplit Lane.h" +":tabf Intersection.cpp" +":vsplit Intersection.h" +":tabf Vehicle.cpp" +":vsplit Vehicle.h"
 
-test: $(TESTS) 			#TODO finish
+test: $(TESTS) 
+	./SectionTester
+	./ParserTester
+	#./MainTester
 
 ################################################################################
-# O Compilers -- reduces recompilation TODO finish
+# O Compilers -- reduces recompilation
 ################################################################################
 main.o: main.cpp Intersection.cpp TrafficLight.cpp Clock.cpp Random.cpp
 	$(CC) $(CCFLAGS) $<
@@ -62,8 +65,13 @@ Vehicle.o: Vehicle.cpp Section.cpp Lane.cpp Random.cpp
 	$(CC) $(CCFLAGS) $<
 
 ################################################################################
-# Tester O Compilers -- reduces recompilation TODO finish
+# Tester Compilers -- 
 ################################################################################
 SectionTester: SectionTester.cpp Section.cpp
 	$(CC) $(LDFLAGS) SectionTester.cpp Section.cpp -o $@
 
+ParserTester: Parser.cpp
+	$(CC) $(LDFLAGS) Parser.cpp -o $@
+
+MainTester: main.cpp # not used anymore
+	$(CC) $(LDFLAGS) main.cpp -o $@

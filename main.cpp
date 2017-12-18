@@ -22,19 +22,6 @@ Parser p = Parser("simulation.config");
 // Clock c = Clock();
 clock_t timer;
 
-int totalCars = 0;
-int totalSUV = 0;
-int totalTruck = 0;
-int totalVehicles = 0;
-
-void incrementVehicles(int size) {
-  switch(size) {
-    case 2: totalCars++; totalVehicles++; break;
-    case 3: totalSUV++; totalVehicles++; break;
-    case 4: totalTruck++; totalVehicles++; break;
-  }
-}
-
 int main(int argc, const char * argv[]) {
 
   // Store parser values in public variables 
@@ -68,14 +55,10 @@ int main(int argc, const char * argv[]) {
   // Create new intersection 
   Intersection* trafficIntersection = new Intersection();
 
+  // Statistics Object
+  Statistics* stats = new Statistics();	
+
   // Start simulation
-  int carsLeft = 0;
-  int carsRight = 0;
-  int carStraight = 0;
-  //int totalCars = 0;
-  //int totalSUV = 0;
-  //int totalTruck = 0;
-  //int totalVehicles = 0;
   // *** Add endTime to parser file?
   // *** Add frequency of vehicle spawn to parser file?
 
@@ -118,8 +101,8 @@ int main(int argc, const char * argv[]) {
   }
 
 
-  std::vector<double> v;
-  Statistics* stats = new Statistics(totalCars, totalSUV, totalTruck, totalVehicles, 0,0,0, v,v,v);	
+  std::vector<double> v; // Temporary vector for leftTime rightTime and straightTime TODO(remove)
+  // Outputs Statistics Data after simulation stops
   stats->printStatistics();
 
   return 0;
