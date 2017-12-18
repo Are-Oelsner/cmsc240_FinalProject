@@ -80,6 +80,7 @@ int main(int argc, const char * argv[]) {
     	//CAR 
       if((int)endTime % (int)(endTime*carProb)==0) { 
         Lane* lane = trafficIntersection->getLane(i);
+        cout << "*****" << endl;
         if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
           vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
         }
