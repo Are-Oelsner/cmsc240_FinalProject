@@ -122,7 +122,7 @@ class Section {
 
     //* Sets occupied status
     //* @param  _occupied   bool
-    inline void setOccupied(bool _occupied) { occupied = _occupied; }
+    void setOccupied(bool _occupied);
 
     //* Sets whether the section is near the edge of the lane
     //* @param  _nearEdge  bool
