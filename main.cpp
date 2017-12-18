@@ -22,6 +22,18 @@ Parser p = Parser("simulation.config");
 // Clock c = Clock();
 clock_t timer;
 
+int totalCars = 0;
+int totalSUV = 0;
+int totalTruck = 0;
+int totalVehicles = 0;
+
+void incrementVehicles(int size) {
+  switch(size) {
+    case 2: totalCars++; totalVehicles++; break;
+    case 3: totalSUV++; totalVehicles++; break;
+    case 4: totalTruck++; totalVehicles++; break;
+  }
+}
 
 int main(int argc, const char * argv[]) {
 
@@ -46,149 +58,69 @@ int main(int argc, const char * argv[]) {
 
 
 
-	//set up traffic light 
-	//b/c color is enum 
-	//0=red, 1=green, 3=yellow
-	TrafficLight light = TrafficLight(g, r, y);
-	//how to change a light!
-	//light.change(TrafficLight::red);
+  //set up traffic light 
+  //b/c color is enum 
+  //0=red, 1=green, 3=yellow
+  TrafficLight light = TrafficLight(g, r, y);
+  //how to change a light!
+  //light.change(TrafficLight::red);
 
-	// Create new intersection 
-	Intersection* trafficIntersection = new Intersection();
-	
-	// Start simulation
-	int carsLeft = 0;
-	int carsRight = 0;
-	int carStraight = 0;
-	int totalCars = 0;
-	int totalSUV = 0;
-	int totalTruck = 0;
-	int totalVehicles = 0;
+  // Create new intersection 
+  Intersection* trafficIntersection = new Intersection();
+
+  // Start simulation
+  int carsLeft = 0;
+  int carsRight = 0;
+  int carStraight = 0;
+  //int totalCars = 0;
+  //int totalSUV = 0;
+  //int totalTruck = 0;
+  //int totalVehicles = 0;
   // *** Add endTime to parser file?
   // *** Add frequency of vehicle spawn to parser file?
 
-	double endTime = 30.0;
-	double duration;
-	clock_t start;
-	int seconds = 0;
+  double endTime = 30.0;
+  double duration;
+  clock_t start;
+  int seconds = 0;
 
-	start = clock();
-	duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
-	while ( duration < endTime ) {
+  start = clock();
+  duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+  while ( duration < endTime ) {
 
-		for(int i = 1; i <= 4; i++) {
-			//CAR 
-      		double type = Random::randDouble(0.0,1.0);
-      		Lane* lane = trafficIntersection->getLane(i);
+    for(int i = 1; i <= 4; i++) {
+      Lane* lane = trafficIntersection->getLane(i);
 
-			if(type <= carProb) { 
-				
-				if(vehicleType[i] < 1 || vehicleType[i] > 4) {// If Vehicle spawned last timestep roll for new type
-				  vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
-				}
-				// If the lane has space for the vehicle this timestep then add it, if
-				// not store vehicle type and try again next timestep. 
-				if( lane->canAllocSections(vehicleType[i]) ) {  //TODO Error Here TODO
-					Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
-				    //for stats
-				    totalVehicles++;
-				    totalCars++;
-
-				    trafficIntersection->addVehicle(newVehicle);
-				    vehicleType[i] = 0; // resets vehicle type after it spawns. 
-				}
-			}
-			//SUV
-      		else if(type <= carProb + SUVProb) { 
-				
-				if(vehicleType[i] < 1 || vehicleType[i] > 4) {// If Vehicle spawned last timestep roll for new type
-				  vehicleType[i] = 3; // Change this to randomly pick based on probabilities TODO
-				}
-				// If the lane has space for the vehicle this timestep then add it, if
-				// not store vehicle type and try again next timestep. 
-				if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
-				  Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
-				  //for stats
-				  totalVehicles++;
-				  totalSUV++;
-
-
-				  trafficIntersection->addVehicle(newVehicle);
-				  vehicleType[i] = 0; // resets vehicle type after it spawns. 
-				}
-			}
-			//Truck
-			else { 
-				
-				if(vehicleType[i] < 1 || vehicleType[i] > 4) {// If Vehicle spawned last timestep roll for new type
-				  vehicleType[i] = 4; // Change this to randomly pick based on probabilities TODO
-				}
-				// If the lane has space for the vehicle this timestep then add it, if
-				// not store vehicle type and try again next timestep. 
-				if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
-				  Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
-				  //for stats
-				  totalVehicles++;
-				  totalTruck++; 
-
-
-				  trafficIntersection->addVehicle(newVehicle);
-				  vehicleType[i] = 0; // resets vehicle type after it spawns. 
-				}
-			}
-			
-
-		   	while (duration < seconds + 1) {
-		      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
-		    }
-		    seconds++;
-		    trafficIntersection->update(seconds);
-    	}
-
-
-	}
-
-  	std::vector<double> v;
-	Statistics* stats = new Statistics(totalCars, totalSUV, totalTruck, totalVehicles, 0,0,0, v,v,v);	
-	stats->printStatistics();
-
-
-
-
-  //	************************* OLD TESTER **************************
-  /*
-  //while(c.getTime()!= 60){
-  //timer = clock();
-
-  //while((float)timer/CLOCKS_PER_SEC <= .10f)
-  trafficIntersection->printIntersection();
-  //}
-
-  // ***** FIND A BETTER WAY TO ALLOCATE SECTIONS TO A VEHICLE *******
-  vector<Section*> spawnSections;
-  for(int i = 0; i < 3; i++) {
-  spawnSections.push_back(trafficIntersection->getEastLane()->getSection(i));
+      if(vehicleType[i] < 1 || vehicleType[i] > 4) { // If vehicle spawned last timestep
+        double type = Random::randDouble(0.0,1.0); // determines vehicle type
+        if(type <= carProb)  
+          vehicleType[i] = 2; 
+        else if(type <= carProb + SUVProb) 
+          vehicleType[i] = 3; 
+        else 
+          vehicleType[i] = 4; 
+      }
+      // If the lane has space for the vehicle this timestep then add it, if
+      // not store vehicle type and try again next timestep. 
+      if( lane->canAllocSections(vehicleType[i]) ) {  
+        Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane); // Vehicle to be added
+        trafficIntersection->addVehicle(newVehicle); // Adds vehicle to intersection
+        incrementVehicles(vehicleType[i]); // for statistics
+        vehicleType[i] = 0; // resets vehicle type after it spawns. 
+      }
+    }
   }
 
-  Vehicle newVehicle = Vehicle(carProb, SUVProb, truckProb, rightProb, leftProb, trafficIntersection->getEastLane(), spawnSections);
-
-  cout << endl;
-
-  trafficIntersection->printIntersection();
-
-  // for each vehicle : vehicle[i].move()
-  newVehicle.move();
-
-  trafficIntersection->printIntersection();
-
-  for(int i = 0; i < 7; i++) {
-  newVehicle.move();
-
-  trafficIntersection->printIntersection();
-
-  cout << "*******************************************" << endl;
+  while (duration < seconds + 1) {
+    duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
   }
-  */
+  seconds++;
+  trafficIntersection->update(seconds);
+
+
+  std::vector<double> v;
+  Statistics* stats = new Statistics(totalCars, totalSUV, totalTruck, totalVehicles, 0,0,0, v,v,v);	
+  stats->printStatistics();
 
   return 0;
 }
