@@ -79,16 +79,16 @@ int main(int argc, const char * argv[]) {
 		for(int i = 1; i <= 4; i++) {
 			//CAR 
       		double type = Random::randDouble(0.0,1.0);
+      		Lane* lane = trafficIntersection->getLane(i);
 
 			if(type <= carProb) { 
-				Lane* lane = trafficIntersection->getLane(i);
-				if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
+				
+				if(vehicleType[i] < 1 || vehicleType[i] > 4) {// If Vehicle spawned last timestep roll for new type
 				  vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
 				}
 				// If the lane has space for the vehicle this timestep then add it, if
 				// not store vehicle type and try again next timestep. 
 				if( lane->canAllocSections(vehicleType[i]) ) {  //TODO Error Here TODO
-					cout << "REACHED" << endl;
 					Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
 				    //for stats
 				    totalVehicles++;
@@ -100,8 +100,8 @@ int main(int argc, const char * argv[]) {
 			}
 			//SUV
       		else if(type <= carProb + SUVProb) { 
-				Lane* lane = trafficIntersection->getLane(i);
-				if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
+				
+				if(vehicleType[i] < 1 || vehicleType[i] > 4) {// If Vehicle spawned last timestep roll for new type
 				  vehicleType[i] = 3; // Change this to randomly pick based on probabilities TODO
 				}
 				// If the lane has space for the vehicle this timestep then add it, if
@@ -119,8 +119,8 @@ int main(int argc, const char * argv[]) {
 			}
 			//Truck
 			else { 
-				Lane* lane = trafficIntersection->getLane(i);
-				if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
+				
+				if(vehicleType[i] < 1 || vehicleType[i] > 4) {// If Vehicle spawned last timestep roll for new type
 				  vehicleType[i] = 4; // Change this to randomly pick based on probabilities TODO
 				}
 				// If the lane has space for the vehicle this timestep then add it, if

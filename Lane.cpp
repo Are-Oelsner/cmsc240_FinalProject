@@ -74,15 +74,30 @@ void Lane::printLane() {
 }
 
 bool Lane::canAllocSections(int size) {
-  for(int i = 0; i < size; i++) {
-    if(getSection(i)->getOccupied() ) {
-      return false;
+
+  if(size > 4 || size < 1) {
+    cout << "Invalid size: " << size << endl;
+    exit(0); 
+  }
+
+  else {
+    for(int i = 0; i < size; i++) {
+      if(getSection(i)->getOccupied() ) {
+        return false;
+      }
     }
   }
+
   return true;
 }
 
 vector<Section*> Lane::allocSections(int size) {
+
+  if(size > 4 || size < 1) {
+    cout << "Invalid size: " << size << endl;
+    exit(0); 
+  }
+  
   // Sections allocated
   vector<Section*> sections;
 
