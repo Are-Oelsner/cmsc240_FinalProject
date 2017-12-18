@@ -102,7 +102,7 @@ void Intersection::update(bool debug) {
 
   counter0++;
   counter1++;
- 
+ cout << northTrafficLight.getColor() << endl;
 
   double n = northTrafficLight.timeRemaining(counter1);
   double e = eastTrafficLight.timeRemaining(counter0);
