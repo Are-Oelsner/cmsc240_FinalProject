@@ -91,6 +91,7 @@ getLane(int direction) {
     case 3: return &south;
     case 4: return &west;
   }
+  return 0;
 }
 
 void Intersection::update(bool debug) {

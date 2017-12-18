@@ -116,6 +116,7 @@ getStraight(int direction) {
     case 3: return this->down;
     case 4: return this->left;
   }
+  return 0;
 }
 
 Section*
@@ -144,6 +145,7 @@ getBack(int direction) {
     case 3: return this->up;
     case 4: return this->right;
   }
+  return 0;
 }
 
 // Original getDirection Functions, not constrained by traffic flow
@@ -156,6 +158,7 @@ getRightSection(int direction) {
     case 3: return this->left;
     case 4: return this->up;
   }
+  return 0;
 }
 
 Section*
@@ -167,6 +170,7 @@ getStraightSection(int direction) {
     case 3: return this->down;
     case 4: return this->left;
   }
+  return 0;
 }
 
 Section*
@@ -178,6 +182,7 @@ getLeftSection(int direction) {
     case 3: return this->right;
     case 4: return this->down;
   }
+  return 0;
 }
 
 Section*
@@ -189,4 +194,5 @@ getBackSection(int direction) {
     case 3: return this->up;
     case 4: return this->right;
   }
+  return 0;
 }
