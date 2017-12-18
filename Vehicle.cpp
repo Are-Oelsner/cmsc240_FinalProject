@@ -216,8 +216,6 @@ void Vehicle::move() {
       else {
         backSection = backSection->getStraight(backLaneDir);
       }
-      
-      backSection->setOccupied(true);
 
     }
   }
