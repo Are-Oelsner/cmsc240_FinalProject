@@ -35,6 +35,8 @@ class Lane {
     //**************************************************************************
     //* Constructors & Destructors
 
+    Lane();
+
     //* Constructor
     //* @param  length      number of sections in the lane
     //* @param  intSec1     first intersection section in the lane

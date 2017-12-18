@@ -5,6 +5,8 @@
 #include "Lane.h"
 #include <iostream>
 
+Lane::Lane() {}
+
 Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   //if NS, then start red
   if(direction==1 || direction==3)
