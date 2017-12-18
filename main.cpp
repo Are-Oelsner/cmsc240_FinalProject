@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]) {
   // *** Add endTime to parser file?
   // *** Add frequency of vehicle spawn to parser file?
 
-	double endTime = 10.0;
+	double endTime = 15.0;
 	double duration;
 	clock_t start;
 	int seconds = 0;
