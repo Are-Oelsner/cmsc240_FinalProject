@@ -97,6 +97,7 @@ void Vehicle::decidePath(double _rightProb, double _leftProb) {
 }
 
 bool Vehicle::canMove(char _direction) {
+  cout << "In canMove" << endl;
 
   // Check if the section in the desired direction is occupied
   bool pathBlocked;
@@ -119,18 +120,22 @@ bool Vehicle::canMove(char _direction) {
     bool lightIsGreen = (lightColor == 1);
     //TODO this would set it one section early 
     nearIntersection = frontSection->getNearIntersection();
-    if(nearIntersection && !lightIsGreen) 
+    if(nearIntersection && !lightIsGreen) {
+      cout << "Returning false for light" << endl;
       return false;
+    }
   }
 
   /* If there is a Vehicle directly in front of it or the Vehicle is near 
    *  the intersection and the light is not green, then the Vehicle cannot
    *  legally move */
   if (pathBlocked) { //TODO problem here
+    cout << "Returning false for pathBlocked" << endl;
     return false;
   }
 
   // Otherwise, the Vehicle is permitted to move in the desired direction
+  cout << "returning can move" << endl;
   return true;
 }
 
@@ -149,8 +154,10 @@ void Vehicle::move() {
     bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
 
     // Check if any section of the vehicle is in the intersection
-    if(sections[size-1]->getInIntersection())
+    if(frontSection->getInIntersection()) { 
+      cout << "setting inIntersection based on last" << endl;
       inIntersection = true;
+    }
 
     char direction = 's';
     // If the Vehicle is attempting to move while in the intersection, check
@@ -175,7 +182,7 @@ void Vehicle::move() {
       exited = true;
     }
 
-    else if(canMove(direction)) {
+    else if(this->canMove(direction)) {
 
       // HANDLE FRONT SECTION
       // Set the front section of this vehicle one section forward
@@ -198,6 +205,7 @@ void Vehicle::move() {
       // Set original back section to be unoccupied
       backSection->setOccupied(false);
       // Set the back section of this vehicle one section forward
+
       if(direction == 's') {
         backSection = backSection->getStraight(backLaneDir);
       }
@@ -207,7 +215,12 @@ void Vehicle::move() {
       else if (direction == 'r' && backCanTurnRight) {
         backSection = backSection->getRight(backLaneDir);
       }
+      else {
+        backSection = backSection->getStraight(backLaneDir);
+      }
       
+      backSection->setOccupied(true);
+
     }
   }
 }

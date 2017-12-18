@@ -91,18 +91,19 @@ getLane(int direction) {
     case 3: return &south;
     case 4: return &west;
   }
+  return 0;
 }
 
 void Intersection::update(bool debug) {
 
   counter0++;
   counter1++;
- cout << northTrafficLight.getColor() << endl;
+  cout << northTrafficLight.getColor() << endl;
 
   double n = northTrafficLight.timeRemaining(counter1);
   double e = eastTrafficLight.timeRemaining(counter0);
   double s = southTrafficLight.timeRemaining(counter1);
-  double w =westTrafficLight.timeRemaining(counter0);
+  double w = westTrafficLight.timeRemaining(counter0);
 
   if(n==0) {
     northTrafficLight.change(); 
@@ -121,7 +122,7 @@ void Intersection::update(bool debug) {
     counter0=0;
   }
 
-  for(int i = 0; i < vehicles.size(); i++) {
+  for(int i = 0; (unsigned)i < vehicles.size(); i++) {
     vehicles[i].move();
     if(debug)  {
       cout << "Printing Vehicle: " << i << "---------------" << endl;
