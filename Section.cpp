@@ -111,10 +111,10 @@ Section*
 Section::
 getStraight(int direction) {
   switch(direction) {
-    case 1: return this->up;
-    case 2: return this->right;
-    case 3: return this->down;
-    case 4: return this->left;
+    case 1: cout << "returning up" << endl; return this->up;
+    case 2: cout << "returning right" << endl; return this->right;
+    case 3: cout << "returning down" << endl; return this->down;
+    case 4: cout << "returning left" << endl; return this->left;
   }
   return 0;
 }

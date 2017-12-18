@@ -105,13 +105,16 @@ bool Vehicle::canMove(char _direction) {
   int frontLaneDir = frontCurrLane->getDirection();
 
   if( _direction == 'l' && frontSection->getLeft(frontLaneDir) != NULL) {
+    cout << "blocked at A" << endl;
     pathBlocked = frontSection->getLeft(frontLaneDir)->getOccupied();
   }
   else if( _direction == 'r' && frontSection->getRight(frontLaneDir) != NULL) {
+    cout << "blocked at B" << endl;
     pathBlocked = frontSection->getRight(frontLaneDir)->getOccupied();
   }
-  else {
+  else if( _direction == 's' && frontSection->getStraight(frontLaneDir) != NULL) {
     pathBlocked = frontSection->getStraight(frontLaneDir)->getOccupied();
+    cout << "blocked at C: " << pathBlocked << endl;
   }
 
   // Get the current state of the traffic light in the Vehicle's lane
