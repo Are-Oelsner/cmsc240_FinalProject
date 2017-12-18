@@ -33,11 +33,6 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
     case 3: opposite = 1; break;
     case 4: opposite = 2; break;
   }
-            
-  //int opposite = (direction+2) % 4; // opposite direction
-  //if(opposite == 0) {
-  //  opposite = 4;
-  //}
 
   sections.push_back(new Section()); // first section in lane
 
@@ -56,8 +51,8 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   sections.push_back(intSec2);
 
   // Connect last added section to intSec1 and vice-versa
-  sections[(length/2) - 2]->setNeighbor(sections[length/2 - 1], direction);
-  sections[length/2 - 1]->setNeighbor(sections[(length/2) - 2], opposite);
+  sections[(length/2) - 2]->setNeighbor(sections[(length/2) - 1], direction);
+  sections[(length/2) - 1]->setNeighbor(sections[(length/2) - 2], opposite);
 
   // Connect intSec1 to intSec2 and vice-versa
   sections[(length/2) - 1]->setNeighbor(sections[length/2], direction);
@@ -68,7 +63,7 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
     sections.push_back(new Section());
 
     sections[i - 1]->setNeighbor(sections[i], direction); // sets next neighbor
-    sections[i]->setNeighbor(sections[i - 1], opposite); // sets previous neighbor TODO error here as well works first loop then crashes second
+    sections[i]->setNeighbor(sections[i - 1], opposite); // sets previous neighbor
   }
 
   this->direction = direction;
