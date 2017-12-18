@@ -17,7 +17,7 @@ public:
 
 	//**************************************************************************
     //* Public Variables
-    
+    double timeE;
     //* Traffic color enum
     enum Color { red, green, yellow };
     
@@ -60,7 +60,7 @@ public:
     Color getColor();
     
     //* Remaining time duration of the current color
-    double timeRemaining(double timeElapsed);
+    double timeRemaining(double timeRemaining);
 
     protected:
 

@@ -94,23 +94,35 @@ getLane(int direction) {
   }
 }
 
-void Intersection::update(double time) {
-
+void Intersection::update() {
+  counter++;
   // Handle light timing here? Update trafficlights?
   TrafficLight nTraffic = north.getTrafficLight();
   TrafficLight eTraffic = east.getTrafficLight();
   TrafficLight sTraffic = south.getTrafficLight();
   TrafficLight wTraffic = west.getTrafficLight();
 
-  double n = nTraffic.timeRemaining(time);
-  double e = eTraffic.timeRemaining(time);
-  double s = sTraffic.timeRemaining(time);
-  double w = wTraffic.timeRemaining(time);
+  double n = nTraffic.timeRemaining(counter);
+  double e = eTraffic.timeRemaining(counter);
+  double s = sTraffic.timeRemaining(counter);
+  double w = wTraffic.timeRemaining(counter);
 
-  if(n==0) {nTraffic.change();}
-  if(e==0) {eTraffic.change();}
-  if(s==0) {sTraffic.change();}
-  if(w==0) {wTraffic.change();}
+  if(n==0) {
+    nTraffic.change(); 
+    counter=0;
+  }
+  if(e==0) {
+    eTraffic.change();
+    counter = 0;
+  }
+  if(s==0) {
+    sTraffic.change();
+    counter = 0;
+  }
+  if(w==0) {
+    wTraffic.change();
+    counter=0;
+  }
 
 
   printIntersection();

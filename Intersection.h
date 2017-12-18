@@ -20,7 +20,8 @@ class Intersection {
 
     //**************************************************************************
     //* Private Variables
-
+    double counter;
+    
     //**************************************************************************
     //* Lanes
     Lane north;	
@@ -79,7 +80,7 @@ class Intersection {
 
     inline void addVehicle(Vehicle _vehicle) { vehicles.push_back(_vehicle); }
 
-    void update(double time);
+    void update();
 
 };
 
