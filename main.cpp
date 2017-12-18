@@ -37,6 +37,11 @@ int main(int argc, const char * argv[]) {
 	double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
 
   int* vehicleType = new int[4]; // Array of the next vehicle type for each lane
+  vehicleType[0] = 0;
+  vehicleType[1] = 0;
+  vehicleType[2] = 0;
+  vehicleType[3] = 0;
+  vehicleType[4] = 0;
 
 
 	//set up traffic light 
@@ -69,7 +74,7 @@ int main(int argc, const char * argv[]) {
     for(int i = 1; i <= 4; i++) {
       if(true) { // TODO probability of car attempting to spawn each timestep
         Lane* lane = trafficIntersection->getLane(i);
-        if(vehicleType[i] == NULL) {// If Vehicle spawned last timestep roll for new type
+        if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
           vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
         }
         // If the lane has space for the vehicle this timestep then add it, if
@@ -77,7 +82,7 @@ int main(int argc, const char * argv[]) {
         if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
           Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
           trafficIntersection->addVehicle(newVehicle);
-          vehicleType[i] = NULL; // resets vehicle type after it spawns. 
+          vehicleType[i] = 0; // resets vehicle type after it spawns. 
         }
       }
     }
