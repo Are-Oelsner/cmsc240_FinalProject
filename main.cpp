@@ -7,6 +7,7 @@
 #include "Clock.h"
 #include "Intersection.h"
 #include "Vehicle.h"
+#include "Random.h"
 
 #include <iostream>
 #include <time.h>
@@ -19,6 +20,7 @@ Parser p = Parser("simulation.config");
 // Create a clock to track simulation time
 // Clock c = Clock();
 clock_t timer;
+
 
 int main(int argc, const char * argv[]) {
 
@@ -88,6 +90,8 @@ int main(int argc, const char * argv[]) {
 		seconds++;
 
 	}
+	double n = Random::randDouble(0, 5.0);
+	cout << n << endl;
 
 
 

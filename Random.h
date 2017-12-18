@@ -21,13 +21,13 @@ class Random {
     static std::uniform_real_distribution<double> randdouble;
 
   public:
-
     //**************************************************************************
     //* Functions
 
     inline static int randint() { return Random::randint01(Random::rng); }
 
     static int randint(int a, int b);
+    static double randDouble(double min, double max);
 };
 
 #endif
