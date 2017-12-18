@@ -45,7 +45,7 @@ int main(int argc, const char * argv[]) {
   vehicleType[4] = 0;
 
 
-<<<<<<< HEAD
+
 	//set up traffic light 
 	//b/c color is enum 
 	//0=red, 1=green, 3=yellow
@@ -76,7 +76,7 @@ int main(int argc, const char * argv[]) {
 	start = clock();
 	duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
 	while ( duration < endTime ) {
-=======
+
   //set up traffic light 
   //b/c color is enum 
   //0=red, 1=green, 3=yellow
@@ -104,7 +104,7 @@ int main(int argc, const char * argv[]) {
   start = clock();
   duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
   while ( duration < endTime ) {
->>>>>>> 3d36eb667ec6b70ba7acfbaab9976d49cfd05368
+
     for(int i = 1; i <= 4; i++) {
       if(true) { // TODO probability of car attempting to spawn each timestep
         Lane* lane = trafficIntersection->getLane(i);
@@ -135,17 +135,16 @@ int main(int argc, const char * argv[]) {
     }
     seconds++;
 
-<<<<<<< HEAD
 	}
 	std::vector<double> v;
 	Statistics* stats = new Statistics(totalCars, totalSUV, totalTruck, totalVehicles,
 		0,0,0, v,v,v);	
 	stats->printStatistics();
-=======
+
   }
   double n = Random::randDouble(0, 5.0);
   cout << n << endl;
->>>>>>> 3d36eb667ec6b70ba7acfbaab9976d49cfd05368
+
 
 
 
