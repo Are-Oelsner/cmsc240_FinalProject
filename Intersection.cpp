@@ -5,7 +5,7 @@
 #include "Intersection.h"
 
 Intersection::Intersection() {
-  int length = 20; //default length
+  length = 20; //default length
 
   // Creates intersection sections
   NW = Section();
@@ -33,6 +33,7 @@ Intersection::Intersection() {
 }
 
 Intersection::Intersection(int length) {
+  this->length = length;
   // Creates intersection sections
   NW = Section();
   NE = Section();
@@ -63,6 +64,25 @@ void Intersection:: printIntersection() {
   cout << "***********************************************************************" << endl;
 }
 
+void Intersection:: printIntersection2() {
+  for(int i = 0; i < length; i++) {
+    for(int j = 0; j < length; j++) {
+      if(i == (length/2)-1)
+        south.getSection((length-1)-j)->printSection();
+      else if(i == length/2)
+        north.getSection(j)->printSection();
+      else if(j == (length/2)-1)
+        west.getSection((length-1)-i)->printSection();
+      else if(j == length/2)
+        north.getSection(i)->printSection();
+      else
+        cout << "   ";
+    }
+    cout << endl;
+  }
+  cout << "***********************************************************************" << endl;
+}
+
 Lane*
 Intersection::
 getLane(int direction) {
@@ -82,7 +102,7 @@ void Intersection::update(double time) {
   double s = south.getTrafficLight().timeRemaining(time);
   double w = west.getTrafficLight().timeRemaining(time);
 
-  printIntersection();
+  printIntersection2();
 
   for(int i = 0; i < vehicles.size(); i++) {
     vehicles[i].move();

@@ -46,6 +46,8 @@ class Intersection {
     TrafficLight southTrafficLight;
     TrafficLight westTrafficLight;
 
+    int length;
+
 
   public:
 
@@ -65,6 +67,8 @@ class Intersection {
 
     //* Print Intersection
     void printIntersection();
+    //* Print + Intersection
+    void printIntersection2();
 
     Lane* getLane(int direction);
 
