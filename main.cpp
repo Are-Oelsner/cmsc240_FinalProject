@@ -137,13 +137,14 @@ int main(int argc, const char * argv[]) {
 				}
 			}
 			
-			trafficIntersection->update();
 
 		   	while (duration < seconds + 1) {
 		      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
 		    }
 		    seconds++;
+		    trafficIntersection->update(seconds);
     	}
+
 
 	}
 
