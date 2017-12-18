@@ -36,6 +36,8 @@ int main(int argc, const char * argv[]) {
 	double SUVProb = p.getSUVProb();
 	double sectNum = p.getSectionNum(); // is this the number of secitons/lane?
 
+  int* vehicleType = new int[4]; // Array of the next vehicle type for each lane
+
 
 	//set up traffic light 
 	//b/c color is enum 
@@ -64,12 +66,21 @@ int main(int argc, const char * argv[]) {
 	start = clock();
 	duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
 	while ( duration < endTime ) {
-
-		// spawn a vehicle
-		Lane* laneToSpawnVehicle = trafficIntersection->getNorthLane();
-
-		Vehicle newVehicle = Vehicle( carProb, SUVProb, truckProb, rightProb, leftProb, laneToSpawnVehicle);
-		// trafficIntersection->addVehicle( newVehicle );
+    for(int i = 1; i <= 4; i++) {
+      if(true) { // TODO probability of car attempting to spawn each timestep
+        Lane* lane = trafficIntersection->getLane(i);
+        if(vehicleType[i] == NULL) {// If Vehicle spawned last timestep roll for new type
+          vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
+        }
+        // If the lane has space for the vehicle this timestep then add it, if
+        // not store vehicle type and try again next timestep. 
+        if(lane->canAllocSections(vehicleType[i])) { 
+          Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
+          trafficIntersection->addVehicle(newVehicle);
+          vehicleType[i] = NULL; // resets vehicle type after it spawns. 
+        }
+      }
+    }
 
 		trafficIntersection->update();
 

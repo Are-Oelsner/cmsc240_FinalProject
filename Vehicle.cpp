@@ -4,7 +4,7 @@
 
 #include "Vehicle.h"
 
-  Vehicle::Vehicle(double _carProb, double _suvProb, double _truckProb, double _rightProb, double _leftProb, Lane* _lane) {
+  Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane) {
 
     hasPassedLight = false;
 
@@ -12,22 +12,14 @@
     backCurrLane = _lane;
 
     // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
-    Vehicle::decideType(_carProb, _suvProb, _truckProb);
+    // Vehicle::decideType(_carProb, _suvProb, _truckProb);
+    this->size = size; // Sets vehicle type
 
     sections = frontCurrLane->allocSections(size);
 
     // Set front and back sections occupied by the Vehicle
     frontSection = sections[sections.size() - 1];
     backSection = sections[0];
-
-    /*
-    // ********* FIND A BETTER WAY TO DO THIS? ******
-    sections = _sections;
-    // Set the sections that the Vehicle has spawned in to be occupied
-    for(int i = 0; i < _sections.size(); i++) {
-      _sections[i]->setOccupied(true);
-    }
-    */
 
   	inIntersection = false;    // Vehicles will spawn at the end of the lanes
   	nearIntersection = false;  // Minimum lane length prevents spawning near or
@@ -38,41 +30,42 @@
 
   Vehicle::~Vehicle(){ }
 
-  void Vehicle::decideType(double _carProb, double _suvProb, double _truckProb) {
-
-    // Error catching
-    if ( (_carProb + _suvProb + _truckProb) != 1) {
-      cout << "Invalid probabilities: ( Car: " << _carProb  << ", SUV: " << _suvProb << ", Truck: " << _truckProb << " )" << endl;
-      cout << "Probabilities of Vehicle types must add to 1. (_carProb + _suvProb + _truckProb = 1)" << endl;
-      cout << "Usage: Vehicle(double _carProb, double _suvProb, double _truckProb, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections)" << endl;
-      exit(0);
-    }
-
-    // If the probabilities are valid, decide what type the vehicle will be
-    else {
-
-      double carNumLine = _carProb;
-      double suvNumLine = _suvProb + carNumLine;
-      double truckNumLine = _truckProb + suvNumLine;
-
-      size = 2; // delete this later
-
-      double val = Random::randDouble(0.0,1.0);
-
-      if(val <= carNumLine) {
-        size = 2;
-      }
-
-      else if(val <= suvNumLine) {
-        size = 3;
-      }
-
-      else if(val <= truckNumLine) {
-        size = 4;
-      }
-      
-    }
-  }
+//  void Vehicle::decideType(double _carProb, double _suvProb, double _truckProb) {
+//
+//    // Error catching
+//    if ( (_carProb + _suvProb + _truckProb) != 1) {
+//      cout << "Invalid probabilities: ( Car: " << _carProb  << ", SUV: " << _suvProb << ", Truck: " << _truckProb << " )" << endl;
+//      cout << "Probabilities of Vehicle types must add to 1. (_carProb + _suvProb + _truckProb = 1)" << endl;
+//      cout << "Usage: Vehicle(double _carProb, double _suvProb, double _truckProb, double _probRight, double _probLeft, Lane* _lane, vector<Section*> _sections)" << endl;
+//      exit(0);
+//    }
+//
+//    // If the probabilities are valid, decide what type the vehicle will be
+//    else {
+//
+//      double carNumLine = _carProb;
+//      double suvNumLine = _suvProb + carNumLine;
+//      double truckNumLine = _truckProb + suvNumLine;
+//
+//      size = 2; // delete this later
+//
+//      /*
+//      double val = Random::getRandDouble(0.0,1.0);
+//
+//      if(val <= carNumLine) {
+//        size = 2;
+//      }
+//
+//      else if(val <= suvNumLine) {
+//        size = 3;
+//      }
+//
+//      else if(val <= truckNumLine) {
+//        size = 4;
+//      }
+//      */
+//    }
+//  }
 
   void Vehicle::decidePath(double _rightProb, double _leftProb) {
 

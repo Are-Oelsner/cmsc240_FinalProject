@@ -63,6 +63,17 @@
     cout << "***********************************************************************" << endl;
   }
 
+Lane*
+Intersection::
+getLane(int direction) {
+  switch(direction) {
+    case 1: return &north;
+    case 2: return &east;
+    case 3: return &south;
+    case 4: return &west;
+  }
+}
+
   void Intersection::update() {
 
     // Handle light timing here? Update trafficlights?
