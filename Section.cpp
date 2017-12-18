@@ -32,30 +32,60 @@ void Section::printSection() {
   cout << "[";
   if( this->inIntersection ) { 
     if(this->occupied) 
-      cout << "i"; // Occupied Intersection
+      cout << "\033[1;31mi\033[0m"; // Occupied Intersection
     else
       cout << "I"; // Unoccupied intersection 
   }
   else if( this ->nearIntersection ) {
     if(this->occupied) 
-      cout << "n"; // Occupied near intersection
+      cout << "\033[1;31mn\033[0m"; // Occupied near intersection
     else
       cout << "N"; // unoccupied near intersection
   }
   else if( this->nearEdge ) {
     if(this->occupied) 
-      cout << "e"; // Occupied edge
+      cout << "\033[1;31me\033[0m"; // Occupied edge
     else
       cout << "E"; // unoccupied edge
   }
   else {
     if(this->occupied) 
-      cout << "O";
+      cout << "\033[1;31mO\033[0m";
     else
       cout << " ";
   }
   cout << "]";
 }
+
+//original function without color
+//void Section::printSection() {
+//  cout << "[";
+//  if( this->inIntersection ) { 
+//    if(this->occupied) 
+//      cout << "i"; // Occupied Intersection
+//    else
+//      cout << "I"; // Unoccupied intersection 
+//  }
+//  else if( this ->nearIntersection ) {
+//    if(this->occupied) 
+//      cout << "n"; // Occupied near intersection
+//    else
+//      cout << "N"; // unoccupied near intersection
+//  }
+//  else if( this->nearEdge ) {
+//    if(this->occupied) 
+//      cout << "e"; // Occupied edge
+//    else
+//      cout << "E"; // unoccupied edge
+//  }
+//  else {
+//    if(this->occupied) 
+//      cout << "O";
+//    else
+//      cout << " ";
+//  }
+//  cout << "]";
+//}
 
 Section*
 Section::

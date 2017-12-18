@@ -116,10 +116,10 @@ void Intersection::update(double time) {
   if(w==0) {wTraffic.change();}
 
 
+  printIntersection2();
+
   for(int i = 0; i < vehicles.size(); i++) {
     vehicles[i].move();
   }
-
-  printIntersection2();
 
 }
