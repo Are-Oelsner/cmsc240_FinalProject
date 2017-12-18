@@ -11,7 +11,7 @@
 using namespace std;
 
 //******************************************************************************
-//* TODO
+//* Section class
 class Section {
 
   private:
@@ -20,10 +20,10 @@ class Section {
     /// Private Variables
 
     //* Neighbors
-    Section* up;        //* Up neighbor
-    Section* right;     //* Right neighbor
-    Section* down;      //* Down neighbor
-    Section* left;      //* Left neighbor
+    Section* up;            //* Up neighbor
+    Section* right;         //* Right neighbor
+    Section* down;          //* Down neighbor
+    Section* left;          //* Left neighbor
 
     bool occupied;          //* Vehicle occupied variable 
     bool nearEdge;          //* If the section is the last in the lane
@@ -47,80 +47,64 @@ class Section {
 
     //**************************************************************************
     //* Neighbors
-    
-    //* TODO
-    //* @return     TODO
+
+    //* Returns Right Section given orientation
     Section* getRightSection(int direction);
 
-    //* TODO
-    //* @return     TODO
+    //* Returns straight Section given orientation
     Section* getStraightSection(int direction);
 
-    //* TODO
-    //* @return     TODO
+    //* Returns left Section given orientation
     Section* getLeftSection(int direction);
 
-    //* TODO
-    //* @return     TODO
+    //* Returns back Section given orientation
     Section* getBackSection(int direction);
 
-    
+
     //**************************************************************************
     //* Traffic Flow
 
-    //* TODO
-    //* @return     TODO
+    //* Returns Right section given orientation if possible
     Section* getRight(int direction);
 
-    //* TODO
-    //* @return     TODO
+    //* Returns straight section given orientation if possible
     Section* getStraight(int direction);
 
-    //* TODO
-    //* @return     TODO
+    //* Returns left section given orientation if possible
     Section* getLeft(int direction);
 
-    //* TODO
-    //* @return     TODO
+    //* Returns back section given orientation if possible
     Section* getBack(int direction);
 
 
     //**************************************************************************
     //* Neighbors
 
-    //* TODO
-    //* @return     TODO
+    //* Returns northern neighbor section
     inline Section* getUpSection() { return up; }
 
-    //* TODO
-    //* @return     TODO
+    //* Returns eastern neighbor section
     inline Section* getRightSection() { return right; }
 
-    //* TODO
-    //* @return     TODO
+    //* Returns southern neighbor section
     inline Section* getDownSection() { return down; }
 
-    //* TODO
-    //* @return     TODO
+    //* Returns western neighbor section
     inline Section* getLeftSection() { return left; }
 
     //**************************************************************************
     //* Other
 
-    //* TODO
-    //* @return     TODO
+    //* Return occupied status bool
     inline bool getOccupied() { return occupied; }
 
-    //* TODO
-    //* @return     TODO
+    //* Return near intersection status
     inline bool getNearIntersection() { return nearIntersection; }
 
-    //* TODO
-    //* @return     TODO
+    //* Return true if section is in intersection
     inline bool getInIntersection() { return inIntersection; }
 
-    //* TODO
-    //* @return     TODO
+    //* Return true if section is the last in its lane
     inline bool getNearEdge() { return nearEdge; }
 
     //**************************************************************************
@@ -128,33 +112,34 @@ class Section {
 
     //**************************************************************************
     //* Neighbors
-    //* TODO
-    //* @param  _section   TODO
-    //* @param  direction   TODO                            
+    //* Sets neighbor section based on orientation
+    //* @param  _section   
+    //* @param  direction  
     void setNeighbor(Section* _section, int direction);
 
     //**************************************************************************
     //* Other
 
-    //* TODO
-    //* @param  _occupied   TODO
+    //* Sets occupied status
+    //* @param  _occupied   bool
     inline void setOccupied(bool _occupied) { occupied = _occupied; }
 
     //* Sets whether the section is near the edge of the lane
-    //* @param  _nearEdge  TODO
+    //* @param  _nearEdge  bool
     inline void setNearEdge(bool _nearEdge) { nearEdge = _nearEdge; }
 
     //* Sets whether section is a section directly connected to an 
     //* intersection section
     //* @param  _nearIntersection  true if near the intersection, false if not
-    inline void setNearIntersection(bool _nearIntersection) { nearIntersection = _nearIntersection; }
+    inline void setNearIntersection(bool nearInt) {nearIntersection = nearInt;}
 
     //* Sets whether section is in the intersection
-    //* @param  _nearIntersection  true if the section is in the intersection, false if not
-    inline void setInIntersection(bool _inIntersection) { inIntersection = _inIntersection; }
+    //* @param  _nearIntersection  true if the section is in the intersection
+    inline void setInIntersection(bool inInt) {inIntersection = inInt;}
 
     //* Drawing function used for testing and simulation display
     void printSection();
+    //* Original Draw function draws all lanes horizontally
     void printSection2();
 
 };
