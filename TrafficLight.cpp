@@ -21,8 +21,18 @@
 	}
 
 
-	void TrafficLight::change(Color newColor) {
-		currentColor = newColor;
+	void TrafficLight::change() {
+		if(currentColor == red){
+			currentColor=green;
+		}
+		else if(currentColor==yellow)
+		{
+			currentColor=red;
+		}
+		else 
+		{
+			currentColor=yellow;
+		}
 	}
 
 	//COLOR GETTERS

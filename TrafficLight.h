@@ -38,7 +38,7 @@ public:
     
     //* Changes the current color of the TrafficLight
     //* @param 	newColor 	Color to change the TrafficLight to
-    void change(Color newColor);
+    void change();
     
     //**************************************************************************
     //* Get Functions
