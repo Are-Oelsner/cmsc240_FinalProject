@@ -102,31 +102,27 @@ void Intersection::update(bool debug) {
 
   counter0++;
   counter1++;
-  // Handle light timing here? Update trafficlights?
-  TrafficLight nTraffic = north.getTrafficLight();
-  TrafficLight eTraffic = east.getTrafficLight();
-  TrafficLight sTraffic = south.getTrafficLight();
-  TrafficLight wTraffic = west.getTrafficLight();
+ 
 
-  double n = nTraffic.timeRemaining(counter1);
-  double e = eTraffic.timeRemaining(counter0);
-  double s = sTraffic.timeRemaining(counter1);
-  double w = wTraffic.timeRemaining(counter0);
+  double n = northTrafficLight.timeRemaining(counter1);
+  double e = eastTrafficLight.timeRemaining(counter0);
+  double s = southTrafficLight.timeRemaining(counter1);
+  double w =westTrafficLight.timeRemaining(counter0);
 
   if(n==0) {
-    nTraffic.change(); 
+    northTrafficLight.change(); 
     counter1=0;
   }
   if(e==0) {
-    eTraffic.change();
+    eastTrafficLight.change();
     counter0 = 0;
   }
   if(s==0) {
-    sTraffic.change();
+    southTrafficLight.change();
     counter1 = 0;
   }
   if(w==0) {
-    wTraffic.change();
+    westTrafficLight.change();
     counter0=0;
   }
 
