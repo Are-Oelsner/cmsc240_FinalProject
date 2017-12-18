@@ -215,7 +215,6 @@ void Vehicle::move() {
 void
 Vehicle::
 printVehicle() {
-  cout << "Printing Vehicle---------------------------" << endl;
   cout << "front Lane: " << frontCurrLane->getDirection() << endl;
   cout << "back Lane: " << backCurrLane->getDirection() << endl;
   cout << "in Intersection: " << inIntersection << endl;

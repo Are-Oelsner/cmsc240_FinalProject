@@ -118,6 +118,7 @@ void Intersection::update(double time, bool debug) {
 
   for(int i = 0; i < vehicles.size(); i++) {
     if(debug) 
+      cout << "Printing Vehicle: " << i << "---------------" << endl;
       vehicles[i].printVehicle();
     vehicles[i].move();
   }
