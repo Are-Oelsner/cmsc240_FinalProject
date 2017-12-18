@@ -12,13 +12,13 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   //if NS, then start red
   if(direction==1 || direction==3)
   {
-     trafficLight = TrafficLight(5.0, 5.0, 3.0, TrafficLight::red);
+     trafficLight = TrafficLight(5.0, 5.0, 3.0, TrafficLight::green);
 
   }
   //if WE, start green
   else
   {
-    trafficLight = TrafficLight(5.0, 5.0, 3.0, TrafficLight::green);
+    trafficLight = TrafficLight(5.0, 5.0, 3.0, TrafficLight::red);
   }
 
 

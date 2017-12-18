@@ -32,9 +32,14 @@ int main(int argc, const char * argv[]) {
     debug = false;
 
   // Store parser values in public variables 
-  double leftProb = p.getLeftProb();
-  double rightProb = p.getRightProb();
-  double straightProb = p.getStraightProb();
+  //double leftProb = p.getLeftProb();
+  //double rightProb = p.getRightProb();
+  //double straightProb = p.getStraightProb();
+
+  double leftProb = 0.;
+  double rightProb = .99;
+  double straightProb = .01;
+
   double g = p.getGTicks();
   double r = p.getRTicks();
   double y = p.getYTicks();
