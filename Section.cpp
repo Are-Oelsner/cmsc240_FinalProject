@@ -28,9 +28,9 @@ void Section::setNeighbor(Section* _section, int direction) {
   }
 }
 
-void Section::printSection2() {
+void Section::printSection() {
   cout << "[";
-  if( this->inIntersection ) { 
+  if(this->inIntersection ) { 
     if(this->occupied) 
       cout << "\033[1;31mi\033[0m"; // Occupied Intersection
     else
@@ -58,7 +58,7 @@ void Section::printSection2() {
 }
 
 //original function without color
-void Section::printSection() {
+void Section::printSection2() {
   cout << "[";
   if( this->inIntersection ) { 
     if(this->occupied) 
