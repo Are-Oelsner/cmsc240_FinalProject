@@ -78,28 +78,28 @@ int main(int argc, const char * argv[]) {
 
     for(int i = 1; i <= 4; i++) {
     	//CAR 
-      if((int)endTime % (int)(endTime*carProb)==0) { 
+      if( (int)duration % (int)(endTime*carProb) == 0) { 
         Lane* lane = trafficIntersection->getLane(i);
         if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
           vehicleType[i] = 2; // Change this to randomly pick based on probabilities TODO
         }
         // If the lane has space for the vehicle this timestep then add it, if
         // not store vehicle type and try again next timestep. 
-        if(lane->canAllocSections(vehicleType[i])) {  //TODO Error Here TODO
-          Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
-          //for stats
-          totalVehicles++;
-          totalCars++;
+        if( lane->canAllocSections(vehicleType[i]) ) {  //TODO Error Here TODO
+        	cout << "REACHED" << endl;
+	    	Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane);
+	        //for stats
+	        totalVehicles++;
+	        totalCars++;
 
-
-          trafficIntersection->addVehicle(newVehicle);
-          vehicleType[i] = 0; // resets vehicle type after it spawns. 
+		    trafficIntersection->addVehicle(newVehicle);
+		    vehicleType[i] = 0; // resets vehicle type after it spawns. 
         }
       }
       //SUV
-      if((int)endTime % (int)(endTime*SUVProb)==0) { 
-        Lane* lane = trafficIntersection->getLane(i);
-        if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
+      if( (int)duration % (int)(endTime*SUVProb) == 0) { 
+      	Lane* lane = trafficIntersection->getLane(i);
+      	if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
           vehicleType[i] = 3; // Change this to randomly pick based on probabilities TODO
         }
         // If the lane has space for the vehicle this timestep then add it, if
