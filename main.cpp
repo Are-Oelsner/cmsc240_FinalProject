@@ -98,7 +98,7 @@ int main(int argc, const char * argv[]) {
 				}
 			}
 			//SUV
-      else if(type <= SUVProb) { 
+      else if(type <= carProb + SUVProb) { 
 				Lane* lane = trafficIntersection->getLane(i);
 				if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
 				  vehicleType[i] = 3; // Change this to randomly pick based on probabilities TODO
