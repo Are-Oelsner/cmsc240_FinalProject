@@ -34,6 +34,7 @@
 		{
 			currentColor=yellow;
 		}
+
 	}
 
 	//COLOR GETTERS
@@ -58,11 +59,16 @@
 	double TrafficLight::timeRemaining(double timeElapsed) {
 		if(currentColor == green) 
 		{
-			return greenTime-timeElapsed;
+			timeE = greenTime-timeElapsed;
+
 		}
-		if(currentColor == yellow)
+		else if(currentColor == yellow)
 		{
-			return yellowTime - timeElapsed;
+			timeE = yellowTime - timeElapsed;
 		}
-		return 0;
+		else
+		{
+			timeE =  redTime-timeElapsed;
+		}
+		return timeE;
 	}

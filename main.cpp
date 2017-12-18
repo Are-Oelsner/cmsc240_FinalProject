@@ -99,7 +99,9 @@ int main(int argc, const char * argv[]) {
       duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
     }
     seconds++;
-    trafficIntersection->update(seconds, debug);
+
+    trafficIntersection->update(debug);
+
   }
 
 
