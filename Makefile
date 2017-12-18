@@ -17,6 +17,9 @@ r: 									#runs main
 gdb:
 	gdb ./main 
 
+v:
+	valgrind -v --leak-check=full ./main 
+
 clean: 							#removes executable and output file
 	rm main
 	rm SectionTester

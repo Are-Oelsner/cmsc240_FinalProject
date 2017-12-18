@@ -48,7 +48,7 @@ class Intersection {
 
 
   public:
-    
+
     //**************************************************************************
     //* Constructors & Destructors
 

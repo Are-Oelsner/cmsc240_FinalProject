@@ -129,12 +129,6 @@
     bool backCanTurnRight = backSection->getRight(backLaneDir) != NULL;
     bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
 
-    cout << "front right: " << frontCanTurnRight << endl;
-    cout << "front left: " << frontCanTurnLeft << endl;
-
-    cout << "back right: " << backCanTurnRight << endl;
-    cout << "back left: " << backCanTurnLeft << endl;
-
     // Check if any section of the vehicle is in the intersection
     for(int i = 0; i < sections.size(); i++) {
       if(sections[i]->getInIntersection()){
