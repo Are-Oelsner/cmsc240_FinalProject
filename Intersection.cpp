@@ -129,14 +129,12 @@ void Intersection::update(bool debug) {
     counter=0;
   }
 
-
-  printIntersection();
-
   for(int i = 0; i < vehicles.size(); i++) {
-    if(debug) 
+    vehicles[i].move();
+    if(debug)  {
       cout << "Printing Vehicle: " << i << "---------------" << endl;
       vehicles[i].printVehicle();
-    vehicles[i].move();
+    }
   }
-
+  printIntersection();
 }
