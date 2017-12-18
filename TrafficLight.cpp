@@ -4,7 +4,12 @@
 
 #include "TrafficLight.h"
 
-	TrafficLight::TrafficLight() {}
+	TrafficLight::TrafficLight() {
+		greenTime = 5;
+		redTime = 5;
+		yellowTime = 3;
+		currentColor = green;
+  }
 
 	TrafficLight::~TrafficLight() {}
 	//contructor
