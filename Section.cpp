@@ -96,10 +96,14 @@ getRight(int direction) {
     case 3: tmp = this->left;
     case 4: tmp = this->up;
   }
-  if(tmp == NULL)
+  if(this->getBack(direction) == NULL)
     return NULL;
-  if(tmp->getNearIntersection()) 
+  else if(tmp == NULL)
+    return NULL; 
+  else if(tmp->getNearIntersection()) 
     return NULL;
+  else if(this->getBack(direction)->getNearIntersection())
+    return tmp;
   return tmp;
 }
 
