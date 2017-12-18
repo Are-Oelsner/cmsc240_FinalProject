@@ -13,11 +13,12 @@
 
 	TrafficLight::~TrafficLight() {}
 	//contructor
-	TrafficLight::TrafficLight(double greenT, double redT, double yellowT) {
+	TrafficLight::TrafficLight(double greenT, double redT, double yellowT, 
+		Color startColor) {
 		greenTime = greenT;
 		redTime = redT;
 		yellowTime = yellowT;
-		currentColor = green;
+		currentColor = startColor;
 	}
 
 
