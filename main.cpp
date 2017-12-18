@@ -78,7 +78,7 @@ int main(int argc, const char * argv[]) {
 
     for(int i = 1; i <= 4; i++) {
     	//CAR 
-      if( (int)endTime % (int)(endTime*carProb) == 0) { 
+      if( (int)duration % (int)(endTime*carProb) == 0) { 
         Lane* lane = trafficIntersection->getLane(i);
         // If Vehicle spawned last timestep roll for new type
         if(vehicleType[i] == 0) {
@@ -98,7 +98,7 @@ int main(int argc, const char * argv[]) {
         }
       }
       //SUV
-      if( (int)endTime % (int)(endTime*SUVProb) == 0) { 
+      if( (int)duration % (int)(endTime*SUVProb) == 0) { 
       	Lane* lane = trafficIntersection->getLane(i);
       	if(vehicleType[i] == 0) {// If Vehicle spawned last timestep roll for new type
           vehicleType[i] = 3; // Change this to randomly pick based on probabilities TODO
