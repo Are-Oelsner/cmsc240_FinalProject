@@ -8,7 +8,6 @@
 #include "Section.h"
 #include "Lane.h"
 #include "Random.h"
-#include "Intersection.h"
 
 #include <iostream>
 

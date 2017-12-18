@@ -191,12 +191,12 @@ void Vehicle::move() {
       else if (direction == 'l' && frontCanTurnLeft) {
         frontSection = frontSection->getLeft(frontLaneDir);
         hasPassedLight = true;
-        frontCurrLane = frontCurrLane->getLeft(frontCurrLane->getDirection());
+        frontCurrLane = frontCurrLane->getLeft();
       }
       else if (direction == 'r' && frontCanTurnRight) {
         frontSection = frontSection->getRight(frontLaneDir);
         hasPassedLight = true;
-        frontCurrLane = frontCurrLane->getRight(frontCurrLane->getDirection());
+        frontCurrLane = frontCurrLane->getRight();
       }
       // Set new front section to be occupied
       frontSection->setOccupied(true);
@@ -211,11 +211,11 @@ void Vehicle::move() {
       }
       else if (direction == 'l' && backCanTurnLeft) {
         backSection = backSection->getLeft(backLaneDir);
-        backCurrLane = backCurrLane->getLeft(frontCurrLane->getDirection());
+        backCurrLane = backCurrLane->getLeft();
       }
       else if (direction == 'r' && backCanTurnRight) {
         backSection = backSection->getRight(backLaneDir);
-        backCurrLane = backCurrLane->getRight(frontCurrLane->getDirection());
+        backCurrLane = backCurrLane->getRight();
       }
       else {
         backSection = backSection->getStraight(backLaneDir);
