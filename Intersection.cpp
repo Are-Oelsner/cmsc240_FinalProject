@@ -78,10 +78,10 @@ void Intersection::update() {
 
   // Handle light timing here? Update trafficlights?
 
+  printIntersection();
+
   for(int i = 0; i < vehicles.size(); i++) {
     vehicles[i].move();
   }
-
-  printIntersection();
 
 }
