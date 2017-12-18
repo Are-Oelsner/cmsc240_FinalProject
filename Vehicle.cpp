@@ -180,14 +180,14 @@ void Vehicle::move() {
       // HANDLE FRONT SECTION
       // Set the front section of this vehicle one section forward
 
-      if(path == 's') {
+      if(direction == 's') {
         frontSection = frontSection->getStraight(frontLaneDir);
       }
-      else if (path == 'l' && frontCanTurnLeft) {
+      else if (direction == 'l' && frontCanTurnLeft) {
         frontSection = frontSection->getLeft(frontLaneDir);
         hasPassedLight = true;
       }
-      else if (path == 'r' && frontCanTurnRight) {
+      else if (direction == 'r' && frontCanTurnRight) {
         frontSection = frontSection->getRight(frontLaneDir);
         hasPassedLight = true;
       }
@@ -198,13 +198,13 @@ void Vehicle::move() {
       // Set original back section to be unoccupied
       backSection->setOccupied(false);
       // Set the back section of this vehicle one section forward
-      if(path == 's') {
+      if(direction == 's') {
         backSection = backSection->getStraight(backLaneDir);
       }
-      else if (path == 'l' && backCanTurnLeft) {
+      else if (direction == 'l' && backCanTurnLeft) {
         backSection = backSection->getLeft(backLaneDir);
       }
-      else if (path == 'r' && backCanTurnRight) {
+      else if (direction == 'r' && backCanTurnRight) {
         backSection = backSection->getRight(backLaneDir);
       }
       
