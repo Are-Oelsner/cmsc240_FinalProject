@@ -102,12 +102,12 @@ void Intersection::update(bool debug) {
 
   counter0++;
   counter1++;
- cout << northTrafficLight.getColor() << endl;
+  cout << northTrafficLight.getColor() << endl;
 
   double n = northTrafficLight.timeRemaining(counter1);
   double e = eastTrafficLight.timeRemaining(counter0);
   double s = southTrafficLight.timeRemaining(counter1);
-  double w =westTrafficLight.timeRemaining(counter0);
+  double w = westTrafficLight.timeRemaining(counter0);
 
   if(n==0) {
     northTrafficLight.change(); 

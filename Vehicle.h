@@ -26,13 +26,11 @@ class Vehicle {
                             //* intersection and no longer needs to check the
                             //* TrafficLight; False otherwise
 
-    vector<Section*> sections;	//* Sections that the Vehicle occupies
-    Section* frontSection;      //* Section that contains the front of the Vehicle
-    Section* backSection; 	    //* Section that contians the back of the Vehicle
-    Lane* frontCurrLane; 		//* Lane that the front of the Vehicle is 
-                                //* currently in
-    Lane* backCurrLane;         //* Lane that the back of the Vehicle is 
-                                //* currently in
+    vector<Section*> sections;//* Sections that the Vehicle occupies
+    Section* frontSection;    //* Section that contains the front of the Vehicle
+    Section* backSection; 	  //* Section that contians the back of the Vehicle
+    Lane* frontCurrLane; 	//* Lane that the front of the Vehicle is currently in
+    Lane* backCurrLane;   //* Lane that the back of the Vehicle is currently in
 
     char path;      //* The path that the Vehicle will ultimately take 
                     //* based on the probabilities to go right, left, or
@@ -53,7 +51,7 @@ class Vehicle {
     //* Destructor
     ~Vehicle();
 
-    //**************************************************************************
+    //**************************************green*********************************
     //* Functions
 
     //* Decides what path the Vehicle will ultimately take based on the given

@@ -18,7 +18,7 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   //if WE, start green
   else
   {
-    trafficLight = TrafficLight(5.0, 5.0, 3.0, TrafficLight::red);
+    trafficLight = TrafficLight(5.0, 5.0, 3.0, TrafficLight::green);
   }
 
 
