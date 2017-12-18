@@ -16,9 +16,7 @@
     this->size = size; // Sets vehicle type
 
     sections = frontCurrLane->allocSections(size);
-    
-    frontSection->setOccupied(true);
-    backSection->setOccupied(true);
+
     for(int i = 0; i < sections.size(); i++) {
       sections[i]->setOccupied(true);
     }
@@ -26,6 +24,9 @@
     // Set front and back sections occupied by the Vehicle
     frontSection = sections[sections.size() - 1];
     backSection = sections[0];
+
+    frontSection->setOccupied(true);
+    backSection->setOccupied(true);
 
   	inIntersection = false;    // Vehicles will spawn at the end of the lanes
   	nearIntersection = false;  // Minimum lane length prevents spawning near or
