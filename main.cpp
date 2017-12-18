@@ -64,35 +64,6 @@ int main(int argc, const char * argv[]) {
 	int totalSUV = 0;
 	int totalTruck = 0;
 	int totalVehicles = 0;
-
-	// *** Add endTime to parser file?
-	// *** Add frequency of vehicle spawn to parser file?
-
-	double endTime = 10.0;
-	double duration;
-	clock_t start;
-	int seconds = 0;
-
-	start = clock();
-	duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
-	while ( duration < endTime ) {
-
-  //set up traffic light 
-  //b/c color is enum 
-  //0=red, 1=green, 3=yellow
-  TrafficLight light = TrafficLight(g, r, y);
-  //how to change a light!
-  //light.change(TrafficLight::red);
-
-  // Create new intersection 
-  Intersection* trafficIntersection = new Intersection();
-
-  // Start simulation
-  int carsLeft = 0;
-  int carsRight = 0;
-  int carStraight = 0;
-  int totalCars = 0;
-
   // *** Add endTime to parser file?
   // *** Add frequency of vehicle spawn to parser file?
 
@@ -136,12 +107,12 @@ int main(int argc, const char * argv[]) {
     seconds++;
 
 	}
-	std::vector<double> v;
+
+  std::vector<double> v;
 	Statistics* stats = new Statistics(totalCars, totalSUV, totalTruck, totalVehicles,
 		0,0,0, v,v,v);	
 	stats->printStatistics();
 
-  }
   double n = Random::randDouble(0, 5.0);
   cout << n << endl;
 
