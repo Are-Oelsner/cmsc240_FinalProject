@@ -117,7 +117,7 @@ bool Vehicle::canMove(char _direction) {
   /* If there is a Vehicle directly in front of it or the Vehicle is near 
    *  the intersection and the light is not green, then the Vehicle cannot
    *  legally move */
-  if (pathBlocked || (nearIntersection && !lightIsGreen)) {
+  if (pathBlocked || (nearIntersection && !lightIsGreen)) { //TODO problem here
     return false;
   }
 
