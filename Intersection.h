@@ -81,6 +81,9 @@ class Intersection {
 
     inline void addVehicle(Vehicle _vehicle) { vehicles.push_back(_vehicle); }
 
+    Lane* getRightLane(int direction);
+    Lane* getLeftLane(int direction);
+
     void update(bool debug);
 
 };

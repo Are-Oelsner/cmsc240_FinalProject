@@ -6,8 +6,9 @@
 
 string intToDir(int dir);
 
-Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane) {
+Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane, Intersection* intersection) {
 
+  trafficIntersection = intersection;
   hasPassedLight = false;
 
   frontCurrLane = _lane;
@@ -191,6 +192,11 @@ void Vehicle::move() {
       else if (direction == 'l' && frontCanTurnLeft) {
         frontSection = frontSection->getLeft(frontLaneDir);
         hasPassedLight = true;
+        frontCurrLane->getDirection();
+
+        //TODO
+    int frontLaneDir = frontCurrLane->getDirection();
+    int backLaneDir = backCurrLane->getDirection();
       }
       else if (direction == 'r' && frontCanTurnRight) {
         frontSection = frontSection->getRight(frontLaneDir);

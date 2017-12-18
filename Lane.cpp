@@ -26,10 +26,18 @@ Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
     exit(0);
   }
 
-  int opposite = (direction+2) % 4; // opposite direction
-  if(opposite == 0) {
-    opposite = 4;
+  int opposite;
+  switch(direction) {
+    case 1: opposite = 3; break;
+    case 2: opposite = 4; break;
+    case 3: opposite = 1; break;
+    case 4: opposite = 2; break;
   }
+            
+  //int opposite = (direction+2) % 4; // opposite direction
+  //if(opposite == 0) {
+  //  opposite = 4;
+  //}
 
   sections.push_back(new Section()); // first section in lane
 

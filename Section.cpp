@@ -30,8 +30,6 @@ void Section::setNeighbor(Section* _section, int direction) {
 void
 Section::
 setOccupied(bool _occupied) {
-  if(occupied == true) 
-    cout << "already occupied" << endl;
   occupied = _occupied;
 }
 

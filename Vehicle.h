@@ -8,6 +8,7 @@
 #include "Section.h"
 #include "Lane.h"
 #include "Random.h"
+#include "Intersection.h"
 
 #include <iostream>
 
@@ -39,6 +40,7 @@ class Vehicle {
     int size;   //* Integer size of the Vehicle, indicates what type of Vehicle
                 //* it is; (2/Car, 3/SUV, 4/Truck)
     bool exited;
+    Intersection* trafficIntersection;
 
   public:
 
@@ -46,7 +48,7 @@ class Vehicle {
     //* Constructors & Destructors
 
     //* Constructor
-    Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane);
+    Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane, Intersection* intersection);
 
     //* Destructor
     ~Vehicle();

@@ -93,7 +93,7 @@ int main(int argc, const char * argv[]) {
       // If the lane has space for the vehicle this timestep then add it, if
       // not store vehicle type and try again next timestep. 
       if( lane->canAllocSections(vehicleType[i]) ) {  
-        Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane); // Vehicle to be added
+        Vehicle newVehicle = Vehicle(vehicleType[i], rightProb, leftProb, lane, &trafficIntersection); // Vehicle to be added
         trafficIntersection->addVehicle(newVehicle); // Adds vehicle to intersection
         stats->incrementVehicles(vehicleType[i]); // for statistics
         vehicleType[i] = 0; // resets vehicle type after it spawns. 
