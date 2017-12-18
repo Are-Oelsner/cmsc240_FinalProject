@@ -4,6 +4,8 @@
 
 #include "Vehicle.h"
 
+string intToDir(int dir);
+
 Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane) {
 
   hasPassedLight = false;
@@ -147,8 +149,6 @@ void Vehicle::move() {
     bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
 
     // Check if any section of the vehicle is in the intersection
-    cout << "size: " << size << endl; //TODO remove these comments
-    cout << "direction: " << frontLaneDir << endl;
     if(sections[size-1]->getInIntersection())
       inIntersection = true;
 
@@ -215,13 +215,23 @@ void Vehicle::move() {
 void
 Vehicle::
 printVehicle() {
-  cout << "front Lane: " << frontCurrLane->getDirection() << endl;
-  cout << "back Lane: " << backCurrLane->getDirection() << endl;
-  cout << "in Intersection: " << inIntersection << endl;
-  cout << "near Intersection: " << nearIntersection << endl;
-  cout << "has Passed Light: " << hasPassedLight << endl;
-  cout << "# sections: " << sections.size() << endl;
-  cout << "size: " << size << endl;
-  cout << "path: " << path << endl;
-  cout << "exited: " << exited << endl;
+  cout << "front Lane: \t\t" << intToDir(frontCurrLane->getDirection()) << endl;
+  cout << "back Lane: \t\t" << intToDir(backCurrLane->getDirection()) << endl;
+  cout << "in Intersection: \t" << inIntersection << endl;
+  cout << "near Intersection: \t" << nearIntersection << endl;
+  cout << "has Passed Light: \t" << hasPassedLight << endl;
+  cout << "# sections: \t\t" << sections.size() << endl;
+  cout << "size: \t\t\t" << size << endl;
+  cout << "path: \t\t\t" << path << endl;
+  cout << "exited: \t\t" << exited << endl;
+}
+
+string intToDir(int dir) {
+  switch(dir) {
+    case 1: return "north";
+    case 2: return "east";
+    case 3: return "south";
+    case 4: return "west";
+  }
+  return "error";
 }
