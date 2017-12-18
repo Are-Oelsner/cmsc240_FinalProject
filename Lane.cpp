@@ -1,12 +1,11 @@
 //* CMSC240 Final Project : Lane.cpp
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+//* Date: 12/18/2017
 
 #include "Lane.h"
 #include <iostream>
 
-Lane::Lane() {
-}
+Lane::Lane() {}
 
 Lane::Lane(int length, Section* intSec1, Section* intSec2, int direction) {
   //if NS, then start red

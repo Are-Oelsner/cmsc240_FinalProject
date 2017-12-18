@@ -1,6 +1,6 @@
 //* CMSC240 Final Project : Vehicle.cpp
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+//* Date: 12/18/2017
 
 #ifndef __SECTION_H__
 #define __SECTION_H__

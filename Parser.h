@@ -1,6 +1,6 @@
 //* CMSC240 Final Project : Parser.h
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date:   
+//* Date: 12/18/2017
 
 #ifndef __PARSER_H__
 #define __PARSER_H__
@@ -17,7 +17,7 @@
 using namespace std;
 
 //******************************************************************************
-//* TODO - Class description
+//* This class parses the config file  
 class Parser {
 
   private:

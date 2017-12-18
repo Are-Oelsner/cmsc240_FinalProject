@@ -1,6 +1,6 @@
 //* CMSC240 Final Project : Intersection.h
 //* Authors: Are Oelsner, Maddie Shea, Ryan Jennings
-//* Date: 
+//* Date: 12/18/2017
 
 #ifndef __INTERSECTION_H__
 #define __INTERSECTION_H__
@@ -81,11 +81,7 @@ class Intersection {
 
     inline void addVehicle(Vehicle _vehicle) { vehicles.push_back(_vehicle); }
 
-
-    void update();
-
     void update(bool debug);
-
 
 };
 
