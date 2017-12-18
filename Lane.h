@@ -29,6 +29,9 @@ class Lane {
                     //* 2 east, 3 south, 4 west
 
     TrafficLight trafficLight; //* TrafficLight object
+    Lane* left;
+    Lane* right;
+
 
   public:
 
@@ -80,6 +83,12 @@ class Lane {
     //* @return true if the lane can allocate a given number of sections at the
     //*         beginning of the lane and false if it cannot
     bool canAllocSections(int size);
+
+    inline void setLeft(Lane* lane) {left = lane;}
+    inline void setRight(Lane* lane) {right = lane;}
+
+    inline Lane* getLeft() {return left;}
+    inline Lane* getRight() {return right;}
 
 };
 

@@ -25,11 +25,8 @@ v:
 
 clean: 							#removes executable and output file
 	rm main
-	rm SectionTester
-	rm ParserTester
-	rm mainTester
 
-reallyclean: clean 	#cleans and removes all .o files
+reallyclean:  	#cleans and removes all .o files
 	rm *.o
 
 o:
@@ -43,7 +40,7 @@ test: $(TESTS)
 ################################################################################
 # O Compilers -- reduces recompilation
 ################################################################################
-main.o: main.cpp Intersection.cpp TrafficLight.cpp Clock.cpp Random.cpp
+main.o: main.cpp Intersection.cpp TrafficLight.cpp Clock.cpp Random.cpp Parser.cpp Vehicle.cpp Statistics.cpp
 	$(CC) $(CCFLAGS) $<
 
 Intersection.o: Intersection.cpp Lane.cpp Section.cpp
@@ -64,7 +61,7 @@ Random.o: Random.cpp
 Statistics.o: Statistics.cpp 
 	$(CC) $(CCFLAGS) $<
 
-Vehicle.o: Vehicle.cpp Section.cpp Lane.cpp Random.cpp
+Vehicle.o: Vehicle.cpp Section.cpp Lane.cpp Random.cpp Intersection.cpp
 	$(CC) $(CCFLAGS) $<
 
 ################################################################################

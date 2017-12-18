@@ -6,13 +6,12 @@
 
 string intToDir(int dir);
 
-Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane, Intersection* intersection) {
+Vehicle::Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane) {
 
   hasPassedLight = false;
 
   frontCurrLane = _lane;
   backCurrLane = _lane;
-  trafficIntersection = intersection;
 
   // Handle the probabilities that the Vehicle will spawn as a Car/SUV/Truck
   // Vehicle::decideType(_carProb, _suvProb, _truckProb);
@@ -192,12 +191,12 @@ void Vehicle::move() {
       else if (direction == 'l' && frontCanTurnLeft) {
         frontSection = frontSection->getLeft(frontLaneDir);
         hasPassedLight = true;
-        frontCurrLane = trafficIntersection->getLeftLane(frontCurrLane->getDirection());
+        frontCurrLane = frontCurrLane->getLeft(frontCurrLane->getDirection());
       }
       else if (direction == 'r' && frontCanTurnRight) {
         frontSection = frontSection->getRight(frontLaneDir);
         hasPassedLight = true;
-        frontCurrLane = trafficIntersection->getRightLane(frontCurrLane->getDirection());
+        frontCurrLane = frontCurrLane->getRight(frontCurrLane->getDirection());
       }
       // Set new front section to be occupied
       frontSection->setOccupied(true);
@@ -212,11 +211,11 @@ void Vehicle::move() {
       }
       else if (direction == 'l' && backCanTurnLeft) {
         backSection = backSection->getLeft(backLaneDir);
-        backCurrLane = trafficIntersection->getLeftLane(frontCurrLane->getDirection());
+        backCurrLane = backCurrLane->getLeft(frontCurrLane->getDirection());
       }
       else if (direction == 'r' && backCanTurnRight) {
         backSection = backSection->getRight(backLaneDir);
-        backCurrLane = trafficIntersection->getRightLane(frontCurrLane->getDirection());
+        backCurrLane = backCurrLane->getRight(frontCurrLane->getDirection());
       }
       else {
         backSection = backSection->getStraight(backLaneDir);

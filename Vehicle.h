@@ -40,15 +40,15 @@ class Vehicle {
     int size;   //* Integer size of the Vehicle, indicates what type of Vehicle
                 //* it is; (2/Car, 3/SUV, 4/Truck)
     bool exited;
-    Intersection* trafficIntersection;
 
   public:
 
     //**************************************************************************
     //* Constructors & Destructors
 
+    Vehicle();
     //* Constructor
-    Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane, Intersection* intersection);
+    Vehicle(int size, double _rightProb, double _leftProb, Lane* _lane);
 
     //* Destructor
     ~Vehicle();

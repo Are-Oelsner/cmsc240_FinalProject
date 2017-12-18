@@ -25,6 +25,19 @@ Intersection::Intersection() {
   south = Lane(length, NWptr, SWptr, 3);
   west = Lane(length, NEptr, NWptr, 4);
 
+  // Set neighbor lanes
+  north.setLeft(&west);
+  north.setRight(&east);
+
+  east.setLeft(&north);
+  east.setRight(&south);
+
+  south.setLeft(&east);
+  south.setRight(&west);
+
+  west.setLeft(&south);
+  west.setRight(&north);
+
   northTrafficLight = north.getTrafficLight();
   eastTrafficLight = east.getTrafficLight();
   southTrafficLight = south.getTrafficLight();
@@ -131,30 +144,4 @@ void Intersection::update(bool debug) {
   }
   printIntersection();
 }
-
-Lane*
-Intersection::
-getRightLane(int direction) {
-  switch(direction) {
-    case 1: return &east;
-    case 2: return &south;
-    case 3: return &west;
-    case 4: return &north;
-  }
-}
-
-Lane*
-Intersection::
-getLeftLane(int direction) {
-  switch(direction) {
-    case 1: return &west;
-    case 2: return &north;
-    case 3: return &east;
-    case 4: return &south;
-  }
-}
-
-
-
-
 
