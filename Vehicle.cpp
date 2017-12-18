@@ -99,10 +99,10 @@ bool Vehicle::canMove(char _direction) {
 
   int frontLaneDir = frontCurrLane->getDirection();
 
-  if( _direction == 'l' && !hasPassedLight ) {
+  if( _direction == 'l' && frontSection->getLeft(frontLaneDir) != NULL) {
     pathBlocked = frontSection->getLeft(frontLaneDir)->getOccupied();
   }
-  else if( _direction == 'r' && !hasPassedLight ) {
+  else if( _direction == 'r' && frontSection->getRight(frontLaneDir) != NULL) {
     pathBlocked = frontSection->getRight(frontLaneDir)->getOccupied();
   }
   else {
@@ -110,14 +110,19 @@ bool Vehicle::canMove(char _direction) {
   }
 
   // Get the current state of the traffic light in the Vehicle's lane
-  TrafficLight::Color lightColor = frontCurrLane->getTrafficLight().getColor();
-  bool lightIsGreen = (lightColor == 1);
-  nearIntersection = frontSection->getStraight(frontLaneDir)->getNearIntersection();
+  if(!hasPassedLight) {
+    TrafficLight::Color lightColor = frontCurrLane->getTrafficLight().getColor();
+    bool lightIsGreen = (lightColor == 1);
+    //TODO this would set it one section early 
+    nearIntersection = frontSection->getStraight(frontLaneDir)->getNearIntersection();
+    if(nearIntersection && !lightIsGreen) 
+      return false;
+  }
 
   /* If there is a Vehicle directly in front of it or the Vehicle is near 
    *  the intersection and the light is not green, then the Vehicle cannot
    *  legally move */
-  if (pathBlocked || (nearIntersection && !lightIsGreen)) { //TODO problem here
+  if (pathBlocked) { //TODO problem here
     return false;
   }
 
@@ -131,6 +136,7 @@ void Vehicle::move() {
   int frontLaneDir = frontCurrLane->getDirection();
   int backLaneDir = backCurrLane->getDirection();
 
+  // TODO make sure these null comparisons work
   bool frontCanTurnRight = frontSection->getRight(frontLaneDir) != NULL;
   bool frontCanTurnLeft = frontSection->getLeft(frontLaneDir) != NULL;
   bool backCanTurnRight = backSection->getRight(backLaneDir) != NULL;

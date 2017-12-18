@@ -56,7 +56,7 @@ Intersection::Intersection(int length) {
 //TODO? 
 Intersection::~Intersection() { }
 
-void Intersection:: printIntersection() {
+void Intersection:: printIntersection2() {
   north.printLane();
   east.printLane();
   south.printLane();
@@ -64,7 +64,7 @@ void Intersection:: printIntersection() {
   cout << "***********************************************************************" << endl;
 }
 
-void Intersection:: printIntersection2() {
+void Intersection:: printIntersection() {
   for(int i = 0; i < length; i++) {
     for(int j = 0; j < length; j++) {
       if(j == (length/2)-1)
@@ -107,16 +107,13 @@ void Intersection::update(double time) {
   double s = sTraffic.timeRemaining(time);
   double w = wTraffic.timeRemaining(time);
 
-  if(n==0)
-  {
-    nTraffic.change();
-  }
+  if(n==0) {nTraffic.change();}
   if(e==0) {eTraffic.change();}
   if(s==0) {sTraffic.change();}
   if(w==0) {wTraffic.change();}
 
 
-  printIntersection2();
+  printIntersection();
 
   for(int i = 0; i < vehicles.size(); i++) {
     vehicles[i].move();

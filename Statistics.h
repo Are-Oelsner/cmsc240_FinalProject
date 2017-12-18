@@ -47,6 +47,8 @@ public:
     inline void incrementRight() {vehicleRight++;}
     inline void incrementStraight() {vehicleStraight++;}
 
+    //TODO Write function for Timing 
+
     
     
     
