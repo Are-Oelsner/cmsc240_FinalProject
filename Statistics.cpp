@@ -30,7 +30,7 @@ int straight, vector<double> leftTime, vector<double> rightTime, vector<double> 
     totalCar = cars;
     totalSUV = SUV;
     totalTruck = truck;
-    totalVehicles = this->totalVehicles;
+    totalVehicle = this->totalVehicles;
     leftTime = this->leftTime;
     rightTime = this->rightTime;
     straightTime = this->straightTime;

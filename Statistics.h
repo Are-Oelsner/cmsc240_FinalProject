@@ -21,7 +21,7 @@ protected:
     int totalCar;
     int totalSUV;
     int totalTruck;
-    int totalVehicles;
+    int totalVehicle;
     vector<double> leftTime;
     vector<double> rightTime;
     vector<double> straightTime;
