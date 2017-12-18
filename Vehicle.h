@@ -40,6 +40,7 @@ class Vehicle {
 
     int size;   //* Integer size of the Vehicle, indicates what type of Vehicle
                 //* it is; (2/Car, 3/SUV, 4/Truck)
+    bool exited;
 
   public:
 
