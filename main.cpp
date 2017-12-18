@@ -48,7 +48,6 @@ int main(int argc, const char * argv[]) {
   //set up traffic light 
   //b/c color is enum 
   //0=red, 1=green, 3=yellow
-  TrafficLight light = TrafficLight(g, r, y);
   //how to change a light!
   //light.change(TrafficLight::red);
 

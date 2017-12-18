@@ -28,7 +28,7 @@ public:
     TrafficLight();
 
     //* Constructor
-    TrafficLight(double green, double red, double yellow);
+    TrafficLight(double green, double red, double yellow, Color startColor);
 
     //* Destructor
     ~TrafficLight();
