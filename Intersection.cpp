@@ -3,6 +3,7 @@
 //* Date: 
 
 #include "Intersection.h"
+#include <iostream> //TODO Remove 
 
 Intersection::Intersection() {
   length = 20; //default length
@@ -116,6 +117,7 @@ void Intersection::update(double time) {
   printIntersection();
 
   for(int i = 0; i < vehicles.size(); i++) {
+    vehicles[i].printVehicle();
     vehicles[i].move();
   }
 

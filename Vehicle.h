@@ -71,6 +71,9 @@ class Vehicle {
     //* Moves the vehicle one unit forward, right, or left
     void move();
 
+    //* prints vehicle stats for debugging
+    void printVehicle();
+
 };
 
 #endif
