@@ -8,6 +8,7 @@
 #include "Intersection.h"
 #include "Vehicle.h"
 #include "Random.h"
+#include "Statistics.h"
 
 #include <iostream>
 #include <time.h>
