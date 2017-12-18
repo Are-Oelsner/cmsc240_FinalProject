@@ -24,6 +24,9 @@ clock_t timer;
 
 int main(int argc, const char * argv[]) {
 
+  // Prints out additional debugging info if true
+  bool debug = true;
+
   // Store parser values in public variables 
   double leftProb = p.getLeftProb();
   double rightProb = p.getRightProb();
@@ -96,7 +99,9 @@ int main(int argc, const char * argv[]) {
       duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
     }
     seconds++;
-    trafficIntersection->update();
+
+    trafficIntersection->update(debug);
+
   }
 
 

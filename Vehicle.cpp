@@ -147,12 +147,10 @@ void Vehicle::move() {
     bool backCanTurnLeft = backSection->getLeft(backLaneDir) != NULL;
 
     // Check if any section of the vehicle is in the intersection
-    for(int i = 0; (unsigned)i < sections.size(); i++) {
-      if(sections[i]->getInIntersection()){
-        inIntersection = true;
-        break;
-      }
-    }
+    cout << "size: " << size << endl; //TODO remove these comments
+    cout << "direction: " << frontLaneDir << endl;
+    if(sections[size-1]->getInIntersection())
+      inIntersection = true;
 
     char direction = 's';
     // If the Vehicle is attempting to move while in the intersection, check
@@ -212,4 +210,18 @@ void Vehicle::move() {
       
     }
   }
+}
+
+void
+Vehicle::
+printVehicle() {
+  cout << "front Lane: " << frontCurrLane->getDirection() << endl;
+  cout << "back Lane: " << backCurrLane->getDirection() << endl;
+  cout << "in Intersection: " << inIntersection << endl;
+  cout << "near Intersection: " << nearIntersection << endl;
+  cout << "has Passed Light: " << hasPassedLight << endl;
+  cout << "# sections: " << sections.size() << endl;
+  cout << "size: " << size << endl;
+  cout << "path: " << path << endl;
+  cout << "exited: " << exited << endl;
 }

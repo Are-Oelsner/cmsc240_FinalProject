@@ -80,6 +80,7 @@ class Intersection {
 
     inline void addVehicle(Vehicle _vehicle) { vehicles.push_back(_vehicle); }
 
+<<<<<<< HEAD
     void update();
 
 };

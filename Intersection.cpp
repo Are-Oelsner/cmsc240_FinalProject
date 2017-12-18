@@ -3,6 +3,7 @@
 //* Date: 
 
 #include "Intersection.h"
+#include <iostream> //TODO Remove 
 
 Intersection::Intersection() {
   length = 20; //default length
@@ -94,7 +95,9 @@ getLane(int direction) {
   }
 }
 
-void Intersection::update() {
+
+
+
   counter++;
   // Handle light timing here? Update trafficlights?
   TrafficLight nTraffic = north.getTrafficLight();
@@ -128,6 +131,9 @@ void Intersection::update() {
   printIntersection();
 
   for(int i = 0; i < vehicles.size(); i++) {
+    if(debug) 
+      cout << "Printing Vehicle: " << i << "---------------" << endl;
+      vehicles[i].printVehicle();
     vehicles[i].move();
   }
 
